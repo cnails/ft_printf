@@ -17,12 +17,18 @@
 
 typedef	struct	s_printf
 {
-	int			len;
-	int			fd;
-	char		ch;
-	char		*buf;
-	char		*str;
-	va_list		va;
+	size_t			len;
+	int				fd;
+	char			ch;
+	char			*buf;
+	char			*str;
+	va_list			va;
 }				t_printf;
+
+void	col_d(t_printf *a, int nb);
+void	col_s(t_printf *a, char *str);
+void	col_c(t_printf *a, char c);
+void	col_par(t_printf *a);
+void	collect(t_printf *a, char *str, size_t len);
 
 #endif

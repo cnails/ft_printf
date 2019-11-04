@@ -34,7 +34,8 @@ FILES = ft_atoi.c ft_putchar.c ft_strlen.c \
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_lstnew.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c \
 		ft_lstiter.c ft_lstmap.c ft_filereader.c ft_isprime.c \
-		ft_lennwords.c ft_getnwords.c get_next_line.c
+		ft_lennwords.c ft_getnwords.c get_next_line.c \
+		ft_dtoa.c
 
 OBJS = $(FILES:.c=.o)
 
