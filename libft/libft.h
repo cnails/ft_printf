@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:01:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/10/12 15:32:28 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/13 15:30:56 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ char				*getnwords(char *str, int n);
 int					ft_onlystr(char *str);
 int					get_next_line(const int fd, char **line);
 char				*ft_dtoa(double f, int n);
+int					ft_for(int start, int sum, int end);
 
 #endif
