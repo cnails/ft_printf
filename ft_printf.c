@@ -22,10 +22,13 @@ void	collect(t_printf *a, char *str, size_t len)
 	if (a->space > len)
 	{
 		p = ft_strset(' ', a->space - len);
-		tmp = ft_strsub(str, a->space - len + 1, a->space);
+		tmp = ft_strjoin(a->buf, p);
+		free(a->buf);
+		a->buf = tmp;
+		a->len += a->space - len;
+		a->space = 0;
 	}
-	else
-		tmp = ft_strsub(str, 0, len);
+	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
 	a->buf = tmp;
@@ -46,10 +49,11 @@ int		ft_printf(const char *str, ...)
 	{
 		if (*a.str == '%')
 		{
+			a.str++;
 			if ((*a.str) == ' ')
 				collect(&a, a.str, 1);
-			while ((*a.str++) == ' ')
-//				a.str++;
+			while ((*a.str) == ' ')
+				a.str++;
 			if (!(*a.str))
 				break ;
 			col_par(&a);
@@ -80,7 +84,8 @@ int main()
 //	printf( "%0*x", 8, 15 );
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
-	ft_printf("\n%.2f", 1234567890.1234567890);
-	printf("\n%.s","qwertyuiop1234567");
+	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
+	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
+//	printf("\n%.s","qwertyuiop1234567");
 
 }

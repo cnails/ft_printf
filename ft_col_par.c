@@ -24,7 +24,6 @@ void	col_d(t_printf *a, int nb)
 		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
-	
 	collect(a, ft_itoa(nb),i + f);
 }
 
@@ -51,14 +50,12 @@ void	dot_space(t_printf *a)
 {
 	char	*str;
 	int		n;
-	char	t;
 
-	a->str++;
+	a->str = (*a->str == '.') ? a->str + 1 : a->str;
 	str = a->str;
 	while (*(a->str) >= '0' && *(a->str) <= '9')
 		a->str++;
 	n = ft_atoi(str);
-	t = *(str - 1);
 	if (*(str - 1) == '.')
 		a->nbr = n;
 	if (*(str - 1) == '%')
@@ -67,6 +64,8 @@ void	dot_space(t_printf *a)
 
 void	col_par(t_printf *a)
 {
+	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
+		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
 	if (*a->str == 's' || *a->str == 'S')
@@ -75,8 +74,6 @@ void	col_par(t_printf *a)
 		col_c(a, va_arg(a->va, int));
 	if (*a->str == '%')
 		collect(a, "%", 1);
-	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
-		dot_space(a);
 	if (*a->str == 'f')
 		col_f(a,va_arg(a->va, double));
 }
