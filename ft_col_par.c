@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_col_par.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cnails <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/10/31 16:35:27 by dmetallo         ###   ########.fr       */
+/*   Updated: 2019/11/14 12:29:52 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void	col_par(t_printf *a)
 		collect(a, "%", 1);
 	if (*a->str == 'f')
 		col_f(a,va_arg(a->va, double));
+	// if (*a->str == '\'')
 }
 

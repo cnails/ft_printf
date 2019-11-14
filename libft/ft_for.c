@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 11:36:57 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 12:04:32 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 12:36:26 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	stat_for(int start, int sum, int end)
 	static int	i;
 	int			final;
 
-	if (i == 0 && start != 0)
+	if (i == 0 && start > 0)
 	{
 		i = start;
 		return (i);
@@ -45,6 +45,8 @@ int			ft_for(int start, int sum, int end)
 	if (sum < 0)
 		return (0);
 	i = stat_for(start, sum, end);
+	if (start == 0 && i <= end)
+		return (i);
 	if (i < end)
 		return (i);
 	return (0);
