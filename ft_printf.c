@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 16:08:25 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 16:44:36 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int main()
 	// while ((c = ft_for(5, 1, 10)))
 	// while((c = ft_for(0, 3, 5)))
 		// ft_printf("%0d\n", c);
-	// printf("%x lol\n", c);
-	ft_printf("%x lol\n", c);
+	printf("%'10d lol\n", c);
+	ft_printf("%'''''d lol\n", c);
 	ft_printf("hello %s it is me", "Andrey");
 	// printf("%c",3);
 	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);

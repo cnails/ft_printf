@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 16:06:08 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 16:42:59 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	col_d(t_printf *a, int nb)
 	int i;
 	int f;
 	int tmp;
+	char sign;
 
 	tmp = nb;
 	i = 1;
@@ -24,7 +25,11 @@ void	col_d(t_printf *a, int nb)
 		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
-	collect(a, ft_itoa(nb),i + f);
+	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-');
+	if (sign == '+')
+		collect(a, ft_strjoin(&sign, ft_itoa(nb)), i + f + 1);
+	else
+		collect(a, ft_itoa(nb), i + f);
 }
 
 void	col_s(t_printf *a, char *str)
@@ -51,7 +56,7 @@ void	col_x(t_printf *a, void *str)
 	char *s;
 
 	s = ft_itoa_base((int)str, 16);
-	printf("%s", s);
+	collect(a, s, ft_strlen(s));
 }
 
 void	dot_space(t_printf *a)
@@ -70,10 +75,21 @@ void	dot_space(t_printf *a)
 		a->space = n;
 }
 
+void	col_plus_min_sl(t_printf *a)
+{
+	if (*a->str == '-')
+		a->align = 1;
+	if (*a->str == '+')
+		a->sign = 1;
+	a->str++;
+	if (*a->str == '-' || *a->str == '+' || *a->str == '\'')
+		col_plus_min_sl(a);
+}
+
 void	col_par(t_printf *a)
 {
-	// if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
-		// 
+	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
+		col_plus_min_sl(a);
 	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
 		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
