@@ -12,35 +12,71 @@
 
 #include "libft.h"
 
-static char	*post_dot(double f, char *str)
+static int		len(intmax_t n)
+{
+	int i;
+
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
+
+static char		*ft_qitoa(intmax_t n, int l)
+{
+	char	*str;
+	int		flag;
+	int		numb;
+
+	flag = (n < 0) ? 1 : 0;
+	numb = len(n) + flag + l - 1;
+	if (!(str = (char *)ft_memalloc(sizeof(char) * (numb + 1))))
+		return (NULL);
+	if (flag)
+	{
+		str[0] = '-';
+		n *= -1;
+	}
+	str[numb--] = '\0';
+	if (n == 0)
+		str[0] = '0';
+	if (n % 10 > 4 && len(n) > l)
+		n += 1;
+	while (n || --l > 0)
+	{
+		str[numb--] = (n % 10) + '0';
+		n /= 10;
+	}
+	return (str);
+}
+
+static char		*post_dot(double f, char *str, int l)
 {
 	char *tmp;
 
-	tmp = ft_itoa((int)f);
+	tmp = ft_qitoa((long int)f, l);
 	str = ft_strjoin(str, tmp);
 	free(tmp);
 	return (str);
 }
 
-char		*ft_dtoa(double f, int n)
+char			*ft_dtoa(double f, int n)
 {
-	char *str;
-	char *tmp;
+	char	*str;
+	char	*tmp;
+	int		l;
 
+	l = n;
 	n = (n < 0) ? 0 : n;
-	str = ft_itoa((int)f);
-	f -= (int)f;
-	while (--n > 0 && f < 10000000)
+	str = ft_qitoa((intmax_t)f, 1);
+	f -= (intmax_t)f;
+	while (n-- > 0)
 		f *= 10;
-	if ((int)f)
+	if (n)
 	{
 		tmp = ft_strjoin(str, ".");
 		free(str);
-		str = post_dot(f, tmp);
+		str = post_dot(f, tmp, (f == 0) ? l : 1);
 	}
-	f -= (int)f;
-	while (--n > 0)
-		f *= 10;
-	str = post_dot(f, str);
 	return (str);
 }

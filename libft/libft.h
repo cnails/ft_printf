@@ -92,6 +92,8 @@ char				*getnwords(char *str, int n);
 int					ft_onlystr(char *str);
 int					get_next_line(const int fd, char **line);
 char				*ft_dtoa(double f, int n);
+char				*ft_strset(char c, size_t n);
 int					ft_for(int start, int sum, int end);
+
 
 #endif
