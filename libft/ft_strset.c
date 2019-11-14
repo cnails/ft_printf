@@ -17,9 +17,9 @@ char	*ft_strset(char c, size_t n)
 	char	*str;
 	size_t	i;
 
-	i = 0;
+	i = -1;
 	str = ft_strnew(n);
-	while (i < n)
+	while (++i < n)
 		str[i] = c;
 	return (str);
 }

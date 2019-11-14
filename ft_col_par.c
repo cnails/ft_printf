@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 13:51:01 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 14:18:40 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	col_d(t_printf *a, int nb)
 		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
-	
 	collect(a, ft_itoa(nb),i + f);
 }
 
@@ -51,14 +50,12 @@ void	dot_space(t_printf *a)
 {
 	char	*str;
 	int		n;
-	char	t;
 
-	a->str++;
+	a->str = (*a->str == '.') ? a->str + 1 : a->str;
 	str = a->str;
 	while (*(a->str) >= '0' && *(a->str) <= '9')
 		a->str++;
 	n = ft_atoi(str);
-	t = *(str - 1);
 	if (*(str - 1) == '.')
 		a->nbr = n;
 	if (*(str - 1) == '%')
@@ -69,6 +66,8 @@ void	col_par(t_printf *a)
 {
 	// if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		// 
+	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
+		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
 	if (*a->str == 's' || *a->str == 'S')
@@ -77,9 +76,6 @@ void	col_par(t_printf *a)
 		col_c(a, va_arg(a->va, int));
 	if (*a->str == '%')
 		collect(a, "%", 1);
-	// if (*a->str == )
-	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
-		dot_space(a);
 	if (*a->str == 'f')
 		col_f(a, va_arg(a->va, double));
 	// if (*a->str == '\'' && *a->str + 1 == 'd')

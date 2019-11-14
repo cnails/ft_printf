@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 14:07:13 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 14:40:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ void	collect(t_printf *a, char *str, size_t len)
 	if (a->space > len)
 	{
 		p = ft_strset(' ', a->space - len);
-		tmp = ft_strsub(str, a->space - len + 1, a->space);
+		tmp = ft_strjoin(a->buf, p);
+		free(a->buf);
+		a->buf = tmp;
+		a->len += a->space - len;
+		a->space = 0;
 	}
-	else
-		tmp = ft_strsub(str, 0, len);
+	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
 	a->buf = tmp;
@@ -89,5 +92,8 @@ int main()
 //	printf("\n%3d %s", 12, "123");
 	// ft_printf("\n%.2f", 1234567890.1234567890);
 	// printf("\n%.s","qwertyuiop1234567");
+	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
+	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
+//	printf("\n%.s","qwertyuiop1234567");
 
 }
