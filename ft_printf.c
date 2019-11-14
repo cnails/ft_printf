@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 13:06:17 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 14:07:13 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,22 @@ int		ft_printf(const char *str, ...)
 	a.str = (char *)str;
 	va_start(a.va, str);
 	while (*a.str)
-	{
-		if (*a.str == '%')
-		{
-			if ((*a.str) == ' ')
-				collect(&a, a.str, 1);
-			while ((*a.str++) == ' ')
-//				a.str++;
-			if (!(*a.str))
-				break ;
-			col_par(&a);
-		}
-		else
-			collect(&a, a.str, 1);
-		a.str++;
-	}
+    {
+        if (*a.str == '%')
+        {
+            a.str++;
+            if ((*a.str) == ' ')
+                collect(&a, a.str, 1);
+            while ((*a.str) == ' ')
+                a.str++;
+            if (!(*a.str))
+                break ;
+            col_par(&a);
+        }
+        else
+            collect(&a, a.str, 1);
+        a.str++;
+    }
 	write(1, a.buf, a.len);
 //	ft_putnbr(a.len);
 	va_end(a.va);
@@ -74,8 +75,10 @@ int main()
 //	printf("\n%C", (-0 == 0) ? 'y' : 'n');
 	int c = 230;
 	// while ((c = ft_for(5, 1, 10)))
-	while((c = ft_for(0, 3, 5)))
-		printf("%'i\n", c);
+	// while((c = ft_for(0, 3, 5)))
+		// ft_printf("%0d\n", c);
+	printf("%o lol\n", c);
+	printf("%c",3);
 	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);
 //	printf("%s", ft_dtoa(231.1234567890123456789, 3));
 	// printf("\n%.20f", 12345678901234567890.123456789012345678901234567890);
@@ -84,7 +87,7 @@ int main()
 //	printf( "%0*x", 8, 15 );
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
-	ft_printf("\n%.2f", 1234567890.1234567890);
-	printf("\n%.s","qwertyuiop1234567");
+	// ft_printf("\n%.2f", 1234567890.1234567890);
+	// printf("\n%.s","qwertyuiop1234567");
 
 }

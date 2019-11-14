@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 12:29:52 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 13:51:01 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	dot_space(t_printf *a)
 
 void	col_par(t_printf *a)
 {
+	// if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
+		// 
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
 	if (*a->str == 's' || *a->str == 'S')
@@ -79,7 +81,11 @@ void	col_par(t_printf *a)
 	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
 		dot_space(a);
 	if (*a->str == 'f')
-		col_f(a,va_arg(a->va, double));
-	// if (*a->str == '\'')
+		col_f(a, va_arg(a->va, double));
+	// if (*a->str == '\'' && *a->str + 1 == 'd')
+	// {
+		// printf("1\n");
+		// col_f(a, va_arg(a->va, int));
+	// }
 }
 
