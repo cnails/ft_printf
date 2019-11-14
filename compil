@@ -1,0 +1,1 @@
+"gcc ft_printf.c ft_col_par.c libft\ft_bzero.c libft\ft_itoa.c libft\ft_strlen.c libft\ft_strnew.c libft\ft_strsub.c libft\ft_strjoin.c libft\ft_memset.c" 

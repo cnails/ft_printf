@@ -80,3 +80,4 @@ void	col_par(t_printf *a)
 	if (*a->str == 'f')
 		col_f(a,va_arg(a->va, double));
 }
+

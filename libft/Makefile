@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cnails <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: cnails <cnails@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 15:40:03 by cnails            #+#    #+#              #
-#    Updated: 2019/09/20 13:19:55 by cnails           ###   ########.fr        #
+#    Updated: 2019/11/13 15:32:25 by cnails           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ FILES = ft_atoi.c ft_putchar.c ft_strlen.c \
 		ft_lstnew.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c \
 		ft_lstiter.c ft_lstmap.c ft_filereader.c ft_isprime.c \
 		ft_lennwords.c ft_getnwords.c get_next_line.c \
-		ft_dtoa.c ft_strset
+		ft_dtoa.c ft_strset.c ft_for.c
 
 OBJS = $(FILES:.c=.o)
 
