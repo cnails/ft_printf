@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 14:18:40 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 16:06:08 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void	col_f(t_printf *a, long double ld)
 	a->nbr = -1;
 }
 
+void	col_x(t_printf *a, void *str)
+{
+	char *s;
+
+	s = ft_itoa_base((int)str, 16);
+	printf("%s", s);
+}
+
 void	dot_space(t_printf *a)
 {
 	char	*str;
@@ -78,6 +86,8 @@ void	col_par(t_printf *a)
 		collect(a, "%", 1);
 	if (*a->str == 'f')
 		col_f(a, va_arg(a->va, double));
+	if (*a->str == 'x')
+		col_x(a, va_arg(a->va, void *));
 	// if (*a->str == '\'' && *a->str + 1 == 'd')
 	// {
 		// printf("1\n");
