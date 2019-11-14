@@ -6,20 +6,31 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 11:36:57 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/13 15:31:31 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/14 12:04:32 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-static int	stat_for(int sum, int end)
+static int	stat_for(int start, int sum, int end)
 {
-	static int i;
-	int final;
+	static int	i;
+	int			final;
 
+	if (i == 0 && start != 0)
+	{
+		i = start;
+		return (i);
+	}
 	if (i == end)
 	{
 		final = sum + i;
+		i = 0;
+		return (final);
+	}
+	if (i > end)
+	{
+		final = i;
 		i = 0;
 		return (final);
 	}
@@ -33,8 +44,8 @@ int			ft_for(int start, int sum, int end)
 
 	if (sum < 0)
 		return (0);
-	i = stat_for(sum, end);
-	if (end - i >= start)
+	i = stat_for(start, sum, end);
+	if (i < end)
 		return (i);
 	return (0);
 }
