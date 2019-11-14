@@ -15,10 +15,17 @@
 void	collect(t_printf *a, char *str, size_t len)
 {
 	char *tmp;
-	
+	char *p;
+
 	if (!a->buf)
 		a->buf = ft_strnew(1);
-	tmp = ft_strsub(str, 0, len);
+	if (a->space > len)
+	{
+		p = ft_strset(' ', a->space - len);
+		tmp = ft_strsub(str, a->space - len + 1, a->space);
+	}
+	else
+		tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
 	a->buf = tmp;
@@ -31,16 +38,18 @@ int		ft_printf(const char *str, ...)
 	
 	ft_bzero(&a, sizeof(a));
 	a.fd = 1;
+	a.nbr = -1;
+	a.space = 0;
 	a.str = (char *)str;
 	va_start(a.va, str);
 	while (*a.str)
 	{
-		if (*a.str++ == '%')
+		if (*a.str == '%')
 		{
 			if ((*a.str) == ' ')
 				collect(&a, a.str, 1);
-			while ((*a.str) == ' ')
-				a.str++;
+			while ((*a.str++) == ' ')
+//				a.str++;
 			if (!(*a.str))
 				break ;
 			col_par(&a);
@@ -56,15 +65,21 @@ int		ft_printf(const char *str, ...)
 }
 
 
+
+
 int main()
 {
 	char *s;
-//	ft_printf("%     D", 11);
+
+//	printf("%s", ft_strsub(t,0,s-t));
+//	ft_printf("%.20f", 12345678901234567.123456789012345678901234567890);
 //	printf("\n%     D", 11);
 //	printf("\n%C", (-0 == 0) ? 'y' : 'n');
-	printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890); 
-
-	printf("%s", ft_dtoa(231.1234567890123456789, 3));
-	printf("\n%.20f", 12345678901234567890.123456789012345678901234567890);
-	return (0);
+//	printf("%d\n",  (int)(0.12345));
+//	printf("%.10Lf\n", (long double)12345678901234567890123.12345678901234567890);
+//	printf( "%0*x", 8, 15 );
+//	printf("\n**%2d",12345678);
+//	printf("\n%3d %s", 12, "123");
+	ft_printf("\n%.2f", 1234567890.1234567890);
+	printf("\n%.s","qwertyuiop1234567");
 }
