@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/19 17:49:53 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/19 17:56:41 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	collect(t_printf *a, char *str, size_t len)
 
 	if (!a->buf)
 		a->buf = ft_strnew(1);
-	if (a->space > len && !a->align)
+	if (a->space > len && (!a->align || a->dot))
 		col_space(a, len, tmp);
 	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
@@ -94,8 +94,8 @@ int main()
 	// while ((c = ft_for(5, 1, 10)))
 	// while((c = ft_for(0, 3, 5)))
 		// ft_printf("%0d\n", c);
-	printf("%20.10p lol\n", c);
-	ft_printf("%20.10p lol\n", c);
+	printf("%p lol\n", c);
+	ft_printf("%p lol\n", c);
 	// ft_printf("hello %s it is me", "Andrey");
 	// printf("%c",3);
 	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);
