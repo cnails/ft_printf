@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 16:42:59 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/19 17:42:11 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,24 @@ void	col_f(t_printf *a, long double ld)
 {
 	char	*str;
 
-	str = ft_dtoa(ld, a->nbr);
+	str = ft_dtoa(ld, a->nbr + 7);
 	collect(a, str, ft_strlen(str));
 	a->nbr = -1;
 }
 
-void	col_x(t_printf *a, void *str)
+void	col_x(t_printf *a, void *str, char c)
 {
 	char *s;
 
 	s = ft_itoa_base((int)str, 16);
-	collect(a, s, ft_strlen(s));
+	if (c == 'p')
+		if (a->dot)
+			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
+		else
+			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
+	else
+		collect(a, s, ft_strlen(s));
+	free(s);
 }
 
 void	dot_space(t_printf *a)
@@ -68,11 +75,13 @@ void	dot_space(t_printf *a)
 	str = a->str;
 	while (*(a->str) >= '0' && *(a->str) <= '9')
 		a->str++;
+	if (*a->str == '.')
+		a->str++;
 	n = ft_atoi(str);
-	if (*(str - 1) == '.')
-		a->nbr = n;
-	if (*(str - 1) == '%')
-		a->space = n;
+	// if (*(str - 1) == '.')
+		// a->nbr = n;
+	// if (*(str - 1) == '%')
+	a->space = n;
 }
 
 void	col_plus_min_sl(t_printf *a)
@@ -81,16 +90,25 @@ void	col_plus_min_sl(t_printf *a)
 		a->align = 1;
 	if (*a->str == '+')
 		a->sign = 1;
+	// printf("in col = %c\n", *a->str);
 	a->str++;
+	// printf("in col = %c\n", *a->str);
 	if (*a->str == '-' || *a->str == '+' || *a->str == '\'')
 		col_plus_min_sl(a);
+	// col_par(a);
 }
 
 void	col_par(t_printf *a)
 {
+	// printf("c = %c\n", *a->str);
 	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		col_plus_min_sl(a);
-	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
+	if (*a->str == '.')
+	{
+		a->dot = 1;
+		a->str++;
+	}
+	if (*a->str >= '0' && *a->str <= '9')
 		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
@@ -102,8 +120,8 @@ void	col_par(t_printf *a)
 		collect(a, "%", 1);
 	if (*a->str == 'f')
 		col_f(a, va_arg(a->va, double));
-	if (*a->str == 'x')
-		col_x(a, va_arg(a->va, void *));
+	if (*a->str == 'x' || *a->str == 'p')
+		col_x(a, va_arg(a->va, void *), *a->str);
 	// if (*a->str == '\'' && *a->str + 1 == 'd')
 	// {
 		// printf("1\n");
