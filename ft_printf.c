@@ -12,30 +12,39 @@
 
 #include "ft_printf.h"
 
-void	collect(t_printf *a, char *str, size_t len)
+static void	col_space(t_printf *a, char *str, size_t len)
 {
 	char *tmp;
 	char *p;
 
+	a->space *= (a->space < 0) ? -1 : 1;
+	p = ft_strset(' ', a->space - len);
+	tmp = ft_strjoin(a->buf, p);
+	free(a->buf);
+	a->buf = tmp;
+	a->len += a->space - len;
+	a->space = 0;
+}
+
+void		collect(t_printf *a, char *str, size_t len)
+{
+	char *tmp;
+
 	if (!a->buf)
 		a->buf = ft_strnew(1);
 	if (a->space > len)
-	{
-		p = ft_strset(' ', a->space - len);
-		tmp = ft_strjoin(a->buf, p);
-		free(a->buf);
-		a->buf = tmp;
-		a->len += a->space - len;
-		a->space = 0;
-	}
+		col_space(a, str, len);
 	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
 	a->buf = tmp;
 	a->len += len;
+	if (a->space < 0 && -a->space > len)
+		col_space(a, str, len);
+	
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
 	t_printf	a;
 	
@@ -68,7 +77,7 @@ int		ft_printf(const char *str, ...)
 	return (0);
 }
 
-int main()
+int 		main()
 {
 	char *s;
 
@@ -81,8 +90,6 @@ int main()
 	// while((c = ft_for(0, 3, 5)))
 		// ft_printf("%0d\n", c);
 	// printf("%x lol\n", c);
-	ft_printf("%x lol\n", c);
-	ft_printf("hello %s it is me", "Andrey");
 	// printf("%c",3);
 	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);
 //	printf("%s", ft_dtoa(231.1234567890123456789, 3));
@@ -92,10 +99,11 @@ int main()
 //	printf( "%0*x", 8, 15 );
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
-	// ft_printf("\n%.2f", 1234567890.1234567890);
-	// printf("\n%.s","qwertyuiop1234567");
-	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
-	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
+// ft_printf("\n%.2f", 1234567890.1234567890);
+	ft_printf("%11d",1234567890);
+//	printf("%11d",1234567890);
+//	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
+//	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
 //	printf("\n%.s","qwertyuiop1234567");
 
 }

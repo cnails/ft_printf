@@ -61,7 +61,7 @@ void	dot_space(t_printf *a)
 
 	a->str = (*a->str == '.') ? a->str + 1 : a->str;
 	str = a->str;
-	while (*(a->str) >= '0' && *(a->str) <= '9')
+	while ((*(a->str) >= '0' && *(a->str) <= '9') || *a->str == '-')
 		a->str++;
 	n = ft_atoi(str);
 	if (*(str - 1) == '.')
@@ -74,7 +74,7 @@ void	col_par(t_printf *a)
 {
 	// if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		// 
-	if (*a->str == '.' || (*a->str >= '0' && *a->str <= '9'))
+	if ((*a->str >= '0' && *a->str <= '9') || *a->str == '-' || *a->str == '.')
 		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
