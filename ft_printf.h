@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2019/10/25 11:16:06 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/19 16:42:39 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ typedef	struct	s_printf
 	char			*str;
 	int				nbr;
 	int				space;
+	int				sign;
+	int				align;
+	int				dot;
 	va_list			va;
 }				t_printf;
 
