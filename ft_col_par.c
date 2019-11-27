@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/27 20:47:52 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/27 21:14:14 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,18 @@ void	col_d(t_printf *a, int nb)
 
 void	col_s(t_printf *a, char *str)
 {
-	collect(a, str, ft_strlen(str));
+	int u;
+
+	if (a->space && a->dot)
+	{
+		a->s = a->space;
+		a->space = 0;
+	}
+	if (ft_strlen(str) > a->s && a->dot)
+		u = a->s;
+	else
+		u = ft_strlen(str);
+	collect(a, str, u);
 }
 
 void	col_c(t_printf *a, char c)

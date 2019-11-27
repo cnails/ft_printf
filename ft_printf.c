@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/27 20:42:49 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/27 21:15:09 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,42 +84,42 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-int 		main()
-{
-	char *s;
+// int 		main()
+// {
+// 	char *s;
 
-//	printf("%s", ft_strsub(t,0,s-t));
-//	ft_printf("%.20f", 12345678901234567.123456789012345678901234567890);
-//	printf("\n%     D", 11);
-//	printf("\n%C", (-0 == 0) ? 'y' : 'n');
-	int c = 10000;
-	long long int a = 99999999999;
-	int o = 0.0;
-	// while ((c = ft_for(5, 1, 10)))
-	// while((c = ft_for(0, 3, 5)))
-		// ft_printf("%0d\n", c);
+// //	printf("%s", ft_strsub(t,0,s-t));
+// //	ft_printf("%.20f", 12345678901234567.123456789012345678901234567890);
+// //	printf("\n%     D", 11);
+// //	printf("\n%C", (-0 == 0) ? 'y' : 'n');
+// 	int c = 10000;
+// 	long long int a = 99999999999;
+// 	int o = 0.0;
+// 	// while ((c = ft_for(5, 1, 10)))
+// 	// while((c = ft_for(0, 3, 5)))
+// 		// ft_printf("%0d\n", c);
 
-	// printf("%x lol\n", c);
+// 	// printf("%x lol\n", c);
 
-//	printf("%p lol\n", c);
-//	ft_printf("%p lol\n", c);
-	// ft_printf("hello %s it is me", "Andrey");
+// //	printf("%p lol\n", c);
+// //	ft_printf("%p lol\n", c);
+// 	// ft_printf("hello %s it is me", "Andrey");
 
-	// printf("%c",3);
-	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);
-//	printf("%s", ft_dtoa(231.1234567890123456789, 3));
-	// printf("\n%.20f", 12345678901234567890.123456789012345678901234567890);
-//	printf("%d\n",  (int)(0.12345));
-//	printf("%.10Lf\n", (long double)12345678901234567890123.12345678901234567890);
-//	printf( "%0*x", 8, 15 );
-//	printf("\n**%2d",12345678);
-//	printf("\n%3d %s", 12, "123");
-// ft_printf("\n%.2f", 1234567890.1234567890);
-	printf("%d\n", ft_printf("{%.15p}\n",1234567890));
-	printf("%d\n", printf("{%.15p}\n",1234567890));
-//	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
-//	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
+// 	// printf("%c",3);
+// 	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);
+// //	printf("%s", ft_dtoa(231.1234567890123456789, 3));
+// 	// printf("\n%.20f", 12345678901234567890.123456789012345678901234567890);
+// //	printf("%d\n",  (int)(0.12345));
+// //	printf("%.10Lf\n", (long double)12345678901234567890123.12345678901234567890);
+// //	printf( "%0*x", 8, 15 );
+// //	printf("\n**%2d",12345678);
+// //	printf("\n%3d %s", 12, "123");
+// // ft_printf("\n%.2f", 1234567890.1234567890);
+// 	printf("%d\n", ft_printf("%10s\n", "hello"));
+// 	printf("%d\n", printf("%10s\n", "hello"));
+// //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
+// //	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
 
-//	printf("\n%.s","qwertyuiop1234567");
+// //	printf("\n%.s","qwertyuiop1234567");
 
-}
+// }
