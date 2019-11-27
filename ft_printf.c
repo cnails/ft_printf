@@ -6,13 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/19 17:56:41 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/27 20:42:49 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	col_space(t_printf *a, char *str, size_t len)
+void	col_space(t_printf *a, char *str, size_t len)
 
 {
 	char *tmp;
@@ -81,7 +81,7 @@ int			ft_printf(const char *str, ...)
 	write(1, a.buf, a.len);
 //	ft_putnbr(a.len);
 	va_end(a.va);
-	return (0);
+	return (a.len);
 }
 
 int 		main()
@@ -115,8 +115,8 @@ int 		main()
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
 // ft_printf("\n%.2f", 1234567890.1234567890);
-	ft_printf("%11d",1234567890);
-//	printf("%11d",1234567890);
+	printf("%d\n", ft_printf("{%.15p}\n",1234567890));
+	printf("%d\n", printf("{%.15p}\n",1234567890));
 //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
 //	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
 

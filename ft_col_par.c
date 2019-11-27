@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/19 17:56:13 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/27 20:47:52 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	col_d(t_printf *a, int nb)
 		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
-	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-');
+	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-'); // stop, it is illegal
 	if (sign == '+')
 		collect(a, ft_strjoin(&sign, ft_itoa(nb)), i + f + 1);
 	else
@@ -53,12 +53,23 @@ void	col_f(t_printf *a, long double ld)
 
 void	col_x(t_printf *a, void *str, char c)
 {
-	char *s;
+	char	*s;
+	int		u;
 
 	s = ft_itoa_base((int)str, 16);
 	if (c == 'p')
 		if (a->dot)
-			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
+		{
+			if (a->space)
+			{
+				u = a->space;
+				a->space = 0;
+			}
+			collect(a, "0x", 2);
+			a->space = u;
+			col_space(a, str, ft_strlen(s));
+			collect(a, ft_strjoin("", s), ft_strlen(s));
+		}
 		else
 			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
 	else
