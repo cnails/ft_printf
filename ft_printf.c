@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/28 12:18:47 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 12:36:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ int 		main()
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
 // ft_printf("\n%.2f", 1234567890.1234567890);
-	printf("%d\n", ft_printf("%.10s\n", "hello"));
-	printf("%d\n", printf("%.10s\n", "hello"));
+	printf("%d\n", ft_printf("%-010s}\n", "hello"));
+	printf("%d\n", printf("%-010s}\n", "hello"));
 //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
 //	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
 

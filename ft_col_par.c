@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/28 12:16:17 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 12:37:47 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	col_par(t_printf *a)
 	if (*a->str == '.' || *a->str == '0')
 		col_dot(a);
 	// printf("c = %c\n", *a->str);
-	if (*a->str >= '0' && *a->str <= '9')
+	if (*a->str >= '0' && *a->str <= '9' && !(a->align))
 		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
