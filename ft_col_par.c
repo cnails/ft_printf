@@ -77,9 +77,9 @@ void	col_x(t_printf *a, void *str, char c)
 				a->space = 0;
 			}
 			collect(a, "0x", 2);
-			a->space = u;
+			a->space = u - 2;
 			col_space(a, str, ft_strlen(s));
-			collect(a, ft_strjoin("", s), ft_strlen(s));
+			collect(a, ft_strjoin("10", s), ft_strlen(s) + 2);
 		}
 		else
 			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);

@@ -115,8 +115,8 @@ int 		main()
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
 // ft_printf("\n%.2f", 1234567890.1234567890);
-	printf("%d\n", ft_printf("%.10s\n", "hello"));
-	printf("%d\n", printf("%.10s\n", "hello"));
+	printf("%d\n", ft_printf("%.20p\n", "255"));
+	printf("%d\n", printf("%.20p\n", "255"));
 //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
 //	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
 
