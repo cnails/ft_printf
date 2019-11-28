@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/28 12:37:47 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 17:56:36 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,41 @@ void	col_f(t_printf *a, long double ld)
 	a->nbr = -1;
 }
 
+void	ft_printbits(unsigned char octet)
+{
+	int	div;
+
+	div = 128;
+	while (div != 1)
+	{
+		if (octet / div == 1)
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
+		octet = octet % div;
+		div = div / 2;
+	}
+	if (octet == 1)
+		write(1, "1", 1);
+	else
+		write(1, "0", 1);
+}
+
 void	col_x(t_printf *a, void *str, char c)
 {
 	char	*s;
 	int		u;
 
-	s = ft_itoa_base((int)str, 16);
+	// s = ft_itoa_base((4294967295 + (unsigned long long int)str), 16, c == 'X' ? 'A' : 'a');
+	// printf("TEST = %s\n", s);
+	s = ft_itoa_base((unsigned int)str, 16, c == 'X' ? 'A' : 'a');
+	printf("TEST = %s\n", s);
+	ft_printbits((unsigned int)str);
+	ft_putchar('\n');
+	ft_printbits(~(long long unsigned int)str);
+	ft_putchar('\n');
 	if (c == 'p')
+	{
 		if (a->dot)
 		{
 			if (a->space)
@@ -77,12 +105,13 @@ void	col_x(t_printf *a, void *str, char c)
 				a->space = 0;
 			}
 			collect(a, "0x", 2);
-			a->space = u;
+			a->space = u - 2;
 			col_space(a, str, ft_strlen(s));
 			collect(a, ft_strjoin("", s), ft_strlen(s));
 		}
 		else
 			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
+	}
 	else
 		collect(a, s, ft_strlen(s));
 	free(s);
@@ -142,7 +171,7 @@ void	col_par(t_printf *a)
 	if (*a->str == '.' || *a->str == '0')
 		col_dot(a);
 	// printf("c = %c\n", *a->str);
-	if (*a->str >= '0' && *a->str <= '9' && !(a->align))
+	if (*a->str > '0' && *a->str <= '9' && !(a->align))
 		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
@@ -154,7 +183,7 @@ void	col_par(t_printf *a)
 		collect(a, "%", 1);
 	if (*a->str == 'f')
 		col_f(a, va_arg(a->va, double));
-	if (*a->str == 'x' || *a->str == 'p')
+	if (*a->str == 'x' || *a->str == 'p' || *a->str == 'X')
 		col_x(a, va_arg(a->va, void *), *a->str);
 	// if (*a->str == '\'' && *a->str + 1 == 'd')
 	// {

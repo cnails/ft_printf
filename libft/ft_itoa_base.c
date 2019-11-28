@@ -6,13 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 14:20:09 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 16:04:15 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 17:55:34 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(int nbr, int base)
+char	*ft_itoa_base(unsigned int nbr, int base, char a)
 {
 	char	*str;
 	int		i;
@@ -30,7 +30,7 @@ char	*ft_itoa_base(int nbr, int base)
 		return (NULL);
 	while (i--)
 	{
-		str[i + sign] = (n % base < 10) ? n % base + '0' : n % base + 'a' - 10;
+		str[i + sign] = (n % base < 10) ? n % base + '0' : n % base + a - 10;
 		n /= base;
 	}
 	(sign) ? str[0] = '-' : 0;

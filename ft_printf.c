@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/28 12:36:54 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 18:40:32 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void		collect(t_printf *a, char *str, size_t len)
 
 	if (!a->buf)
 		a->buf = ft_strnew(1);
-	if (a->space > len && (!a->align || a->dot))
+	if (a->space > len && (!a->align || a->dot == 1))
+	{
 		col_space(a, str, len);
+	}
 	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
@@ -48,6 +50,7 @@ void		collect(t_printf *a, char *str, size_t len)
 	a->len += len;
 	if (a->space < 0 && -a->space > len)
 		col_space(a, str, len);
+	a->space = 0;
 	
 }
 
@@ -95,6 +98,7 @@ int 		main()
 	int c = 10000;
 	long long int a = 99999999999;
 	int o = 0.0;
+	// char *p = malloc(100);
 	// while ((c = ft_for(5, 1, 10)))
 	// while((c = ft_for(0, 3, 5)))
 		// ft_printf("%0d\n", c);
@@ -115,8 +119,11 @@ int 		main()
 //	printf("\n**%2d",12345678);
 //	printf("\n%3d %s", 12, "123");
 // ft_printf("\n%.2f", 1234567890.1234567890);
-	printf("%d\n", ft_printf("%-010s}\n", "hello"));
-	printf("%d\n", printf("%-010s}\n", "hello"));
+	// printf("%d\n", ft_printf("%p\n", p));
+	// printf("%d\n", ft_printf("%5d\n", 33));
+	 ft_printf("{%5d}\n", 33);
+	// printf("col = %d\n", ft_printf("%x\n", 4294967294 / 2));
+	// printf("col = %d\n", printf("%x\n", 4294967294));
 //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
 //	ft_printf("\n%.2f %s   %10d.", 1234567890.1234567890, "qwerty",10);
 

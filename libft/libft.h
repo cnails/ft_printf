@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:01:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/14 16:03:08 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 17:55:27 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int					get_next_line(const int fd, char **line);
 char				*ft_dtoa(double f, int n);
 char				*ft_strset(char c, size_t n);
 int					ft_for(int start, int sum, int end);
-char				*ft_itoa_base(int nbr, int base);
+char				*ft_itoa_base(unsigned int nbr, int base, char a);
 
 #endif

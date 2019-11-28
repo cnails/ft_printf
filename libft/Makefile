@@ -6,7 +6,7 @@
 #    By: cnails <cnails@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 15:40:03 by cnails            #+#    #+#              #
-#    Updated: 2019/11/14 16:04:02 by cnails           ###   ########.fr        #
+#    Updated: 2019/11/28 17:54:10 by cnails           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJS = $(FILES:.c=.o)
 all: $(NAME)
 
 %.o: %.c $(INC)
-	@gcc -c  -Wall -Werror -Wextra $< -I $(INC)
+	@gcc -c  $< -I $(INC)
 
 $(NAME): $(OBJS)
 	@ar rc $@ $^
