@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/27 21:14:14 by cnails           ###   ########.fr       */
+/*   Updated: 2019/11/28 12:16:17 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	col_s(t_printf *a, char *str)
 {
 	int u;
 
-	if (a->space && a->dot)
+	if (a->space && a->dot == 1)
 	{
 		a->s = a->space;
 		a->space = 0;
 	}
-	if (ft_strlen(str) > a->s && a->dot)
+	if (ft_strlen(str) > a->s && a->dot == 1)
 		u = a->s;
 	else
 		u = ft_strlen(str);
@@ -105,6 +105,7 @@ void	dot_space(t_printf *a)
 		// a->nbr = n;
 	// if (*(str - 1) == '%')
 	a->space = n;
+	// printf("n = %d\n", n);
 }
 
 void	col_plus_min_sl(t_printf *a)
@@ -121,6 +122,15 @@ void	col_plus_min_sl(t_printf *a)
 	// col_par(a);
 }
 
+void	col_dot(t_printf *a)
+{
+	if (*a->str == '.')
+		a->dot = 1;
+	else
+		a->dot = 2;
+	a->str++;
+}
+
 void	col_par(t_printf *a)
 {
 
@@ -128,13 +138,11 @@ void	col_par(t_printf *a)
 
 	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		col_plus_min_sl(a);
-	if (*a->str == '.')
-	{
-		a->dot = 1;
-		a->str++;
-	}
+	// printf("c = %c\n", *a->str);
+	if (*a->str == '.' || *a->str == '0')
+		col_dot(a);
+	// printf("c = %c\n", *a->str);
 	if (*a->str >= '0' && *a->str <= '9')
-//>>>>>>> bc02d2e79a29439b286eceade63b5967bb1f1111
 		dot_space(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
