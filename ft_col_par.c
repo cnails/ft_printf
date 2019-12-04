@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 15:41:09 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 16:10:34 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	col_s(t_printf *a, char *str)
 
 	if (*a->str >= 0 && *a->str <= 9)
 		dot_space(a);
+	if (a->space && a->dot == 1 && !a->space_2)
+	{
+		collect(a, "", 0);
+		return ;
+	}
 	if ((a->space_2 && a->dot == 1) || (a->space && a->dot == 1 && !a->space_2))
 	{
 		a->s = a->space_2 ? a->space_2 : a->space;
@@ -134,7 +139,7 @@ void	dot_space(t_printf *a)
 		a->str++;
 	n = ft_atoi(str);
 	n *= (a->align) ? -1 : 1;
-	if (a->space != 0)
+	if (a->dot != 0)
 		a->space_2 = n > 0 ? n : -n;
 	else
 		a->space = n;

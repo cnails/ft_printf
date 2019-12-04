@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 15:42:31 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 16:10:45 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ void		collect(t_printf *a, char *str, size_t len)
 	if (!a->buf)
 		a->buf = ft_strnew(1);
 	if (a->space > len && (!a->align || a->dot == 1) && a->space > 0)
-	{
 		col_space(a, str, len);
-	}
 	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
@@ -119,8 +117,8 @@ int			ft_printf(const char *str, ...)
 // // ft_printf("\n%.2f", 1234567890.1234567890);
 // 	// printf("%d\n", ft_printf("%p\n", p));
 // 	// printf("%d\n", ft_printf("%5d\n", 33));
-// 	 printf("{%-7.2s}\n", "hello");
-// 	 ft_printf("{%-7.2s}\n", "hello");
+// 	//  printf("%-7.s", "");
+// 	 ft_printf("%-8.s", "");
 // 	// printf("col = %d\n", ft_printf("%x\n", 4294967294 / 2));
 // 	// printf("col = %d\n", printf("%x\n", 4294967294));
 // //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
