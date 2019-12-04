@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 16:10:34 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 16:44:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	dot_space(t_printf *a)
 		a->str++;
 	n = ft_atoi(str);
 	n *= (a->align) ? -1 : 1;
-	if (a->dot != 0)
+	if (a->dot != 0 && a->dot != 2)
 		a->space_2 = n > 0 ? n : -n;
 	else
 		a->space = n;
@@ -176,7 +176,10 @@ void	col_par(t_printf *a)
 		col_plus_min_sl(a);
 	// printf("c = %c\n", *a->str);
 	if (*a->str == '.' || *a->str == '0')
+	{
+		// printf("lol\n");
 		col_dot(a);
+	}
 	// printf("c = %c\n", *a->str);
 	if (*a->str >= '0' && *a->str <= '9')// && !(a->align))
 		dot_space(a);
@@ -188,7 +191,7 @@ void	col_par(t_printf *a)
 	if (*a->str == 'c' || *a->str == 'C')
 		col_c(a, va_arg(a->va, int));
 	if (*a->str == '%')
-		collect(a, "%", 1);
+		col_c(a, '%');
 	if (*a->str == 'f')
 		col_f(a, va_arg(a->va, double));
 	if (*a->str == 'x' || *a->str == 'p' || *a->str == 'X')
