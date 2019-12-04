@@ -10932,3 +10932,474 @@ Test 2232 (mix_successive_3) : FAILED.
       expected (nonprintable as hex) : "0.37500071"
       actual   (nonprintable as hex) : "fhi"
 
+Test 2236 (mix_successive_7) : FAILED.
+    First line of code: {return ( test("%p", &mx_i) + test("%hi", mx_hi));}
+      expected output : "0x10ca66b80-3244"
+      your output     : "0xca66b80i"
+      expected (nonprintable as hex) : "0x10ca66b80-3244"
+      actual   (nonprintable as hex) : "0xca66b80i"
+
+Test 2237 (mix_successive_8) : FAILED.
+    First line of code: {return ( test("%f", mx_f) + test("%p", &mx_i));}
+      expected output : "0.6250000x10ca66b80"
+      your output     : "0.6250000xca66b80"
+      expected (nonprintable as hex) : "0.6250000x10ca66b80"
+      actual   (nonprintable as hex) : "0.6250000xca66b80"
+
+Test 2238 (mix_successive_9) : FAILED.
+    First line of code: {return ( test("%hi", mx_hi) + test("%u", mx_u));}
+      expected output : "-3244235"
+      your output     : "i235"
+      expected (nonprintable as hex) : "-3244235"
+      actual   (nonprintable as hex) : "i235"
+
+Test 2240 (mix_successive_11) : FAILED.
+    First line of code: {return ( test("%Lf", mx_Lf) + test("%p", &mx_i));}
+      expected output : "0.3750000x10ca66b80"
+      your output     : "f0xca66b80"
+      expected (nonprintable as hex) : "0.3750000x10ca66b80"
+      actual   (nonprintable as hex) : "f0xca66b80"
+
+Test 2241 (mix_successive_12) : FAILED.
+    First line of code: {return ( test("%f", mx_f) + test("%hhi", mx_c));}
+      expected output : "0.62500071"
+      your output     : "0.625000hi"
+      expected (nonprintable as hex) : "0.62500071"
+      actual   (nonprintable as hex) : "0.625000hi"
+
+Test 2242 (mix_successive_13) : FAILED.
+    First line of code: {return ( test("%X", mx_u) + test("%hhi", mx_c));}
+      expected output : "EB71"
+      your output     : "EBhi"
+      expected (nonprintable as hex) : "EB71"
+      actual   (nonprintable as hex) : "EBhi"
+
+Test 2244 (mix_successive_15) : FAILED.
+    First line of code: {return ( test("%hhi", mx_c) + test("%X", mx_u));}
+      expected output : "71EB"
+      your output     : "hiEB"
+      expected (nonprintable as hex) : "71EB"
+      actual   (nonprintable as hex) : "hiEB"
+
+Test 2246 (mix_successive_17) : FAILED.
+    First line of code: {return ( test("%lli", mx_lli) + test("%i", mx_i));}
+      expected output : "322337203665477520042"
+      your output     : "li42"
+      expected (nonprintable as hex) : "322337203665477520042"
+      actual   (nonprintable as hex) : "li42"
+
+Test 2248 (mix_successive_19) : FAILED.
+    First line of code: {return ( test("%hhi", mx_c) + test("%X", mx_u));}
+      expected output : "71EB"
+      your output     : "hiEB"
+      expected (nonprintable as hex) : "71EB"
+      actual   (nonprintable as hex) : "hiEB"
+
+Test 2249 (mix_successive_20) : FAILED.
+    First line of code: {return ( test("%p", &mx_i) + test("%s", mx_s));}
+      expected output : "0x10ca66b80Hello, World!"
+      your output     : "0xca66b80Hello, World!"
+      expected (nonprintable as hex) : "0x10ca66b80Hello, World!"
+      actual   (nonprintable as hex) : "0xca66b80Hello, World!"
+
+Test 2251 (mix_successive_22) : FAILED.
+    First line of code: {return ( test("%p", &mx_i) + test("%lli", mx_lli));}
+      expected output : "0x10ca66b803223372036654775200"
+      your output     : "0xca66b80li"
+      expected (nonprintable as hex) : "0x10ca66b803223372036654775200"
+      actual   (nonprintable as hex) : "0xca66b80li"
+
+Test 2253 (mix_successive_24) : FAILED.
+    First line of code: {return ( test("%c", mx_c) + test("%hhi", mx_c));}
+      expected output : "G71"
+      your output     : "Ghi"
+      expected (nonprintable as hex) : "G71"
+      actual   (nonprintable as hex) : "Ghi"
+
+Test 2255 (mix_successive_26) : FAILED.
+    First line of code: {return ( test("%s", mx_s) + test("%li", mx_li));}
+      expected output : "Hello, World!4223372036854775800"
+      your output     : "Hello, World!i"
+      expected (nonprintable as hex) : "Hello, World!4223372036854775800"
+      actual   (nonprintable as hex) : "Hello, World!i"
+
+Test 2256 (mix_successive_27) : FAILED.
+    First line of code: {return ( test("%f", mx_f) + test("%Lf", mx_Lf));}
+      expected output : "0.6250000.375000"
+      your output     : "0.625000f"
+      expected (nonprintable as hex) : "0.6250000.375000"
+      actual   (nonprintable as hex) : "0.625000f"
+
+Test 2258 (mix_successive_29) : FAILED.
+    First line of code: {return ( test("%o", mx_u) + test("%li", mx_li));}
+      expected output : "3534223372036854775800"
+      your output     : "353i"
+      expected (nonprintable as hex) : "3534223372036854775800"
+      actual   (nonprintable as hex) : "353i"
+
+Test 2262 (mix_successive_33) : FAILED.
+    First line of code: {return ( test("%Lf", mx_Lf) + test("%s", mx_s));}
+      expected output : "0.375000Hello, World!"
+      your output     : "fHello, World!"
+      expected (nonprintable as hex) : "0.375000Hello, World!"
+      actual   (nonprintable as hex) : "fHello, World!"
+
+Test 2263 (mix_successive_34) : FAILED.
+    First line of code: {return ( test("%hhi", mx_c) + test("%u", mx_u));}
+      expected output : "71235"
+      your output     : "hi235"
+      expected (nonprintable as hex) : "71235"
+      actual   (nonprintable as hex) : "hi235"
+
+Test 2264 (mix_successive_35) : FAILED.
+    First line of code: {return ( test("%p", &mx_i) + test("%f", mx_f));}
+      expected output : "0x10ca66b800.625000"
+      your output     : "0xca66b800.625000"
+      expected (nonprintable as hex) : "0x10ca66b800.625000"
+      actual   (nonprintable as hex) : "0xca66b800.625000"
+
+Test 2265 (mix_successive_36) : FAILED.
+    First line of code: {return ( test("%li", mx_li) + test("%o", mx_u));}
+      expected output : "4223372036854775800353"
+      your output     : "i353"
+      expected (nonprintable as hex) : "4223372036854775800353"
+      actual   (nonprintable as hex) : "i353"
+
+Test 2266 (mix_successive_37) : FAILED.
+    First line of code: {return ( test("%s", mx_s) + test("%li", mx_li));}
+      expected output : "Hello, World!4223372036854775800"
+      your output     : "Hello, World!i"
+      expected (nonprintable as hex) : "Hello, World!4223372036854775800"
+      actual   (nonprintable as hex) : "Hello, World!i"
+
+Test 2267 (mix_successive_38) : FAILED.
+    First line of code: {return ( test("%o", mx_u) + test("%lli", mx_lli));}
+      expected output : "3533223372036654775200"
+      your output     : "353li"
+      expected (nonprintable as hex) : "3533223372036654775200"
+      actual   (nonprintable as hex) : "353li"
+
+Test 2270 (mix_successive_41) : FAILED.
+    First line of code: {return ( test("%hhi", mx_c) + test("%x", mx_u));}
+      expected output : "71eb"
+      your output     : "hieb"
+      expected (nonprintable as hex) : "71eb"
+      actual   (nonprintable as hex) : "hieb"
+
+Test 2276 (mix_successive_47) : FAILED.
+    First line of code: {return ( test("%u", mx_u) + test("%hhi", mx_c));}
+      expected output : "23571"
+      your output     : "235hi"
+      expected (nonprintable as hex) : "23571"
+      actual   (nonprintable as hex) : "235hi"
+
+Test 2277 (mix_successive_48) : FAILED.
+    First line of code: {return ( test("%hi", mx_hi) + test("%o", mx_u));}
+      expected output : "-3244353"
+      your output     : "i353"
+      expected (nonprintable as hex) : "-3244353"
+      actual   (nonprintable as hex) : "i353"
+
+Test 2278 (mix_successive_49) : FAILED.
+    First line of code: {return ( test("%i", mx_i) + test("%hi", mx_hi));}
+      expected output : "42-3244"
+      your output     : "42i"
+      expected (nonprintable as hex) : "42-3244"
+      actual   (nonprintable as hex) : "42i"
+
+Test 2279 (mix_successive_50) : FAILED.
+    First line of code: {return ( test("%o", mx_u) + test("%Lf", mx_Lf));}
+      expected output : "3530.375000"
+      your output     : "353f"
+      expected (nonprintable as hex) : "3530.375000"
+      actual   (nonprintable as hex) : "353f"
+
+Test 2280 (mix_successive_51) : FAILED.
+    First line of code: {return ( test("%li", mx_li) + test("%hhi", mx_c));}
+      expected output : "422337203685477580071"
+      your output     : "ihi"
+      expected (nonprintable as hex) : "422337203685477580071"
+      actual   (nonprintable as hex) : "ihi"
+
+Test 2281 (mix_successive_52) : FAILED.
+    First line of code: {return ( test("%hi", mx_hi) + test("%hhi", mx_c));}
+      expected output : "-324471"
+      your output     : "ihi"
+      expected (nonprintable as hex) : "-324471"
+      actual   (nonprintable as hex) : "ihi"
+
+Test 2282 (mix_successive_53) : FAILED.
+    First line of code: {return ( test("%Lf", mx_Lf) + test("%x", mx_u));}
+      expected output : "0.375000eb"
+      your output     : "feb"
+      expected (nonprintable as hex) : "0.375000eb"
+      actual   (nonprintable as hex) : "feb"
+
+Test 2283 (mix_successive_54) : FAILED.
+    First line of code: {return ( test("%c", mx_c) + test("%hi", mx_hi));}
+      expected output : "G-3244"
+      your output     : "Gi"
+      expected (nonprintable as hex) : "G-3244"
+      actual   (nonprintable as hex) : "Gi"
+
+Test 2284 (mix_successive_55) : FAILED.
+    First line of code: {return ( test("%hi", mx_hi) + test("%s", mx_s));}
+      expected output : "-3244Hello, World!"
+      your output     : "iHello, World!"
+      expected (nonprintable as hex) : "-3244Hello, World!"
+      actual   (nonprintable as hex) : "iHello, World!"
+
+Test 2285 (mix_successive_56) : FAILED.
+    First line of code: {return ( test("%i", mx_i) + test("%lli", mx_lli));}
+      expected output : "423223372036654775200"
+      your output     : "42li"
+      expected (nonprintable as hex) : "423223372036654775200"
+      actual   (nonprintable as hex) : "42li"
+
+Test 2286 (mix_successive_57) : FAILED.
+    First line of code: {return ( test("%c", mx_c) + test("%Lf", mx_Lf));}
+      expected output : "G0.375000"
+      your output     : "Gf"
+      expected (nonprintable as hex) : "G0.375000"
+      actual   (nonprintable as hex) : "Gf"
+
+Test 2288 (mix_successive_59) : FAILED.
+    First line of code: {return ( test("%s", mx_s) + test("%li", mx_li));}
+      expected output : "Hello, World!4223372036854775800"
+      your output     : "Hello, World!i"
+      expected (nonprintable as hex) : "Hello, World!4223372036854775800"
+      actual   (nonprintable as hex) : "Hello, World!i"
+
+Test 2289 (mix_successive_60) : FAILED.
+    First line of code: {return ( test("%hhi", mx_c) + test("%s", mx_s));}
+      expected output : "71Hello, World!"
+      your output     : "hiHello, World!"
+      expected (nonprintable as hex) : "71Hello, World!"
+      actual   (nonprintable as hex) : "hiHello, World!"
+
+Test 2290 (mix_successive_61) : FAILED.
+    First line of code: {return ( test("%p", &mx_i) + test("%c", mx_c));}
+      expected output : "0x10ca66b80G"
+      your output     : "0xca66b80G"
+      expected (nonprintable as hex) : "0x10ca66b80G"
+      actual   (nonprintable as hex) : "0xca66b80G"
+
+Test 2291 (mix_successive_62) : FAILED.
+    First line of code: {return ( test("%lli", mx_lli) + test("%u", mx_u));}
+      expected output : "3223372036654775200235"
+      your output     : "li235"
+      expected (nonprintable as hex) : "3223372036654775200235"
+      actual   (nonprintable as hex) : "li235"
+
+Test 2294 (mix_successive_65) : FAILED.
+    First line of code: {return ( test("%i", mx_i) + test("%lli", mx_lli));}
+      expected output : "423223372036654775200"
+      your output     : "42li"
+      expected (nonprintable as hex) : "423223372036654775200"
+      actual   (nonprintable as hex) : "42li"
+
+Test 2295 (mix_successive_66) : FAILED.
+    First line of code: {return ( test("%li", mx_li) + test("%Lf", mx_Lf));}
+      expected output : "42233720368547758000.375000"
+      your output     : "if"
+      expected (nonprintable as hex) : "42233720368547758000.375000"
+      actual   (nonprintable as hex) : "if"
+
+Test 2296 (mix_successive_67) : FAILED.
+    First line of code: {return ( test("%hi", mx_hi) + test("%x", mx_u));}
+      expected output : "-3244eb"
+      your output     : "ieb"
+      expected (nonprintable as hex) : "-3244eb"
+      actual   (nonprintable as hex) : "ieb"
+
+Test 2297 (mix_successive_68) : FAILED.
+    First line of code: {return ( test("%i", mx_i) + test("%hi", mx_hi));}
+      expected output : "42-3244"
+      your output     : "42i"
+      expected (nonprintable as hex) : "42-3244"
+      actual   (nonprintable as hex) : "42i"
+
+Test 2298 (mix_successive_69) : FAILED.
+    First line of code: {return ( test("%Lf", mx_Lf) + test("%li", mx_li));}
+      expected output : "0.3750004223372036854775800"
+      your output     : "fi"
+      expected (nonprintable as hex) : "0.3750004223372036854775800"
+      actual   (nonprintable as hex) : "fi"
+
+Test 2299 (mix_successive_70) : FAILED.
+    First line of code: {return ( test("%o", mx_u) + test("%li", mx_li));}
+      expected output : "3534223372036854775800"
+      your output     : "353i"
+      expected (nonprintable as hex) : "3534223372036854775800"
+      actual   (nonprintable as hex) : "353i"
+
+Test 2418 (nocrash_mandatory_p_prec_2) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%.p", &ncm_p);}
+    SEGFAULT
+
+Test 2420 (nocrash_mandatory_p_zp_1) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%05p", &ncm_p);}
+    SEGFAULT
+
+Test 2421 (nocrash_mandatory_p_zp_2) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%0p", &ncm_p);}
+    SEGFAULT
+
+Test 2506 (moul_mix_1) : FAILED.
+    First line of code: {int r00 = 0; return test("Lalalala, %d%% des gens qui parlent à Ly adorent %s. Ou Presque. %p", 100, "Ly", &r00);}
+      expected output : "Lalalala, 100% des gens qui parlent à Ly adorent Ly. Ou Presque. 0x7fff5323274c"
+      your output     : "Lalalala, 100% des gens qui parlent à Ly adorent Ly. Ou Presque. 0x5323274c"
+      expected (nonprintable as hex) : "Lalalala, 100% des gens qui parlent \xc3\xa0 Ly adorent Ly. Ou Presque. 0x7fff5323274c"
+      actual   (nonprintable as hex) : "Lalalala, 100% des gens qui parlent \xc3\xa0 Ly adorent Ly. Ou Presque. 0x5323274c"
+
+Test 2577 (moul_f_6) : FAILED.
+    First line of code: {return test("%f", (double)INT_MAX);}
+      expected output : "2147483647.000000"
+      your output     : "2147483648.000000"
+      expected (nonprintable as hex) : "2147483647.000000"
+      actual   (nonprintable as hex) : "2147483648.000000"
+
+Test 2578 (moul_f_7) : FAILED.
+    First line of code: {return test("%f", (double)INT_MIN);}
+      expected output : "-2147483648.000000"
+      your output     : "-2147483649.000000"
+      expected (nonprintable as hex) : "-2147483648.000000"
+      actual   (nonprintable as hex) : "-2147483649.000000"
+
+Test 2579 (moul_f_7b) : FAILED.
+    First line of code: {return test("%f", (double)INT_MIN - 1);}
+      expected output : "-2147483649.000000"
+      your output     : "-2147483650.000000"
+      expected (nonprintable as hex) : "-2147483649.000000"
+      actual   (nonprintable as hex) : "-2147483650.000000"
+
+Test 2580 (moul_f_8) : FAILED.
+    First line of code: {return test("%f", (double)INT_MAX + 1);}
+      expected output : "2147483648.000000"
+      your output     : "2147483649.000000"
+      expected (nonprintable as hex) : "2147483648.000000"
+      actual   (nonprintable as hex) : "2147483649.000000"
+
+Test 2635 (moul_hash_1) : FAILED.
+    First line of code: {return test("%%#X 42 ==  %#X
+", 42);}
+      expected output : "%#X 42 ==  0X2A
+"
+      your output     : "%#X 42 ==  X
+"
+      expected (nonprintable as hex) : "%#X 42 ==  0X2A\x0a"
+      actual   (nonprintable as hex) : "%#X 42 ==  X\x0a"
+
+Test 2637 (moul_hash_3) : FAILED.
+    First line of code: {return test("%%#o 0 ==  %#o
+", 0);}
+      expected output : "%#o 0 ==  0
+"
+      your output     : "%#o 0 ==  o
+"
+      expected (nonprintable as hex) : "%#o 0 ==  0\x0a"
+      actual   (nonprintable as hex) : "%#o 0 ==  o\x0a"
+
+Test 2639 (moul_hash_5) : FAILED.
+    First line of code: {return test("%%#o INT_MAX ==  %#o
+", INT_MAX);}
+      expected output : "%#o INT_MAX ==  017777777777
+"
+      your output     : "%#o INT_MAX ==  o
+"
+      expected (nonprintable as hex) : "%#o INT_MAX ==  017777777777\x0a"
+      actual   (nonprintable as hex) : "%#o INT_MAX ==  o\x0a"
+
+Test 2641 (moul_hash_7) : FAILED.
+    First line of code: {return test("%%#o INT_MIN ==  %#o
+", INT_MIN);}
+      expected output : "%#o INT_MIN ==  020000000000
+"
+      your output     : "%#o INT_MIN ==  o
+"
+      expected (nonprintable as hex) : "%#o INT_MIN ==  020000000000\x0a"
+      actual   (nonprintable as hex) : "%#o INT_MIN ==  o\x0a"
+
+Test 2643 (moul_hash_9) : FAILED.
+    First line of code: {return test("%%#X INT_MIN ==  %#X
+", INT_MIN);}
+      expected output : "%#X INT_MIN ==  0X80000000
+"
+      your output     : "%#X INT_MIN ==  X
+"
+      expected (nonprintable as hex) : "%#X INT_MIN ==  0X80000000\x0a"
+      actual   (nonprintable as hex) : "%#X INT_MIN ==  X\x0a"
+
+Test 2645 (moul_hash_11) : FAILED.
+    First line of code: {return test("%%#X INT_MAX ==  %#X
+", INT_MAX);}
+      expected output : "%#X INT_MAX ==  0X7FFFFFFF
+"
+      your output     : "%#X INT_MAX ==  X
+"
+      expected (nonprintable as hex) : "%#X INT_MAX ==  0X7FFFFFFF\x0a"
+      actual   (nonprintable as hex) : "%#X INT_MAX ==  X\x0a"
+
+Test 2648 (moul_prec_2) : FAILED.
+    First line of code: {return test("%% 4.5i 42 == |% 4.5i|
+", 42);}
+      expected output : "% 4.5i 42 == | 00042|
+"
+      your output     : "% 4.5i 42 == |   42|
+"
+      expected (nonprintable as hex) : "% 4.5i 42 == | 00042|\x0a"
+      actual   (nonprintable as hex) : "% 4.5i 42 == |   42|\x0a"
+
+Test 2649 (moul_prec_3) : FAILED.
+    First line of code: {return test("%%04.5i 42 == |%04.5i|
+", 42);}
+      expected output : "%04.5i 42 == |00042|
+"
+      your output     : "%04.5i 42 == |  42|
+"
+      expected (nonprintable as hex) : "%04.5i 42 == |00042|\x0a"
+      actual   (nonprintable as hex) : "%04.5i 42 == |  42|\x0a"
+
+Test 2650 (moul_prec_4) : FAILED.
+    First line of code: {return test("%%04.3i 42 == |%04.3i|
+", 42);}
+      expected output : "%04.3i 42 == | 042|
+"
+      your output     : "%04.3i 42 == |  42|
+"
+      expected (nonprintable as hex) : "%04.3i 42 == | 042|\x0a"
+      actual   (nonprintable as hex) : "%04.3i 42 == |  42|\x0a"
+
+Test 2666 (moul_as_4) : FAILED.
+    First line of code: {return test("%%+04d 42 == %0+04d
+", 42);}
+      expected output : "%+04d 42 == +042
+"
+      your output     : "%+04d 42 == 04d
+"
+      expected (nonprintable as hex) : "%+04d 42 == +042\x0a"
+      actual   (nonprintable as hex) : "%+04d 42 == 04d\x0a"
+
+Test 2668 (moul_sp_2) : FAILED.
+    First line of code: {return test("%% i -42 == |% i|
+", -42);}
+      expected output : "% i -42 == |-42|
+"
+      your output     : "% i -42 == | -42|
+"
+      expected (nonprintable as hex) : "% i -42 == |-42|\x0a"
+      actual   (nonprintable as hex) : "% i -42 == | -42|\x0a"
+
+Test 2669 (moul_sp_3) : FAILED.
+    First line of code: {return test("%% 4i 42 == |% 4i|
+", 42);}
+      expected output : "% 4i 42 == |  42|
+"
+      your output     : "% 4i 42 == |   42|
+"
+      expected (nonprintable as hex) : "% 4i 42 == |  42|\x0a"
+      actual   (nonprintable as hex) : "% 4i 42 == |   42|\x0a"
+
