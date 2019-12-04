@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 16:44:54 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 20:44:58 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,46 @@ void	col_d(t_printf *a, int nb)
 	char sign;
 
 	tmp = nb;
+	i = 1;
+	if ((f = (tmp < 0) ? 1 : 0))
+		tmp *= -1;
+	while ((tmp /= 10))
+		i++;
+	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-'); // stop, it is illegal
+	if (sign == '+')
+		collect(a, ft_strjoin(&sign, ft_itoa(nb)), i + f + 1);
+	else
+		collect(a, ft_itoa(nb), i + f);
+}
+
+void	col_ld(t_printf *a, long int nb)
+{
+	long long int i;
+	long long int f;
+	long int tmp;
+	char sign;
+
+	// ft_printbits(nb);
+	// ft_putchar('\n');
+	// printf("%d\n", (nb >> 33));
+	// ft_printbits(1 << 31);
+	// ft_putchar('\n');
+	// if (1 << 31 & nb)
+		// printf("yes\n");
+	tmp = (long int)nb;
+	// printf("d = %0ld\n", tmp);
+	// printf("%ld\n", (1 | (nb >> 33)));
+	// if ((tmp < 0) && ((1 | (nb >> 33)) > 0))
+		// printf("ttest\n");
+	
+	// if ((((tmp < 0) ^ (1 | (nb >> 33))) > 0))
+	// 	printf("DIF\n");
+	// if ((((tmp > 0) ^ (1 | (nb << 33))) <= 0))
+		// printf("DIF\n");
+	// if ((tmp > 0) && ((1 | (nb >> 33)) < 0))
+	// 	printf("ttest\n");
+	// tmp = nb;
+	a->str++;
 	i = 1;
 	if ((f = (tmp < 0) ? 1 : 0))
 		tmp *= -1;
@@ -64,6 +104,42 @@ void	col_c(t_printf *a, char c)
 	collect(a, &c, 1);
 }
 
+void	col_o(t_printf *a, long long int c)
+{
+	char	*tmp;
+	int		new;
+	char	*p;
+
+	if (*a->str == 'o')
+	{
+		if (a->dot == 1)
+			a->dot = 2;
+		tmp = ft_itoa_base(c, 8, 'a');
+		if (a->space > a->space_2 && a->space_2)
+		{
+			p = ft_strnew(1);
+			new = a->space;
+			printf("d = %d\n", (int)(a->space_2 - ft_strlen(tmp)));
+			if ((int)(a->space_2 - ft_strlen(tmp)) > 0)
+			{
+				printf("1\n");
+				p = ft_strset('0', a->space_2 - ft_strlen(tmp));
+			}
+			p = ft_strjoin(p, tmp);
+			if (!a->align)
+				collect(a, ft_strjoin(ft_strset(' ', a->space - ft_strlen(p)), p), a->space + 10);
+			else
+				collect(a, ft_strjoin(p, ft_strset(' ', a->space - ft_strlen(p))), a->space + 10);
+		}
+		else
+		{
+			if (a->space_2)
+				a->space = a->space_2;
+			collect(a, tmp, ft_strlen(tmp));
+		}
+	}
+}
+
 void	col_f(t_printf *a, long double ld)
 {
 	char	*str;
@@ -73,11 +149,11 @@ void	col_f(t_printf *a, long double ld)
 	a->nbr = -1;
 }
 
-void	ft_printbits(unsigned char octet)
+void	ft_printbits(unsigned long int octet)
 {
-	int	div;
+	unsigned long int div;
 
-	div = 128;
+	div = 2147483648 * 64;
 	while (div != 1)
 	{
 		if (octet / div == 1)
@@ -186,10 +262,14 @@ void	col_par(t_printf *a)
 	// printf("c = %c\n", *a->str);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
+	if (*a->str == 'l' && *(a->str + 1) == 'd')
+		col_ld(a, va_arg(a->va, long long int));
 	if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));
 	if (*a->str == 'c' || *a->str == 'C')
 		col_c(a, va_arg(a->va, int));
+	if (*a->str == 'o')
+		col_o(a, va_arg(a->va, long long int));
 	if (*a->str == '%')
 		col_c(a, '%');
 	if (*a->str == 'f')

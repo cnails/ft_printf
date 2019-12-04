@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 16:44:37 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 19:46:51 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	col_dot(t_printf *a);
 void	col_space(t_printf *a, char *str, size_t len);
 void	collect(t_printf *a, char *str, size_t len);
 void	dot_space(t_printf *a);
+void	ft_printbits(unsigned long int octet);
 
 #endif

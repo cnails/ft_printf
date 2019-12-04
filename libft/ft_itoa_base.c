@@ -6,18 +6,18 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 14:20:09 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/28 17:55:34 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 16:57:50 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(unsigned int nbr, int base, char a)
+char	*ft_itoa_base(long long int nbr, int base, char a)
 {
-	char	*str;
-	int		i;
-	int		sign;
-	int		n;
+	char				*str;
+	int					i;
+	int					sign;
+	long long int		n;
 
 	i = 0;
 	sign = (nbr < 0 && base == 10) ? 1 : 0;

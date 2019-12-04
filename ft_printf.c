@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 16:42:19 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 20:45:09 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void		collect(t_printf *a, char *str, size_t len)
 	if (!a->buf)
 		a->buf = ft_strnew(1);
 	if (a->space > len && (!a->align || a->dot) && a->space > 0)
+	{
+		// printf("col_space = %d\n", a->space);
 		col_space(a, str, len);
+	}
 	tmp = ft_strsub(str, 0, len);
 	tmp = ft_strjoin(a->buf, tmp);
 	free(a->buf);
@@ -117,8 +120,11 @@ int			ft_printf(const char *str, ...)
 // // ft_printf("\n%.2f", 1234567890.1234567890);
 // 	// printf("%d\n", ft_printf("%p\n", p));
 // 	// printf("%d\n", ft_printf("%5d\n", 33));
-// 	//  printf("%05%\n");
-// 	 ft_printf("%05%\n");
+// 	// printf("{%ld}\n", (unsigned long int)((-2147483648)));
+// 	// ft_printf("{%ld}\n", (unsigned long int)(16383));
+// 	// ft_printf("{%ld}\n", (unsigned long int)(32767));
+// 	ft_printf("{%ld}\n", (unsigned long long int)(2147483649));
+// 	ft_printf("{%ld}\n", (unsigned long long int)(-2147483649));
 // 	// printf("col = %d\n", ft_printf("%x\n", 4294967294 / 2));
 // 	// printf("col = %d\n", printf("%x\n", 4294967294));
 // //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
