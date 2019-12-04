@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 14:27:13 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 15:41:09 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	col_x(t_printf *a, void *str, char c)
 	// s = ft_itoa_base((4294967295 + (unsigned long long int)str), 16, c == 'X' ? 'A' : 'a');
 	// printf("TEST = %s\n", s);
 	s = ft_itoa_base((unsigned int)str, 16, c == 'X' ? 'A' : 'a');
-	printf("TEST = %s\n", s);
-	ft_printbits((unsigned int)str);
-	ft_putchar('\n');
-	ft_printbits(~(long long unsigned int)str);
-	ft_putchar('\n');
+	// printf("TEST = %s\n", s);
+	// ft_printbits((unsigned int)str);
+	// ft_putchar('\n');
+	// ft_printbits(~(long long unsigned int)str);
+	// ft_putchar('\n');
 	if (c == 'p')
 	{
 		if (a->dot)
@@ -134,9 +134,8 @@ void	dot_space(t_printf *a)
 		a->str++;
 	n = ft_atoi(str);
 	n *= (a->align) ? -1 : 1;
-	// a->align = 0;
 	if (a->space != 0)
-		a->space_2 = n;
+		a->space_2 = n > 0 ? n : -n;
 	else
 		a->space = n;
 	if (*a->str == '.')

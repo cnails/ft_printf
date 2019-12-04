@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 14:27:53 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 15:42:31 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void		collect(t_printf *a, char *str, size_t len)
 
 	if (!a->buf)
 		a->buf = ft_strnew(1);
-	// printf("space = %d\n", a->space);
-	// printf("space_2 = %d\n", a->space_2);
-	if (a->space > len && (!a->align || a->dot == 1) && !a->space_2)
+	if (a->space > len && (!a->align || a->dot == 1) && a->space > 0)
 	{
 		col_space(a, str, len);
 	}
