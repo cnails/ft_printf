@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 20:44:58 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 22:49:50 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	col_d(t_printf *a, int nb)
 		collect(a, ft_itoa(nb), i + f);
 }
 
-void	col_ld(t_printf *a, long int nb)
+void	col_ld(t_printf *a, long int nb, char c)
 {
 	long long int i;
 	long long int f;
@@ -59,7 +59,10 @@ void	col_ld(t_printf *a, long int nb)
 	// if ((tmp > 0) && ((1 | (nb >> 33)) < 0))
 	// 	printf("ttest\n");
 	// tmp = nb;
-	a->str++;
+	if (c == 'u')
+		nb = (nb ^ (nb >> 33)) - (nb >> 33);
+	else
+		a->str++;
 	i = 1;
 	if ((f = (tmp < 0) ? 1 : 0))
 		tmp *= -1;
@@ -119,10 +122,10 @@ void	col_o(t_printf *a, long long int c)
 		{
 			p = ft_strnew(1);
 			new = a->space;
-			printf("d = %d\n", (int)(a->space_2 - ft_strlen(tmp)));
+			// printf("d = %d\n", (int)(a->space_2 - ft_strlen(tmp)));
 			if ((int)(a->space_2 - ft_strlen(tmp)) > 0)
 			{
-				printf("1\n");
+				// printf("1\n");
 				p = ft_strset('0', a->space_2 - ft_strlen(tmp));
 			}
 			p = ft_strjoin(p, tmp);
@@ -200,7 +203,30 @@ void	col_x(t_printf *a, void *str, char c)
 			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
 	}
 	else
-		collect(a, s, ft_strlen(s));
+	{
+		// a->dot = (a->dot == 1 && (!a->space || a->space_2)) || a->dot == 2 ? 2 : 1;
+		// a->space = a->space_2 && !a->space ? a->space_2 : a->space;
+		if (a->space_2 && !a->space)
+		{
+			a->dot = (a->dot == 1 && (!a->space || a->space_2)) || a->dot == 2 ? 2 : 1;
+			// printf("1\n");
+			a->space = a->space_2;
+			a->space_2 = 0;
+		}
+		// if (a->space > a->space_2)
+		// 	a->space -= a->space_2;
+		// printf("space = %d\n", a->space);
+		// printf("space_2 = %d\n", a->space_2);
+		// if (a->space_2 > a->space && a->space > 0)
+		// {
+		// 	a->space = a->space_2;
+		// 	a->space_2 = 0;
+		// }
+		if (a->space_2 && a->space != 0 && a->space != a->space_2 && a->space_2 > ft_strlen(s))
+			collect(a, ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(s)), s), a->space_2);
+		else
+			collect(a, s, ft_strlen(s));
+	}
 	free(s);
 }
 
@@ -241,6 +267,11 @@ void	col_dot(t_printf *a)
 	else
 		a->dot = 2;
 	a->str++;
+	if (*a->str == '-')
+	{
+		a->dot = 0;
+		col_plus_min_sl(a);
+	}
 	if (*a->str >= '0' && *a->str <= '9')
 		dot_space(a);
 }
@@ -263,9 +294,11 @@ void	col_par(t_printf *a)
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
 	if (*a->str == 'l' && *(a->str + 1) == 'd')
-		col_ld(a, va_arg(a->va, long long int));
+		col_ld(a, va_arg(a->va, long long int), 'l');
 	if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));
+	if (*a->str == 'u')
+		col_ld(a, va_arg(a->va, long int), 'u');
 	if (*a->str == 'c' || *a->str == 'C')
 		col_c(a, va_arg(a->va, int));
 	if (*a->str == 'o')
