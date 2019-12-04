@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/11/28 18:40:32 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/04 12:49:22 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	col_space(t_printf *a, char *str, size_t len)
 	char *p;
 
 	a->space *= (a->space < 0) ? -1 : 1;
-	if (a->dot)
+	if (a->dot && !a->space)
 	{
 		p = ft_strset('0', a->space - len);
 		a->dot = 0;
@@ -39,8 +39,11 @@ void		collect(t_printf *a, char *str, size_t len)
 
 	if (!a->buf)
 		a->buf = ft_strnew(1);
-	if (a->space > len && (!a->align || a->dot == 1))
+	printf("space = %d\n", a->space);
+	printf("space_2 = %d\n", a->space_2);
+	if (a->space > len && (!a->align || a->dot == 1) && !a->space_2)
 	{
+		printf("test\n");
 		col_space(a, str, len);
 	}
 	tmp = ft_strsub(str, 0, len);
@@ -51,6 +54,7 @@ void		collect(t_printf *a, char *str, size_t len)
 	if (a->space < 0 && -a->space > len)
 		col_space(a, str, len);
 	a->space = 0;
+	a->dot = 0;
 	
 }
 
@@ -105,9 +109,6 @@ int 		main()
 
 	// printf("%x lol\n", c);
 
-//	printf("%p lol\n", c);
-//	ft_printf("%p lol\n", c);
-	// ft_printf("hello %s it is me", "Andrey");
 
 	// printf("%c",3);
 	// printf("%llu\n", (unsigned long long)12345678901234567890.123456789012345678901234567890);
@@ -121,7 +122,8 @@ int 		main()
 // ft_printf("\n%.2f", 1234567890.1234567890);
 	// printf("%d\n", ft_printf("%p\n", p));
 	// printf("%d\n", ft_printf("%5d\n", 33));
-	 ft_printf("{%5d}\n", 33);
+	 printf("{%7.5s}\n", "yo");
+	 ft_printf("{%7.5s}\n", "yo");
 	// printf("col = %d\n", ft_printf("%x\n", 4294967294 / 2));
 	// printf("col = %d\n", printf("%x\n", 4294967294));
 //	printf("\n%.2f %s   %10d.\n", 1234567890.1234567890, "qwerty",10);
