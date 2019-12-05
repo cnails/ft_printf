@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/05 15:07:47 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/05 21:35:38 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int 		main()
 //	printf("\n%C", (-0 == 0) ? 'y' : 'n');
 	int c = 10000;
 	long long int a = 99999999999;
-	int o = 0.0;
+	int o = 0;
 	// char *p = malloc(100);
 	// while ((c = ft_for(5, 1, 10)))
 	// while((c = ft_for(0, 3, 5)))
@@ -123,8 +123,8 @@ int 		main()
 	// printf("{%ld}\n", (unsigned long int)((-2147483648)));
 	// ft_printf("{%ld}\n", (unsigned long int)(16383));
 	// ft_printf("{%ld}\n", (unsigned long int)(32767));
-	ft_printf("%d\n", ft_printf("%.10o\n", 3267));
-	ft_printf("%d\n", printf("%.10o\n", 3267));
+	ft_printf("%d\n", ft_printf("%p\n", &o));
+	ft_printf("%d\n", printf("%p\n", &o));
 	// ft_printf("{%u}\n", (unsigned long long int)(-2147483649));
 	// printf("col = %d\n", ft_printf("%x\n", 4294967294 / 2));
 	// printf("col = %d\n", printf("%x\n", 4294967294));

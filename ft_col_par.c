@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/05 15:08:12 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/05 15:13:06 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void	col_x(t_printf *a, void *str, char c)
 
 	// s = ft_itoa_base((4294967295 + (unsigned long long int)str), 16, c == 'X' ? 'A' : 'a');
 	// printf("TEST = %s\n", s);
-	s = ft_itoa_base((unsigned int)str, 16, c == 'X' ? 'A' : 'a');
+	s = ft_itoa_base((long int)str, 16, c == 'X' ? 'A' : 'a');
 	// printf("TEST = %s\n", s);
 	// ft_printbits((unsigned int)str);
 	// ft_putchar('\n');
