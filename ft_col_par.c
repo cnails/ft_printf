@@ -6,30 +6,36 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 22:49:50 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/05 15:08:12 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	col_d(t_printf *a, int nb)
+int		ft_numlen(int nb)
 {
 	int i;
+
+	i = 1;
+	while (nb /= 10)
+		i++;
+	return (i);
+}
+
+void	col_d(t_printf *a, int nb)
+{
 	int f;
 	int tmp;
 	char sign;
 
 	tmp = nb;
-	i = 1;
 	if ((f = (tmp < 0) ? 1 : 0))
 		tmp *= -1;
-	while ((tmp /= 10))
-		i++;
 	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-'); // stop, it is illegal
 	if (sign == '+')
-		collect(a, ft_strjoin(&sign, ft_itoa(nb)), i + f + 1);
+		collect(a, ft_strjoin(&sign, ft_itoa(nb)), ft_numlen(tmp) + f + 1);
 	else
-		collect(a, ft_itoa(nb), i + f);
+		collect(a, ft_itoa(nb), ft_numlen(tmp) + f);
 }
 
 void	col_ld(t_printf *a, long int nb, char c)
@@ -118,24 +124,34 @@ void	col_o(t_printf *a, long long int c)
 		if (a->dot == 1)
 			a->dot = 2;
 		tmp = ft_itoa_base(c, 8, 'a');
-		if (a->space > a->space_2 && a->space_2)
+		if ((a->space > a->space_2 && a->space_2) || (a->align))
 		{
+			if (a->align)
+				a->space = (a->space ^ (a->space >> 31)) - (a->space >> 31);
 			p = ft_strnew(1);
 			new = a->space;
+			// printf("space = %d\n", a->space);
+			// printf("space_2 = %d\n", a->space_2);
 			// printf("d = %d\n", (int)(a->space_2 - ft_strlen(tmp)));
 			if ((int)(a->space_2 - ft_strlen(tmp)) > 0)
-			{
-				// printf("1\n");
 				p = ft_strset('0', a->space_2 - ft_strlen(tmp));
-			}
+			// printf("str = %s\n", tmp);
 			p = ft_strjoin(p, tmp);
+			int l;
+			l = a->space - ft_strlen(p);
+			l = l < 0 ? 0 : l;
+			int u;
+			u = a->space > ft_strlen(tmp) ? a->space : ft_strlen(tmp);
+			u = a->space_2 > u ? a->space_2 : u;
 			if (!a->align)
-				collect(a, ft_strjoin(ft_strset(' ', a->space - ft_strlen(p)), p), a->space + 10);
+				collect(a, ft_strjoin(ft_strset(' ', l), p), u);
 			else
-				collect(a, ft_strjoin(p, ft_strset(' ', a->space - ft_strlen(p))), a->space + 10);
+				collect(a, ft_strjoin(p, ft_strset(' ', l)), u);
 		}
 		else
 		{
+			// printf("space = %d\n", a->space);
+			// printf("space_2 = %d\n", a->space_2);
 			if (a->space_2)
 				a->space = a->space_2;
 			collect(a, tmp, ft_strlen(tmp));
@@ -237,14 +253,19 @@ void	dot_space(t_printf *a)
 
 	a->str = (*a->str == '.') ? a->str + 1 : a->str;
 	str = a->str;
-	while (*(a->str) >= '0' && *(a->str) <= '9')
+	// printf("str = %c\n", *a->str);
+	while (*(a->str) >= '0' && *(a->str) <= '9' && *(a->str + 1))
 		a->str++;
+	// printf("str = %c\n", *a->str);
 	n = ft_atoi(str);
+	// printf("%d\n", n);
 	n *= (a->align) ? -1 : 1;
 	if (a->dot != 0 && a->dot != 2)
 		a->space_2 = n > 0 ? n : -n;
 	else
 		a->space = n;
+	// if (!(*a->str + 1))
+		// collect(a, "", n);
 	if (*a->str == '.')
 		col_dot(a);
 }
@@ -293,22 +314,24 @@ void	col_par(t_printf *a)
 	// printf("c = %c\n", *a->str);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
-	if (*a->str == 'l' && *(a->str + 1) == 'd')
+	else if (*a->str == 'l' && *(a->str + 1) == 'd')
 		col_ld(a, va_arg(a->va, long long int), 'l');
-	if (*a->str == 's' || *a->str == 'S')
+	else if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));
-	if (*a->str == 'u')
+	else if (*a->str == 'u')
 		col_ld(a, va_arg(a->va, long int), 'u');
-	if (*a->str == 'c' || *a->str == 'C')
+	else if (*a->str == 'c' || *a->str == 'C')
 		col_c(a, va_arg(a->va, int));
-	if (*a->str == 'o')
+	else if (*a->str == 'o')
 		col_o(a, va_arg(a->va, long long int));
-	if (*a->str == '%')
+	else if (*a->str == '%')
 		col_c(a, '%');
-	if (*a->str == 'f')
+	else if (*a->str == 'f')
 		col_f(a, va_arg(a->va, double));
-	if (*a->str == 'x' || *a->str == 'p' || *a->str == 'X')
+	else if (*a->str == 'x' || *a->str == 'p' || *a->str == 'X')
 		col_x(a, va_arg(a->va, void *), *a->str);
+	else
+		collect(a, a->str, 1);
 	// if (*a->str == '\'' && *a->str + 1 == 'd')
 	// {
 		// printf("1\n");

@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 22:49:09 by cnails           ###   ########.fr       */
+/*   Updated: 2019/12/05 15:07:47 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ int 		main()
 	// printf("{%ld}\n", (unsigned long int)((-2147483648)));
 	// ft_printf("{%ld}\n", (unsigned long int)(16383));
 	// ft_printf("{%ld}\n", (unsigned long int)(32767));
-	ft_printf("{%.5d}\n", 34);
+	ft_printf("%d\n", ft_printf("%.10o\n", 3267));
+	ft_printf("%d\n", printf("%.10o\n", 3267));
 	// ft_printf("{%u}\n", (unsigned long long int)(-2147483649));
 	// printf("col = %d\n", ft_printf("%x\n", 4294967294 / 2));
 	// printf("col = %d\n", printf("%x\n", 4294967294));
