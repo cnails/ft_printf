@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/03 17:09:45 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/03 17:15:00 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ void	col_u(t_printf *a, void *nb, char c)
 	long int tmp;
 	char sign;
 
-	// ft_printbits(nb);
-	// ft_putchar('\n');
-	// printf("%d\n", (nb >> 33));
-	// ft_printbits(1 << 31);
-	// ft_putchar('\n');
-	// if (1 << 31 & nb)
-		// printf("yes\n");
 	if (a->l == 1)
 		tmp = (unsigned long)nb;
 	else if (a->l == 2)
@@ -63,19 +56,6 @@ void	col_u(t_printf *a, void *nb, char c)
 		tmp = (unsigned char)nb;
 	else
 		tmp = (unsigned int)nb;
-
-	// printf("d = %0ld\n", tmp);
-	// printf("%ld\n", (1 | (nb >> 33)));
-	// if ((tmp < 0) && ((1 | (nb >> 33)) > 0))
-		// printf("ttest\n");
-	
-	// if ((((tmp < 0) ^ (1 | (nb >> 33))) > 0))
-	// 	printf("DIF\n");
-	// if ((((tmp > 0) ^ (1 | (nb << 33))) <= 0))
-		// printf("DIF\n");
-	// if ((tmp > 0) && ((1 | (nb >> 33)) < 0))
-	// 	printf("ttest\n");
-	// tmp = nb;
 	l = (unsigned long long)tmp;
 	l = (l ^ (l >> 33)) - (l >> 33);
 	i = 1;
@@ -217,6 +197,11 @@ void	col_x(t_printf *a, void *str, char c)
 	// ft_putchar('\n');
 	// ft_printbits(~(long long unsigned int)str);
 	// ft_putchar('\n');
+	if (a->sharp == 1)
+	{
+		collect(a, "0x", 2);
+		a->sharp = 0;
+	}
 	if (c == 'p')
 	{
 		if (a->dot)
