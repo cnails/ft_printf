@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2019/12/04 21:40:55 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/03 17:09:55 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef	struct	s_printf
 	int				align;
 	int				dot;
 	int				s;
+	int				h;
+	int				l;
+	int				sharp;
 	va_list			va;
 }				t_printf;
 
