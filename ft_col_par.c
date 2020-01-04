@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/04 18:45:55 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/04 19:29:02 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,16 @@ void	col_u(t_printf *a, void *nb, char c)
 	else
 		tmp = (unsigned int)nb;
 	l = (unsigned long long)tmp;
-	// l = (l ^ (l >> 33)) - (l >> 33);
+	/*
+	/* РАБОТАЕТ СТРАННО /
+	*/
+	l = (l ^ (l >> 33)) - (l >> 33);
 	i = 1;
-	if ((f = 1))
+	if ((f = l < 0 ? 1 : 0))
 		tmp *= -1;
+	/*
+	/* РАБОТАЕТ СТРАННО /
+	*/
 	while ((tmp /= 10))
 		i++;
 	sign = (a->sign ? (l > 0 ? '+' : '-') : '-'); // stop, it is illegal
@@ -201,6 +207,7 @@ void	col_x(t_printf *a, void *str, char c)
 	// ft_putchar('\n');
 	if (a->sharp == 1 && str != 0)
 	{
+		// printf("test\n");
 		s = ft_strjoin("0x", s);
 	}
 	if (c == 'p')
@@ -243,7 +250,10 @@ void	col_x(t_printf *a, void *str, char c)
 		if (a->space_2 && a->space != 0 && a->space != a->space_2 && a->space_2 > ft_strlen(s))
 			collect(a, ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(s)), s), a->space_2);
 		else
+		{
+			// printf("test d= %d\n", ft_strlen(s));
 			collect(a, s, ft_strlen(s));
+		}
 	}
 	a->h = 0;
 	a->l = 0;
