@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/03 17:15:00 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/04 18:45:55 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	col_d(t_printf *a, int nb)
 
 void	col_u(t_printf *a, void *nb, char c)
 {
-	long long int i;
-	long long int f;
-	long int l;
-	long int tmp;
+	unsigned long long i;
+	unsigned long long f;
+	unsigned long long l;
+	unsigned long long tmp;
 	char sign;
 
 	if (a->l == 1)
@@ -57,9 +57,9 @@ void	col_u(t_printf *a, void *nb, char c)
 	else
 		tmp = (unsigned int)nb;
 	l = (unsigned long long)tmp;
-	l = (l ^ (l >> 33)) - (l >> 33);
+	// l = (l ^ (l >> 33)) - (l >> 33);
 	i = 1;
-	if ((f = (tmp < 0) ? 1 : 0))
+	if ((f = 1))
 		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
@@ -190,6 +190,8 @@ void	col_x(t_printf *a, void *str, char c)
 		s = ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a');
 	else if (a->h == 2)
 		s = ft_itoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a');
+	else if (a->l == 2)
+		s = ft_itoa_base((unsigned long long)str, 16, c == 'X' ? 'A' : 'a');
 	else
 		s = ft_itoa_base((long int)str, 16, c == 'X' ? 'A' : 'a');
 	// printf("TEST = %s\n", s);
@@ -197,10 +199,9 @@ void	col_x(t_printf *a, void *str, char c)
 	// ft_putchar('\n');
 	// ft_printbits(~(long long unsigned int)str);
 	// ft_putchar('\n');
-	if (a->sharp == 1)
+	if (a->sharp == 1 && str != 0)
 	{
-		collect(a, "0x", 2);
-		a->sharp = 0;
+		s = ft_strjoin("0x", s);
 	}
 	if (c == 'p')
 	{
@@ -325,22 +326,16 @@ void	col_hl(t_printf *a)
 
 void	col_par(t_printf *a)
 {
-//	if ((*a->str >= '0' && *a->str <= '9') || *a->str == '-' || *a->str == '.')
 	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		col_plus_min_sl(a);
-	// printf("c = %c\n", *a->str);
 	if (*a->str == '.' || *a->str == '0' || *a->str == '#')
 		col_dot(a);
-	// printf("c = %c\n", *a->str);
-	if (*a->str >= '0' && *a->str <= '9')// && !(a->align))
+	if (*a->str >= '0' && *a->str <= '9')
 		dot_space(a);
-	// printf("c = %c\n", *a->str);
 	if (*a->str == 'h' || *a->str == 'l')
 		col_hl(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, int));
-	// else if (*a->str == 'l' && *(a->str + 1) == 'd')
-		// col_ld(a, va_arg(a->va, long long int), 'l');
 	else if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));
 	else if (*a->str == 'u')
@@ -363,4 +358,3 @@ void	col_par(t_printf *a)
 		// col_f(a, va_arg(a->va, int));
 	// }
 }
-
