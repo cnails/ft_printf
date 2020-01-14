@@ -6,13 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 11:04:45 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/04 16:04:17 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/14 16:01:17 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_numlen(unsigned long long nb)
+static int		ft_numlen(long long nb)
 {
 	if (nb == -2147483648)
 		return (1 + ft_numlen(-147483648));
@@ -24,7 +24,7 @@ static int		ft_numlen(unsigned long long nb)
 		return (1);
 }
 
-char			*ft_itoa(unsigned long long n)
+char			*ft_itoa(long long n)
 {
 	char	*str;
 	int		i;
