@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/05 14:23:34 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/14 16:00:41 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,25 @@ void	col_u(t_printf *a, void *nb, char c)
 	/*
 	/* РАБОТАЕТ СТРАННО /
 	*/
+	i = 1;
 	while ((tmp /= 10))
 		i++;
+	// printf("%d\n", l);
+	// printf("%d\n", i);
+	printf("%d\n", a->space);
+	printf("%d\n", a->space_2);
+	if (a->space_2 && !a->space)
+		a->space ^= a->space_2; // битовая операция, смена значений
+		// a->space_2 = a->space;
+	if (a->dot)
+		a->dot = 2;
+	printf("%d\n", a->space);
+	printf("%d\n", a->space_2);
 	sign = (a->sign ? (l > 0 ? '+' : '-') : '-'); // stop, it is illegal
 	if (sign == '+')
-		collect(a, ft_strjoin(&sign, ft_itoa(l)), i + f + 1);
+		collect(a, ft_strjoin(&sign, ft_itoa(l)), i + 1);
 	else
-		collect(a, ft_itoa(l), i + f);
+		collect(a, ft_itoa(l), i);
 	a->l = 0;
 	a->h = 0;
 }
