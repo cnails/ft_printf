@@ -32,8 +32,13 @@ void	col_d(t_printf *a, int nb)
 	if ((f = (tmp < 0) ? 1 : 0))
 		tmp *= -1;
 	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-'); // stop, it is illegal
+	printf("sign = %c\n", sign);
+	printf("f = %d\n", f);
+	printf("tmp = %d\n", tmp);
+	printf("num = %d\n", ft_numlen(tmp));
+	printf("join = %s\n", ft_strjoin(&sign, ft_itoa(nb)));
 	if (sign == '+')
-		collect(a, ft_strjoin(&sign, ft_itoa(nb)), ft_numlen(tmp) + f + 1);
+		collect(a, ft_strjoin(&sign, ft_itoa(nb)), ft_numlen(tmp) + 1);
 	else
 		collect(a, ft_itoa(nb), ft_numlen(tmp) + f);
 }

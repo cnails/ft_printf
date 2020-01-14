@@ -130,8 +130,8 @@ int 		main()
 	// ft_printf("{%ld}\n", (unsigned long int)(32767));
 	// printf("d = %x\n", ft_printf("{%x}\n"));
 	// printf("{%llu %hhu %llx}\n", 99999999999, "%llu%hhu%llx", "%llu%hhu%llx");
-	printf("%s", ft_itoa(-267));
-//	ft_printf("%d", -267);
+
+	ft_printf("%+d", 5);
 //	printf("\n%d", -267);
 	// printf("{%hu}\n", "1");
 	// ft_printf("{%u}\n", (unsigned long long int)(-2147483649));
