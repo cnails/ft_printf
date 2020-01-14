@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/05 18:23:34 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/14 16:01:20 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void		collect(t_printf *a, char *str, size_t len)
 
 	if (!a->buf)
 		a->buf = ft_strnew(1);
+	printf("%s\n", str);
+	printf("%d\n", len);
 	if (a->space > len && (!a->align || a->dot) && a->space > 0)
 	{
 		// printf("col_space = %d\n", a->space);
@@ -131,7 +133,7 @@ int 		main()
 	// printf("d = %x\n", ft_printf("{%x}\n"));
 	// printf("{%llu %hhu %llx}\n", 99999999999, "%llu%hhu%llx", "%llu%hhu%llx");
 
-	ft_printf("%+d", 5);
+	ft_printf("%+d", 100);
 //	printf("\n%d", -267);
 	// printf("{%hu}\n", "1");
 	// ft_printf("{%u}\n", (unsigned long long int)(-2147483649));
