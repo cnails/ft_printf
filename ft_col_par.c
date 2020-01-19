@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/14 16:00:41 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/19 17:53:36 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	col_d(t_printf *a, int nb)
 		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
-	printf("%d\n", i);
+	// printf("%d\n", i);
 	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-');
 	if (sign == '+')
 		collect(a, ft_strjoin(&sign, ft_itoa(nb)), i + f + 1);

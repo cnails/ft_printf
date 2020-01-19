@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfielder <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:53:02 by gfielder          #+#    #+#             */
-/*   Updated: 2019/07/09 00:00:07 by gfielder         ###   ########.fr       */
+/*   Updated: 2020/01/19 17:53:20 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -679,8 +679,8 @@ int		filter(int test_number)
 ** --------------------------------------------------------------------------*/
 void	run_init(void)
 {
-	if (options.log_history)
-		load_history();
+	// if (options.log_history)
+	// 	load_history();
 	if (options.run_test == run_test_nofork && options.handle_signals)
 	{
 		signal(SIGSEGV, handle_sigsegv);
