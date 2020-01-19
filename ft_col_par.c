@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/19 20:19:49 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/19 20:59:12 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,43 +112,21 @@ void	col_o(t_printf *a, long long int c)
 	int		new;
 	char	*p;
 
-	if (*a->str == 'o')
+	if (a->dot == 1)
+		a->dot = 2;
+	tmp = ft_itoa_base(c, 8, 'a');
+	if (a->space_2 > ft_strlen(tmp))
 	{
-		if (a->dot == 1)
-			a->dot = 2;
-		tmp = ft_itoa_base(c, 8, 'a');
-		if ((a->space > a->space_2 && a->space_2) || (a->align))
-		{
-			if (a->align)
-				a->space = (a->space ^ (a->space >> 31)) - (a->space >> 31);
-			p = ft_strnew(1);
-			new = a->space;
-			// printf("space = %d\n", a->space);
-			// printf("space_2 = %d\n", a->space_2);
-			// printf("d = %d\n", (int)(a->space_2 - ft_strlen(tmp)));
-			if ((int)(a->space_2 - ft_strlen(tmp)) > 0)
-				p = ft_strset('0', a->space_2 - ft_strlen(tmp));
-			// printf("str = %s\n", tmp);
-			p = ft_strjoin(p, tmp);
-			int l;
-			l = a->space - ft_strlen(p);
-			l = l < 0 ? 0 : l;
-			int u;
-			u = a->space > ft_strlen(tmp) ? a->space : ft_strlen(tmp);
-			u = a->space_2 > u ? a->space_2 : u;
-			if (!a->align)
-				collect(a, ft_strjoin(ft_strset(' ', l), p), u);
-			else
-				collect(a, ft_strjoin(p, ft_strset(' ', l)), u);
-		}
+		if (a->dot == 2)
+			collect(a, ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
 		else
-		{
-			// printf("space = %d\n", a->space);
-			// printf("space_2 = %d\n", a->space_2);
-			if (a->space_2)
-				a->space = a->space_2;
-			collect(a, tmp, ft_strlen(tmp));
-		}
+			collect(a, ft_strjoin(ft_strset(' ', a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
+	}
+	else
+	{
+		if (a->space_2)
+			a->space = a->space_2;
+		collect(a, tmp, ft_strlen(tmp));
 	}
 }
 
@@ -240,7 +218,6 @@ void	col_x(t_printf *a, void *str, char c)
 	{
 		if (!ft_strcmp(s, "0") && (a->space_2 || a->dot == 1))
 		{
-			// free(s);
 			s = "";
 			if (a->sharp && a->dot == 1 && a->space && !a->space_2)
 				a->dot = 0;
@@ -265,19 +242,14 @@ void	dot_space(t_printf *a)
 
 	a->str = (*a->str == '.') ? a->str + 1 : a->str;
 	str = a->str;
-	// printf("str = %c\n", *a->str);
 	while (*(a->str) >= '0' && *(a->str) <= '9' && *(a->str + 1))
 		a->str++;
-	// printf("str = %c\n", *a->str);
 	n = ft_atoi(str);
-	// printf("%d\n", n);
 	n *= (a->align) ? -1 : 1;
 	if (a->dot != 0 && a->dot != 2)
 		a->space_2 = n > 0 ? n : -n;
 	else
 		a->space = n;
-	// if (!(*a->str + 1))
-		// collect(a, "", n);
 	if (*a->str == '.')
 		col_dot(a);
 }
