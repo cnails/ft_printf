@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 16:25:15 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/20 17:58:56 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,33 +146,30 @@ void	col_o(t_printf *a, long long int c)
 	char	*tes;
 	char	*p;
 
-	if (a->dot == 1)
-		a->dot = 2;
 	tmp = ft_itoa_base(c, 8, 'a');
-	if (a->sharp && ft_strcmp(tmp, "0"))
+	if (a->sharp && ft_strcmp(tmp, "0") && (a->dot != 2 || a->space_2 < ft_strlen(tmp)))
 	{
 		tes = tmp;
 		tmp = ft_strjoin("0", tes);
 		free(tes);
 	}
-	if (a->space_2 > ft_strlen(tmp))
+	if (a->dot == 2 && a->sharp && !a->space_2)
+		a->space_2 = a->space;
+	if (((a->dot == 2 && !a->space) || (!a->space_2 && a->dot == 1)) && !a->space_2 && !a->sharp)
 	{
-		// printf("here\n");
-		if (a->dot == 2)
-		{
-			if (a->space && a->space_2)
-				a->dot = 1;
-			collect(a, ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
-		}
-		else
-			collect(a, ft_strjoin(ft_strset(' ', a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
+		a->dot = 1;
+		collect(a, "", 0);
+	}
+	else if (a->space_2 > ft_strlen(tmp))
+	{
+		if (a->space && a->space_2)
+			a->dot = 1;
+		collect(a, ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
 	}
 	else
 	{
-		// printf("here\n");
 		if (a->space && a->space_2 && a->dot)
 		{
-			// printf("here\n");
 			a->dot = 1;
 			a->space_2 = a->space;
 		}

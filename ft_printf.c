@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 16:12:38 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/20 17:59:38 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,6 @@ int			ft_printf(const char *str, ...)
 // 	// printf("%d\n", ft_strcmp(str, "a"));
 // 	ft_printf("%.5d", 2);
 // //	printf("\nthis %u number", -267);
+// 	ft_printf("%#5.0o", 0);
+// 	// printf("{%+7u}\n", 0);
 // }
