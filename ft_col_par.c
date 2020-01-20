@@ -6,18 +6,18 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 17:58:56 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/20 19:03:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	col_d(t_printf *a, int nb)
+void	col_d(t_printf *a, void *nb)
 {
 	int i;
 	int f;
-	int l;
-	int tmp;
+	long long l;
+	long long tmp;
 	char sign;
 
 	if (a->l == 1)
@@ -29,13 +29,16 @@ void	col_d(t_printf *a, int nb)
 	else if (a->h == 2)
 		tmp = (char)nb;
 	else
-		tmp = nb;
+		tmp = (int)nb;
 	l = tmp;
 	i = 1;
 	while ((tmp /= 10))
 		i++;
+	// printf("%d\n", i);
 	if (a->space && !a->space_2 && a->dot == 1)
 		i = 0;
+	if (a->dot == 2 && !a->space_2 && a->space && (l < 0 || a->sign))
+		a->space_2 = a->space - 1;
 	// if (a->dot && !a->space)
 	// {
 	// 	a->dot = 2;
@@ -48,19 +51,37 @@ void	col_d(t_printf *a, int nb)
 	// 	p = ft_strjoin("+",ft_strset('0', l));
 	// else
 	// 	p = ft_strset('0', l);
-	sign = (a->sign ? (l > 0 ? '+' : '-') : '-'); // stop, it is illegal
+	sign = (a->sign ? (l >= 0 ? '+' : '-') : '-'); // stop, it is illegal
 	if (a->dot && !a->space_2 && !a->space)
+	{
 		collect(a, "", 0);
-	else if (a->dot && a->space && nb < 0 && a->space_2 - i >= 0)
+	}
+	else if (a->dot && l < 0 && a->space_2 >= i)
+	{
+		// printf("here\n");
 		collect(a, ft_strjoin("-",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(-l))), a->space_2 + 1);
-	else if (a->dot && a->space && a->space_2 - i >= 0 && a->sign)
+	}
+	else if (a->dot && a->space_2 >= i && sign == '+')
+	{
+		// printf("here\n");
 		collect(a, ft_strjoin("+",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l))), a->space_2 + 1);
+	}
 	else if (a->dot && a->space_2 > i)
+	{
+		// printf("here\n");
 		collect(a, ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l)), a->space_2);
-	else if (a->sign && nb >= 0)
+	}
+	else if (a->sign && l >= 0 && sign != '-')
+	{
+		// printf("here\n");
 		collect(a, ft_strjoin("+", ft_itoa(l)), i + 1);
+	}
 	else
-		collect(a, ft_itoa(l), i + (nb < 0 ? 1 : 0));
+	{
+		// printf("%d\n", i + (l < 0 ? 1 : 0));
+
+		collect(a, ft_itoa(l), i + (l < 0 ? 1 : 0));
+	}
 	a->l = 0;
 	a->h = 0;
 }
@@ -260,9 +281,9 @@ void	col_x(t_printf *a, void *str, char c)
 		if (a->sharp && a->space > 2 && a->dot == 2 && a->sharp)
 			a->space_2 = a->space - 2;
 		if (a->space_2 > ft_strlen(s))
-			collect(a, ft_strjoin("0x", ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(s)), s)), a->space_2 + 2);
+			collect(a, ft_strjoin(c == 'x' ? "0x" : "0X", ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(s)), s)), a->space_2 + 2);
 		else
-			collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
+			collect(a, ft_strjoin(c == 'x' ? "0x" : "0X", s), ft_strlen(s) + 2);
 	}
 	else
 	{
@@ -337,6 +358,8 @@ void	col_dot(t_printf *a)
 		a->dot = 0;
 		col_plus_min_sl(a);
 	}
+	if (*a->str == '+')
+		col_plus_min_sl(a);
 	if (*a->str >= '0' && *a->str <= '9')
 		dot_space(a);
 }
@@ -373,7 +396,7 @@ void	col_par(t_printf *a)
 	if (*a->str == 'h' || *a->str == 'l')
 		col_hl(a);
 	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
-		col_d(a, va_arg(a->va, int));
+		col_d(a, va_arg(a->va, void *));
 	else if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));
 	else if (*a->str == 'u')
@@ -392,9 +415,4 @@ void	col_par(t_printf *a)
 		col_p(a, va_arg(a->va, void *), *a->str);
 	else
 		collect(a, a->str, 1);
-	// if (*a->str == '\'' && *a->str + 1 == 'd')
-	// {
-		// printf("1\n");
-		// col_f(a, va_arg(a->va, int));
-	// }
 }

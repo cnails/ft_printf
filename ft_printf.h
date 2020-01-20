@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/19 18:08:31 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/20 18:20:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef	struct	s_printf
 	va_list			va;
 }				t_printf;
 
-void	col_d(t_printf *a, int nb);
+void	col_d(t_printf *a, void *nb);
 void	col_s(t_printf *a, char *str);
 void	col_c(t_printf *a, char c);
 void	col_f(t_printf *a, long double ld);

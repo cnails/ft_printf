@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 17:59:38 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/20 19:25:48 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int			ft_printf(const char *str, ...)
         if (*a.str == '%')
         {
             a.str++;
-            if ((*a.str) == ' ')
-                collect(&a, a.str, 1);
+            // if ((*a.str) == ' ')
+			// 	collect(&a, a.str, 1); // пробелы надо обрабатывать в col_par
             while ((*a.str) == ' ')
                 a.str++;
             if (!(*a.str))
@@ -96,8 +96,10 @@ int			ft_printf(const char *str, ...)
 // 	char str[] = "0";
 
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("%.5d", 2);
+// 	ft_printf("% 7d\n", 33);
+// 	printf("% 7d\n", 33);
 // //	printf("\nthis %u number", -267);
-// 	ft_printf("%#5.0o", 0);
+// 	// printf("%d\n", -267);
+// 	// printf("%ld\n", "s");
 // 	// printf("{%+7u}\n", 0);
 // }
