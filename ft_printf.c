@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 16:07:24 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/20 16:12:38 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-int 		main()
-{
-	char str[] = "0";
+// int 		main()
+// {
+// 	char str[] = "0";
 
-	// printf("%d\n", ft_strcmp(str, "a"));
-	ft_printf("%#5o\n", 43);
-	printf("%#5o\n", 43);
-}
+// 	// printf("%d\n", ft_strcmp(str, "a"));
+// 	ft_printf("%#5o\n", 43);
+// 	printf("%#5o\n", 43);
+// }
