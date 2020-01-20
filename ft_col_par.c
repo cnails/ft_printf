@@ -16,20 +16,53 @@ void	col_d(t_printf *a, int nb)
 {
 	int i;
 	int f;
+	int l;
 	int tmp;
 	char sign;
 
-	tmp = nb;
+	if (a->l == 1)
+		tmp = (long)nb;
+	else if (a->l == 2)
+		tmp = (long long)nb;
+	else if (a->h == 1)
+		tmp = (short)nb;
+	else if (a->h == 2)
+		tmp = (char)nb;
+	else
+		tmp = nb;
+	l = tmp;
 	i = 1;
-	if ((f = (tmp < 0) ? 1 : 0))
-		tmp *= -1;
 	while ((tmp /= 10))
 		i++;
-	sign = (a->sign ? (nb > 0 ? '+' : '-') : '-');
-	if (sign == '+')
-		collect(a, ft_strjoin(&sign, ft_itoa(nb)), i + f + 1);
+	if (a->space && !a->space_2 && a->dot == 1)
+		i = 0;
+	// if (a->dot && !a->space)
+	// {
+	// 	a->dot = 2;
+	// 	a->space = a->space_2;
+	// }
+	// l = a->space_2 - i + ((a->sign && a->dot != 2) ? 1 : 0);
+	// if (a->sign == -1)
+	// 	p = ft_strjoin("-",ft_strset('0', l));
+	// else if (a->sign == 1)
+	// 	p = ft_strjoin("+",ft_strset('0', l));
+	// else
+	// 	p = ft_strset('0', l);
+	sign = (a->sign ? (l > 0 ? '+' : '-') : '-'); // stop, it is illegal
+	if (a->dot && !a->space_2 && !a->space)
+		collect(a, "", 0);
+	else if (a->dot && a->space && nb < 0 && a->space_2 - i >= 0)
+		collect(a, ft_strjoin("-",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(-l))), a->space_2 + 1);
+	else if (a->dot && a->space && a->space_2 - i >= 0 && a->sign)
+		collect(a, ft_strjoin("+",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l))), a->space_2 + 1);
+	else if (a->dot && a->space_2 > i)
+		collect(a, ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l)), a->space_2);
+	else if (a->sign && nb >= 0)
+		collect(a, ft_strjoin("+", ft_itoa(l)), i + 1);
 	else
-		collect(a, ft_itoa(nb), i + f);
+		collect(a, ft_itoa(l), i + (nb < 0 ? 1 : 0));
+	a->l = 0;
+	a->h = 0;
 }
 
 void	col_u(t_printf *a, void *nb, char c)
@@ -50,7 +83,7 @@ void	col_u(t_printf *a, void *nb, char c)
 		tmp = (unsigned char)nb;
 	else
 		tmp = (unsigned int)nb;
-	l = (unsigned long long)tmp;
+	l = tmp;
 	i = 1;
 	while ((tmp /= 10))
 		i++;

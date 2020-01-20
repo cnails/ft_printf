@@ -96,6 +96,6 @@ int			ft_printf(const char *str, ...)
 // 	char str[] = "0";
 
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("%#5o\n", 43);
-// 	printf("%#5o\n", 43);
+// 	ft_printf("%.5d", 2);
+// //	printf("\nthis %u number", -267);
 // }
