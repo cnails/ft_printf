@@ -31,7 +31,8 @@ void	col_space(t_printf *a, char *str, size_t len)
 	free(p);
 	a->buf = tmp;
 	a->len += a->space - len;
-	a->space = 0;
+	a->space = 0;//(*str == ' ') ? a->space : 0;
+	
 }
 
 void		collect(t_printf *a, char *str, size_t len)
@@ -52,7 +53,6 @@ void		collect(t_printf *a, char *str, size_t len)
 	a->len += len;
 	if (a->space < 0 && -a->space > len)
 		col_space(a, str, len);
-	a->space = 0;
 	a->dot = 0;
 	a->sharp = 0;
 }
@@ -91,15 +91,15 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-// int 		main()
-// {
-// 	char str[] = "0";
+int 		main()
+{
+	char str[] = "0";
 
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("%    d\n", -33);
-// 	printf("%    d\n", -33);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+	// printf("%d\n", ft_strcmp(str, "a"));
+	ft_printf("my :% -5d\n", 1);
+	printf("   :% -5d\n", 1);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}

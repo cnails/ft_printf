@@ -16,6 +16,8 @@ void	col_d(t_printf *a, void *nb)
 {
 	int i;
 	int f;
+	int tmp_space;
+	int tmp_space_2;
 	long long l;
 	long long tmp;
 	char sign;
@@ -52,8 +54,14 @@ void	col_d(t_printf *a, void *nb)
 	// else
 	// 	p = ft_strset('0', l);
 	sign = (a->sign ? (l >= 0 ? '+' : '-') : '-'); // stop, it is illegal
-	if (a->one_s == 1 && !a->sign && !a->align && l >= 0)
+	if (a->one_s == 1 && !a->sign && l >= 0 && (tmp_space = a->space) <= i && (tmp_space = a->space_2) <= i)
+	{
+		a->space = 0;
+		a->space_2 = 0;
 		collect(a, " ", 1);
+	}
+	a->space = tmp_space;
+	a->space_2 = tmp_space_2;
 	if (a->dot && !a->space_2 && !a->space)
 	{
 		collect(a, "", 0);
