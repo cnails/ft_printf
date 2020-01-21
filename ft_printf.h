@@ -32,6 +32,7 @@ typedef	struct	s_printf
 	int				h;
 	int				l;
 	int				sharp;
+	int				one_s;
 	va_list			va;
 }				t_printf;
 

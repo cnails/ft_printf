@@ -96,8 +96,8 @@ int			ft_printf(const char *str, ...)
 // 	char str[] = "0";
 
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("% 7d\n", 33);
-// 	printf("% 7d\n", 33);
+// 	ft_printf("%    d\n", -33);
+// 	printf("%    d\n", -33);
 // //	printf("\nthis %u number", -267);
 // 	// printf("%d\n", -267);
 // 	// printf("%ld\n", "s");
