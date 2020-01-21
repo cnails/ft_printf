@@ -1,72 +1,30 @@
-Test 655 (d_basic_i_pos_sp) : FAILED.
-    First line of code: {return test("this % d number", 17);}
-      expected output : "this  17 number"
-      your output     : "this 17 number"
-      expected (nonprintable as hex) : "this  17 number"
-      actual   (nonprintable as hex) : "this 17 number"
+Test 669 (d_width_pos_fits_sp) : FAILED.
+    First line of code: {return test("% 7d", 33);}
+      expected output : "     33"
+      your output     : "       33"
+      expected (nonprintable as hex) : "     33"
+      actual   (nonprintable as hex) : "       33"
 
-Test 657 (d_basic_i_zero_sp) : FAILED.
-    First line of code: {return test("this % d number", 0);}
-      expected output : "this  0 number"
-      your output     : "this 0 number"
-      expected (nonprintable as hex) : "this  0 number"
-      actual   (nonprintable as hex) : "this 0 number"
-
-Test 658 (d_basic_i_onlypos_sp) : FAILED.
-    First line of code: {return test("% d", 3);}
-      expected output : " 3"
-      your output     : "3"
-      expected (nonprintable as hex) : " 3"
-      actual   (nonprintable as hex) : "3"
-
-Test 660 (d_basic_i_onlyzero_sp) : FAILED.
-    First line of code: {return test("% d", 0);}
-      expected output : " 0"
-      your output     : "0"
-      expected (nonprintable as hex) : " 0"
-      actual   (nonprintable as hex) : "0"
-
-Test 661 (d_basic_i_pos_d_sp) : FAILED.
-    First line of code: {return test("this % d number", 17);}
-      expected output : "this  17 number"
-      your output     : "this 17 number"
-      expected (nonprintable as hex) : "this  17 number"
-      actual   (nonprintable as hex) : "this 17 number"
-
-Test 663 (d_basic_i_zero_d_sp) : FAILED.
-    First line of code: {return test("this % d number", 0);}
-      expected output : "this  0 number"
-      your output     : "this 0 number"
-      expected (nonprintable as hex) : "this  0 number"
-      actual   (nonprintable as hex) : "this 0 number"
-
-Test 664 (d_intmax_sp) : FAILED.
-    First line of code: {return test("% d", 2147483647);}
-      expected output : " 2147483647"
-      your output     : "2147483647"
-      expected (nonprintable as hex) : " 2147483647"
-      actual   (nonprintable as hex) : "2147483647"
-
-Test 665 (d_intmin_sp) : FAILED.
-    First line of code: {return test("% d", (int)(-2147483678));}
-      expected output : " 2147483618"
-      your output     : "2147483618"
-      expected (nonprintable as hex) : " 2147483618"
-      actual   (nonprintable as hex) : "2147483618"
+Test 671 (d_width_zero_fits_sp) : FAILED.
+    First line of code: {return test("% 3d", 0);}
+      expected output : "  0"
+      your output     : "   0"
+      expected (nonprintable as hex) : "  0"
+      actual   (nonprintable as hex) : "   0"
 
 Test 672 (d_width_pos_exactfit_sp) : FAILED.
     First line of code: {return test("% 5d", 52625);}
       expected output : " 52625"
-      your output     : "52625"
+      your output     : "     52625"
       expected (nonprintable as hex) : " 52625"
-      actual   (nonprintable as hex) : "52625"
+      actual   (nonprintable as hex) : "     52625"
 
 Test 674 (d_width_pos_nofit_sp) : FAILED.
     First line of code: {return test("% 4d", 94827);}
       expected output : " 94827"
-      your output     : "94827"
+      your output     : "    94827"
       expected (nonprintable as hex) : " 94827"
-      actual   (nonprintable as hex) : "94827"
+      actual   (nonprintable as hex) : "    94827"
 
 Test 676 (d_width_pos_fits_lj_sp) : FAILED.
     First line of code: {return test("% -7d", 33);}
@@ -99,65 +57,72 @@ Test 681 (d_width_pos_nofit_lj_sp) : FAILED.
 Test 686 (d_prec_fits_pos_sp) : FAILED.
     First line of code: {return test("% .5d", 2);}
       expected output : " 00002"
-      your output     : "00002"
+      your output     : " 2"
       expected (nonprintable as hex) : " 00002"
-      actual   (nonprintable as hex) : "00002"
+      actual   (nonprintable as hex) : " 2"
 
 Test 688 (d_prec_fits_zero_sp) : FAILED.
     First line of code: {return test("% .3d", 0);}
       expected output : " 000"
-      your output     : "000"
+      your output     : " 0"
       expected (nonprintable as hex) : " 000"
-      actual   (nonprintable as hex) : "000"
-
-Test 689 (d_prec_exactfit_pos_sp) : FAILED.
-    First line of code: {return test("% .4d", 5263);}
-      expected output : " 5263"
-      your output     : "5263"
-      expected (nonprintable as hex) : " 5263"
-      actual   (nonprintable as hex) : "5263"
-
-Test 691 (d_prec_nofit_pos_sp) : FAILED.
-    First line of code: {return test("% .3d", 13862);}
-      expected output : " 13862"
-      your output     : "13862"
-      expected (nonprintable as hex) : " 13862"
-      actual   (nonprintable as hex) : "13862"
+      actual   (nonprintable as hex) : " 0"
 
 Test 696 (d_zpsp_pos_fits) : FAILED.
     First line of code: {return test("% 05d", 43);}
       expected output : " 0043"
-      your output     : "00043"
+      your output     : "0000 43"
       expected (nonprintable as hex) : " 0043"
-      actual   (nonprintable as hex) : "00043"
+      actual   (nonprintable as hex) : "0000 43"
 
 Test 698 (d_zpsp_zero_fits) : FAILED.
     First line of code: {return test("% 03d", 0);}
       expected output : " 00"
-      your output     : "000"
+      your output     : "00 0"
       expected (nonprintable as hex) : " 00"
-      actual   (nonprintable as hex) : "000"
+      actual   (nonprintable as hex) : "00 0"
 
 Test 699 (d_zpsp_pos_exactfit) : FAILED.
     First line of code: {return test("% 03d", 634);}
       expected output : " 634"
-      your output     : "634"
+      your output     : "00 634"
       expected (nonprintable as hex) : " 634"
-      actual   (nonprintable as hex) : "634"
+      actual   (nonprintable as hex) : "00 634"
+
+Test 704 (d_prec_width_fit_fit_pos_sp) : FAILED.
+    First line of code: {return test("% 8.5d", 34);}
+      expected output : "   00034"
+      your output     : "        34"
+      expected (nonprintable as hex) : "   00034"
+      actual   (nonprintable as hex) : "        34"
+
+Test 706 (d_prec_width_fit_fit_zero_sp) : FAILED.
+    First line of code: {return test("% 8.5d", 0);}
+      expected output : "   00000"
+      your output     : "        0"
+      expected (nonprintable as hex) : "   00000"
+      actual   (nonprintable as hex) : "        0"
+
+Test 707 (d_prec_width_nofit_fit_pos_sp) : FAILED.
+    First line of code: {return test("% 8.3d", 8375);}
+      expected output : "    8375"
+      your output     : "        8375"
+      expected (nonprintable as hex) : "    8375"
+      actual   (nonprintable as hex) : "        8375"
 
 Test 709 (d_prec_width_fit_nofit_pos_sp) : FAILED.
     First line of code: {return test("% 3.7d", 3267);}
       expected output : " 0003267"
-      your output     : "0003267"
+      your output     : "   3267"
       expected (nonprintable as hex) : " 0003267"
-      actual   (nonprintable as hex) : "0003267"
+      actual   (nonprintable as hex) : "   3267"
 
 Test 711 (d_prec_width_nofit_nofit_pos_sp) : FAILED.
     First line of code: {return test("% 3.3d", 6983);}
       expected output : " 6983"
-      your output     : "6983"
+      your output     : "   6983"
       expected (nonprintable as hex) : " 6983"
-      actual   (nonprintable as hex) : "6983"
+      actual   (nonprintable as hex) : "   6983"
 
 Test 713 (d_prec_width_fit_fit_pos_lj_sp) : FAILED.
     First line of code: {return test("% -8.5d", 34);}
@@ -194,19 +159,40 @@ Test 720 (d_prec_width_nofit_nofit_pos_lj_sp) : FAILED.
       expected (nonprintable as hex) : " 6983"
       actual   (nonprintable as hex) : "6983"
 
+Test 740 (d_prec_width_ff_pos_zp_sp) : FAILED.
+    First line of code: {return test("% 08.5d", 34);}
+      expected output : "   00034"
+      your output     : "        34"
+      expected (nonprintable as hex) : "   00034"
+      actual   (nonprintable as hex) : "        34"
+
+Test 742 (d_prec_width_ff_zero_zp_sp) : FAILED.
+    First line of code: {return test("% 08.5d", 0);}
+      expected output : "   00000"
+      your output     : "        0"
+      expected (nonprintable as hex) : "   00000"
+      actual   (nonprintable as hex) : "        0"
+
+Test 743 (d_prec_width_nf_pos_zp_sp) : FAILED.
+    First line of code: {return test("% 08.3d", 8375);}
+      expected output : "    8375"
+      your output     : "        8375"
+      expected (nonprintable as hex) : "    8375"
+      actual   (nonprintable as hex) : "        8375"
+
 Test 745 (d_prec_width_fn_pos_zp_sp) : FAILED.
     First line of code: {return test("% 03.7d", 3267);}
       expected output : " 0003267"
-      your output     : "0003267"
+      your output     : "   3267"
       expected (nonprintable as hex) : " 0003267"
-      actual   (nonprintable as hex) : "0003267"
+      actual   (nonprintable as hex) : "   3267"
 
 Test 747 (d_prec_width_nn_pos_zp_sp) : FAILED.
     First line of code: {return test("% 03.3d", 6983);}
       expected output : " 6983"
-      your output     : "6983"
+      your output     : "   6983"
       expected (nonprintable as hex) : " 6983"
-      actual   (nonprintable as hex) : "6983"
+      actual   (nonprintable as hex) : "   6983"
 
 Test 749 (d_prec_width_ff_pos_ljzpsp_ignoreflag) : FAILED.
     First line of code: {return test("% 0-8.5d", 34);}
@@ -242,104 +228,6 @@ Test 756 (d_prec_width_nn_pos_ljzpsp_ignoreflag) : FAILED.
       your output     : "6983"
       expected (nonprintable as hex) : " 6983"
       actual   (nonprintable as hex) : "6983"
-
-Test 776 (d_size_hh_pos_casted_sp) : FAILED.
-    First line of code: {return test("% hhd", (char)45);}
-      expected output : " 45"
-      your output     : "45"
-      expected (nonprintable as hex) : " 45"
-      actual   (nonprintable as hex) : "45"
-
-Test 778 (d_size_h_pos_casted_sp) : FAILED.
-    First line of code: {return test("% hd", (short)385);}
-      expected output : " 385"
-      your output     : "385"
-      expected (nonprintable as hex) : " 385"
-      actual   (nonprintable as hex) : "385"
-
-Test 780 (d_size_l_pos_casted_sp) : FAILED.
-    First line of code: {return test("% ld", (long)32);}
-      expected output : " 32"
-      your output     : "32"
-      expected (nonprintable as hex) : " 32"
-      actual   (nonprintable as hex) : "32"
-
-Test 782 (d_size_ll_pos_casted_sp) : FAILED.
-    First line of code: {return test("% lld", (long long)43);}
-      expected output : " 43"
-      your output     : "43"
-      expected (nonprintable as hex) : " 43"
-      actual   (nonprintable as hex) : "43"
-
-Test 784 (d_size_hh_pos_ref_sp) : FAILED.
-    First line of code: {return test("% hhd", ch_pos_1);}
-      expected output : " 100"
-      your output     : "100"
-      expected (nonprintable as hex) : " 100"
-      actual   (nonprintable as hex) : "100"
-
-Test 786 (d_size_h_pos_ref_sp) : FAILED.
-    First line of code: {return test("% hd", sh_pos_1);}
-      expected output : " 3047"
-      your output     : "3047"
-      expected (nonprintable as hex) : " 3047"
-      actual   (nonprintable as hex) : "3047"
-
-Test 788 (d_size_l_pos_ref_sp) : FAILED.
-    First line of code: {return test("% ld", l_pos_1);}
-      expected output : " 22337203685477"
-      your output     : "22337203685477"
-      expected (nonprintable as hex) : " 22337203685477"
-      actual   (nonprintable as hex) : "22337203685477"
-
-Test 790 (d_size_ll_pos_ref_sp) : FAILED.
-    First line of code: {return test("% lld", ll_pos_1);}
-      expected output : " 22337203685477"
-      your output     : "22337203685477"
-      expected (nonprintable as hex) : " 22337203685477"
-      actual   (nonprintable as hex) : "22337203685477"
-
-Test 792 (d_size_l_pos_big_sp) : FAILED.
-    First line of code: {return test("% ld", 22337203685477l);}
-      expected output : " 22337203685477"
-      your output     : "22337203685477"
-      expected (nonprintable as hex) : " 22337203685477"
-      actual   (nonprintable as hex) : "22337203685477"
-
-Test 794 (d_size_ll_pos_big_sp) : FAILED.
-    First line of code: {return test("% lld", 522337203685470ll);}
-      expected output : " 522337203685470"
-      your output     : "522337203685470"
-      expected (nonprintable as hex) : " 522337203685470"
-      actual   (nonprintable as hex) : "522337203685470"
-
-Test 796 (d_llmax_sp) : FAILED.
-    First line of code: {return test("% lld", 9223372036854775807ll);}
-      expected output : " 9223372036854775807"
-      your output     : "9223372036854775807"
-      expected (nonprintable as hex) : " 9223372036854775807"
-      actual   (nonprintable as hex) : "9223372036854775807"
-
-Test 798 (d_lmax_sp) : FAILED.
-    First line of code: {return test("% ld", 9223372036854775807l);}
-      expected output : " 9223372036854775807"
-      your output     : "9223372036854775807"
-      expected (nonprintable as hex) : " 9223372036854775807"
-      actual   (nonprintable as hex) : "9223372036854775807"
-
-Test 800 (d_hmax_sp) : FAILED.
-    First line of code: {return test("% hd", (short)32767);}
-      expected output : " 32767"
-      your output     : "32767"
-      expected (nonprintable as hex) : " 32767"
-      actual   (nonprintable as hex) : "32767"
-
-Test 802 (d_hhmax_sp) : FAILED.
-    First line of code: {return test("% hhd", (char)(127));}
-      expected output : " 127"
-      your output     : "127"
-      expected (nonprintable as hex) : " 127"
-      actual   (nonprintable as hex) : "127"
 
 Test 810 (d_prec0val0_as) : FAILED.
     First line of code: {return test("%+.0d", 0);}

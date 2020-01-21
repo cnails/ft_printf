@@ -52,8 +52,8 @@ void	col_d(t_printf *a, void *nb)
 	// else
 	// 	p = ft_strset('0', l);
 	sign = (a->sign ? (l >= 0 ? '+' : '-') : '-'); // stop, it is illegal
-//	if (a->one_s == 1 && !a->sign || a->align || l < 0))
-//		collect(a, " ", 1);
+	if (a->one_s == 1 && !a->sign && !a->align && l >= 0)
+		collect(a, " ", 1);
 	if (a->dot && !a->space_2 && !a->space)
 	{
 		collect(a, "", 0);
