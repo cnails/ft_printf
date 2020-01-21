@@ -6,129 +6,11 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/21 18:03:57 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:39:07 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	col_d(t_printf *a, void *nb)
-{
-	int i;
-	int f;
-	long long l;
-	long long tmp;
-	char sign;
-
-	if (a->l == 1)
-		tmp = (long)nb;
-	else if (a->l == 2)
-		tmp = (long long)nb;
-	else if (a->h == 1)
-		tmp = (short)nb;
-	else if (a->h == 2)
-		tmp = (char)nb;
-	else
-		tmp = (int)nb;
-	l = tmp;
-	i = 1;
-	while ((tmp /= 10))
-		i++;
-	// printf("%d\n", i);
-	if (a->space && !a->space_2 && a->dot == 1)
-		i = 0;
-	if (a->dot == 2 && !a->space_2 && a->space && (l < 0 || a->sign))
-		a->space_2 = a->space - 1;
-	// if (a->dot && !a->space)
-	// {
-	// 	a->dot = 2;
-	// 	a->space = a->space_2;
-	// }
-	// l = a->space_2 - i + ((a->sign && a->dot != 2) ? 1 : 0);
-	// if (a->sign == -1)
-	// 	p = ft_strjoin("-",ft_strset('0', l));
-	// else if (a->sign == 1)
-	// 	p = ft_strjoin("+",ft_strset('0', l));
-	// else
-	// 	p = ft_strset('0', l);
-	sign = (a->sign ? (l >= 0 ? '+' : '-') : '-'); // stop, it is illegal
-	if (a->one_s == 1 && !a->sign && !a->align && l >= 0)
-		collect(a, " ", 1);
-	if (a->dot && !a->space_2 && !a->space)
-	{
-		collect(a, "", 0);
-	}
-	else if (a->dot && l < 0 && a->space_2 >= i)
-	{
-		// printf("here\n");
-		collect(a, ft_strjoin("-",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(-l))), a->space_2 + 1);
-	}
-	else if (a->dot && a->space_2 >= i && sign == '+')
-	{
-		// printf("here\n");
-		collect(a, ft_strjoin("+",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l))), a->space_2 + 1);
-	}
-	else if (a->dot && a->space_2 > i)
-	{
-		// printf("here\n");
-		collect(a, ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l)), a->space_2);
-	}
-	else if (a->sign && l >= 0 && sign != '-')
-	{
-		// printf("here\n");
-		collect(a, ft_strjoin("+", ft_itoa(l)), i + 1);
-	}
-	else
-	{
-		// printf("%d\n", i + (l < 0 ? 1 : 0));
-
-		collect(a, ft_itoa(l), i + (l < 0 ? 1 : 0));
-	}
-	a->l = 0;
-	a->h = 0;
-}
-
-void	col_u(t_printf *a, void *nb, char c)
-{
-	unsigned long long i;
-	unsigned long long f;
-	unsigned long long l;
-	unsigned long long tmp;
-	char sign;
-
-	if (a->l == 1)
-		tmp = (unsigned long)nb;
-	else if (a->l == 2)
-		tmp = (unsigned long long)nb;
-	else if (a->h == 1)
-		tmp = (unsigned short)nb;
-	else if (a->h == 2)
-		tmp = (unsigned char)nb;
-	else
-		tmp = (unsigned int)nb;
-	l = tmp;
-	i = 1;
-	while ((tmp /= 10))
-		i++;
-	if (a->space && !a->space_2 && a->dot == 1)
-		i = 0;
-	if (a->dot && !a->space)
-	{
-		a->dot = 2;
-		a->space = a->space_2;
-	}
-	sign = (a->sign ? (l > 0 ? '+' : '-') : '-'); // stop, it is illegal
-	if (a->dot == 2 && !a->space_2 && !a->space)
-		collect(a, "", 0);
-	else if (a->dot && a->space && a->space_2 > i)
-		collect(a, ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l)), a->space_2);
-	else if (sign == '+')
-		collect(a, ft_strjoin(&sign, ft_itoa(l)), i + 1);
-	else
-		collect(a, ft_itoa(l), i);
-	a->l = 0;
-	a->h = 0; // вынести обнуление всех переменных в одну функцию
-}
 
 void	col_s(t_printf *a, char *str)
 {
@@ -212,26 +94,6 @@ void	col_f(t_printf *a, long double ld)
 	a->nbr = -1;
 }
 
-void	ft_printbits(unsigned long int octet)
-{
-	unsigned long int div;
-
-	div = 2147483648 * 64;
-	while (div != 1)
-	{
-		if (octet / div == 1)
-			write(1, "1", 1);
-		else
-			write(1, "0", 1);
-		octet = octet % div;
-		div = div / 2;
-	}
-	if (octet == 1)
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
-}
-
 void	col_p(t_printf *a, void *str, char c)
 {
 	char	*s;
@@ -301,8 +163,6 @@ void	col_x(t_printf *a, void *str, char c)
 	}
 	a->h = 0;
 	a->l = 0;
-	// if (s)
-	// 	free(s);
 }
 
 void	dot_space(t_printf *a)
