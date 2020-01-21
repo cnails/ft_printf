@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 19:03:54 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:03:57 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	col_d(t_printf *a, void *nb)
 	// else
 	// 	p = ft_strset('0', l);
 	sign = (a->sign ? (l >= 0 ? '+' : '-') : '-'); // stop, it is illegal
+	if (a->one_s == 1 && !a->sign && !a->align && l >= 0)
+		collect(a, " ", 1);
 	if (a->dot && !a->space_2 && !a->space)
 	{
 		collect(a, "", 0);
@@ -234,6 +236,7 @@ void	col_p(t_printf *a, void *str, char c)
 {
 	char	*s;
 	int		u;
+	char	*tmp;
 
 	if (a->h == 1)
 		s = ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a');
@@ -243,10 +246,6 @@ void	col_p(t_printf *a, void *str, char c)
 		s = ft_itoa_base((unsigned long long)str, 16, c == 'X' ? 'A' : 'a');
 	else
 		s = ft_itoa_base((long int)str, 16, c == 'X' ? 'A' : 'a');
-	if (a->sharp == 1 && str != 0)
-	{
-		s = ft_strjoin("0x", s);
-	}
 	if (a->dot)
 	{
 		if (a->space)
@@ -256,11 +255,11 @@ void	col_p(t_printf *a, void *str, char c)
 		}
 		collect(a, "0x", 2);
 		a->space = u - 2;
-		col_space(a, str, ft_strlen(s));
-		collect(a, ft_strjoin("", s), ft_strlen(s));
+		collect(a, s, ft_strlen(s));
 	}
 	else
 		collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
+	free(s);
 }
 
 void	col_x(t_printf *a, void *str, char c)
@@ -387,6 +386,8 @@ void	col_hl(t_printf *a)
 
 void	col_par(t_printf *a)
 {
+	if (*(a->str - 1) == ' ')
+		a->one_s = 1;
 	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		col_plus_min_sl(a);
 	if (*a->str == '.' || *a->str == '0' || *a->str == '#')

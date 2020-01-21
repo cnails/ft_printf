@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/20 19:25:48 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:17:46 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		collect(t_printf *a, char *str, size_t len)
 	a->space = 0;
 	a->dot = 0;
 	a->sharp = 0;
+	// free(str);
 }
 
 int			ft_printf(const char *str, ...)
@@ -91,15 +92,15 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-// int 		main()
-// {
-// 	char str[] = "0";
+int 		main()
+{
+	char str[] = "0";
 
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("% 7d\n", 33);
-// 	printf("% 7d\n", 33);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+	// printf("%d\n", ft_strcmp(str, "a"));
+	ft_printf("%17s\n", "hello");
+	printf("%17s\n", "hello");
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}
