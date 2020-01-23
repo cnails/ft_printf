@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:51:11 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 15:59:28 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	col_par_second(t_printf *a)
 		dot_space(a);
 	if (*a->str == 'h' || *a->str == 'l')
 		col_hl(a);
-	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
-		col_d(a, va_arg(a->va, void *));
 }
 
 void	col_par(t_printf *a)

@@ -6,18 +6,24 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:40:22 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 18:00:12 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	col_o_one_more(t_printf *a, char *tmp)
+void	col_o_one_more(t_printf *a, char *str)
 {
+	char *tmp;
+	char *tmp_join;
+
+	tmp = ft_strset('0', a->space_2 - ft_strlen(str));
+	tmp_join = ft_strjoin(tmp, str);
 	if (a->space && a->space_2)
 		a->dot = 1;
-	collect(a, ft_strjoin(ft_strset('0',\
-		a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
+	collect(a, tmp_join, a->space_2);
+	free(tmp);
+	free(tmp_join);
 }
 
 void	col_o_norm(t_printf *a)

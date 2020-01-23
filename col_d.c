@@ -6,43 +6,43 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:45:05 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:28:19 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 18:14:38 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		collect_space(t_printf *a)
+void		col_dop(t_printf *a, long long *l)
 {
-	int tmp_space;
-	int tmp_space_2;
+	char *tmp;
+	char *spaces;
+	char *fuck;
 
-	tmp_space = a->space;
-	tmp_space_2 = a->space_2;
-	a->space = 0;
-	a->space_2 = 0;
-	collect(a, " ", 1);
-	a->one_s = 0;
-	if (tmp_space && a->align)
-		a->space = tmp_space + 1;
-	else
-		a->space = tmp_space - ((a->dot == 2) ? 1 : 0);
-	a->space_2 = (tmp_space_2 && a->align && a->dot == 2) ?\
-		tmp_space_2 + 1 : tmp_space_2;
+	spaces = ft_strset('0', a->space_2 - l[1]);
+	tmp = ft_itoa(l[0]);
+	fuck = ft_strjoin(spaces, tmp);
+	collect(a, fuck, a->space_2);
+	free(tmp);
+	free(fuck);
+	free(spaces);
 }
 
-long long	ret_nb(t_printf *a, void *nb)
+void		why(t_printf *a, long long *l)
 {
-	if (a->l == 1)
-		return ((long)nb);
-	else if (a->l == 2)
-		return ((long long)nb);
-	else if (a->h == 1)
-		return ((short)nb);
-	else if (a->h == 2)
-		return ((char)nb);
-	else
-		return ((int)nb);
+	char	*norme;
+
+	norme = ft_itoa(l[0]);
+	collect(a, ft_strjoin("+", norme), l[1] + 1);
+	free(norme);
+}
+
+void		last(t_printf *a, long long *l)
+{
+	char *c;
+
+	c = ft_itoa(l[0]);
+	collect(a, c, l[1] + (l[0] < 0 ? 1 : 0));
+	free(c);
 }
 
 void		col_d_after_init(t_printf *a, long long *l)
@@ -60,18 +60,15 @@ void		col_d_after_init(t_printf *a, long long *l)
 	if (a->dot && !a->space_2 && !a->space)
 		a->sign ? collect(a, "+", 1) : collect(a, "", 0);
 	else if (a->dot && l[0] < 0 && a->space_2 >= l[1])
-		collect(a, ft_strjoin("-", ft_strjoin(ft_strset('0',\
-			a->space_2 - l[1]), ft_itoa(-l[0]))), a->space_2 + 1);
+		col_with_sign(a, l, "-");
 	else if (a->dot && a->space_2 >= l[1] && l[4] == '+')
-		collect(a, ft_strjoin("+", ft_strjoin(ft_strset('0',\
-			a->space_2 - l[1]), ft_itoa(l[0]))), a->space_2 + 1);
+		col_with_sign(a, l, "+");
 	else if (a->dot && a->space_2 > l[1])
-		collect(a, ft_strjoin(ft_strset('0', a->space_2 - l[1]),\
-			ft_itoa(l[0])), a->space_2);
+		col_dop(a, l);
 	else if (a->sign && l[0] >= 0 && l[4] != '-')
-		collect(a, ft_strjoin("+", ft_itoa(l[0])), l[1] + 1);
+		one_more_costil(a, l);
 	else
-		collect(a, ft_itoa(l[0]), l[1] + (l[0] < 0 ? 1 : 0));
+		last(a, l);
 }
 
 void		col_d(t_printf *a, void *nb)

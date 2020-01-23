@@ -1,0 +1,58 @@
+Test 2577 (moul_f_6) : FAILED.
+    First line of code: {return test("%f", (double)INT_MAX);}
+      expected output : "2147483647.000000"
+      your output     : "2147483648.000000"
+      expected (nonprintable as hex) : "2147483647.000000"
+      actual   (nonprintable as hex) : "2147483648.000000"
+
+Test 2578 (moul_f_7) : FAILED.
+    First line of code: {return test("%f", (double)INT_MIN);}
+      expected output : "-2147483648.000000"
+      your output     : "-2147483649.000000"
+      expected (nonprintable as hex) : "-2147483648.000000"
+      actual   (nonprintable as hex) : "-2147483649.000000"
+
+Test 2579 (moul_f_7b) : FAILED.
+    First line of code: {return test("%f", (double)INT_MIN - 1);}
+      expected output : "-2147483649.000000"
+      your output     : "-2147483650.000000"
+      expected (nonprintable as hex) : "-2147483649.000000"
+      actual   (nonprintable as hex) : "-2147483650.000000"
+
+Test 2580 (moul_f_8) : FAILED.
+    First line of code: {return test("%f", (double)INT_MAX + 1);}
+      expected output : "2147483648.000000"
+      your output     : "2147483649.000000"
+      expected (nonprintable as hex) : "2147483648.000000"
+      actual   (nonprintable as hex) : "2147483649.000000"
+
+Test 2648 (moul_prec_2) : FAILED.
+    First line of code: {return test("%% 4.5i 42 == |% 4.5i|
+", 42);}
+      expected output : "% 4.5i 42 == | 00042|
+"
+      your output     : "% 4.5i 42 == |00042|
+"
+      expected (nonprintable as hex) : "% 4.5i 42 == | 00042|\x0a"
+      actual   (nonprintable as hex) : "% 4.5i 42 == |00042|\x0a"
+
+Test 2654 (moul_zeropad_3) : FAILED.
+    First line of code: {return test("%%0i 42 == |%0i|
+", 42);}
+      expected output : "%0i 42 == |42|
+"
+      your output     : "%0i 42 == ||
+"
+      expected (nonprintable as hex) : "%0i 42 == |42|\x0a"
+      actual   (nonprintable as hex) : "%0i 42 == ||\x0a"
+
+Test 2655 (moul_zeropad_4) : FAILED.
+    First line of code: {return test("%%0d 0000042 == |%0d|
+", 0000042);}
+      expected output : "%0d 0000042 == |34|
+"
+      your output     : "%0d 0000042 == ||
+"
+      expected (nonprintable as hex) : "%0d 0000042 == |34|\x0a"
+      actual   (nonprintable as hex) : "%0d 0000042 == ||\x0a"
+

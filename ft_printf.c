@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:54:38 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 18:01:40 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int			ft_printf(const char *str, ...)
 
 	ft_bzero(&a, sizeof(a));
 	va_start(a.va, str);
+	a_init(str, &a);
 	while (*a.str)
 	{
 		if (*a.str == '%')
@@ -98,7 +99,7 @@ int			ft_printf(const char *str, ...)
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("% 4.5d\n", 42);
+// 	ft_printf("this %8.42o number", 17);
 // //	printf("\nthis %u number", -267);
 // 	// printf("%d\n", -267);
 // 	// printf("%ld\n", "s");
