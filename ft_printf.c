@@ -6,14 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:31:12 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 15:54:38 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	col_space(t_printf *a, char *str, size_t len)
-
+void		col_space(t_printf *a, char *str, size_t len)
 {
 	char *tmp;
 	char *p;
@@ -60,36 +59,37 @@ void		collect(t_printf *a, char *str, size_t len)
 	// free(str);
 }
 
+void		a_init(const char *str, t_printf *a)
+{
+	a->fd = 1;
+	a->nbr = -1;
+	a->space = 0;
+	a->str = (char *)str;
+}
+
 int			ft_printf(const char *str, ...)
 {
 	t_printf	a;
-	
+
 	ft_bzero(&a, sizeof(a));
-	a.fd = 1;
-	a.nbr = -1;
-	a.space = 0;
-	a.str = (char *)str;
 	va_start(a.va, str);
 	while (*a.str)
-    {
-        if (*a.str == '%')
-        {
-            a.str++;
-            // if ((*a.str) == ' ')
-			// 	collect(&a, a.str, 1); // пробелы надо обрабатывать в col_par
-            while ((*a.str) == ' ')
-                a.str++;
-            if (!(*a.str))
-                break ;
-            col_par(&a);
-        }
-        else
-            collect(&a, a.str, 1);
-        a.str++;
-    }
+	{
+		if (*a.str == '%')
+		{
+			a.str++;
+			while ((*a.str) == ' ')
+				a.str++;
+			if (!(*a.str))
+				break ;
+			col_par(&a);
+		}
+		else
+			collect(&a, a.str, 1);
+		a.str++;
+	}
 	write(1, a.buf, a.len);
 	free(a.buf);
-//	ft_putnbr(a.len);
 	va_end(a.va);
 	return (a.len);
 }
