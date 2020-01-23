@@ -6,84 +6,11 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/21 18:39:07 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 15:33:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	col_s(t_printf *a, char *str)
-{
-	int u;
-
-	if (*a->str >= 0 && *a->str <= 9)
-		dot_space(a);
-	if (a->space && a->dot == 1 && !a->space_2)
-	{
-		collect(a, "", 0);
-		return ;
-	}
-	if ((a->space_2 && a->dot == 1) || (a->space && a->dot == 1 && !a->space_2))
-	{
-		a->s = a->space_2 ? a->space_2 : a->space;
-		if (a->space && a->dot == 1 && !a->space_2)
-			a->space = 0;
-		a->space_2 = 0;
-	}
-	if (str == NULL)
-		str = "(null)";
-	if (ft_strlen(str) > a->s && a->dot == 1)
-		u = a->s;
-	else
-		u = ft_strlen(str);
-	collect(a, str, u);
-}
-
-void	col_c(t_printf *a, char c)
-{
-	collect(a, &c, 1);
-}
-
-void	col_o(t_printf *a, long long int c)
-{
-	char	*tmp;
-	int		new;
-	char	*tes;
-	char	*p;
-
-	tmp = ft_itoa_base(c, 8, 'a');
-	if (a->sharp && ft_strcmp(tmp, "0") && (a->dot != 2 || a->space_2 < ft_strlen(tmp)))
-	{
-		tes = tmp;
-		tmp = ft_strjoin("0", tes);
-		free(tes);
-	}
-	if (a->dot == 2 && a->sharp && !a->space_2)
-		a->space_2 = a->space;
-	if (((a->dot == 2 && !a->space) || (!a->space_2 && a->dot == 1)) && !a->space_2 && !a->sharp)
-	{
-		a->dot = 1;
-		collect(a, "", 0);
-	}
-	else if (a->space_2 > ft_strlen(tmp))
-	{
-		if (a->space && a->space_2)
-			a->dot = 1;
-		collect(a, ft_strjoin(ft_strset('0', a->space_2 - ft_strlen(tmp)), tmp), a->space_2);
-	}
-	else
-	{
-		if (a->space && a->space_2 && a->dot)
-		{
-			a->dot = 1;
-			a->space_2 = a->space;
-		}
-		if (a->space_2)
-			a->space = a->space_2;
-		collect(a, tmp, ft_strlen(tmp));
-	}
-	free(tmp);
-}
 
 void	col_f(t_printf *a, long double ld)
 {
