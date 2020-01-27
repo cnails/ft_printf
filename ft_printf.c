@@ -122,6 +122,39 @@ void	col_f(t_printf *a, double d)
 		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
 	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
+
+	// int			i;
+	// int			f;
+	// long long	l;
+	// long long	tmp;
+	// char		sign;
+
+	// tmp = ret_nb(a, nb);
+	// l = tmp;
+	// i = 1;
+	// sign = '-';
+	// while ((tmp /= 10))
+	// 	i++;
+	// if (a->space && !a->space_2 && a->dot == 1)
+	// 	i = 0;
+	// if (a->dot == 2 && !a->space_2 && a->space && (l < 0 || a->sign))
+	// 	a->space_2 = a->space - 1;
+	// if (a->sign)
+	// 	sign = l >= 0 ? '+' : '-';
+	// if (a->one_s == 1 && !a->sign && l >= 0 && (a->space <= i || a->dot == 2))
+	// 	collect_space(a);
+	// if (a->dot && !a->space_2 && !a->space)
+	// 	a->sign ? collect(a, "+", 1) : collect(a, "", 0);
+	// else if (a->dot && l < 0 && a->space_2 >= i)
+	// 	collect(a, ft_strjoin("-",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(-l))), a->space_2 + 1);
+	// else if (a->dot && a->space_2 >= i && sign == '+')
+	// 	collect(a, ft_strjoin("+",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l))), a->space_2 + 1);
+	// else if (a->dot && a->space_2 > i)
+	// 	collect(a, ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l)), a->space_2);
+	// else if (a->sign && l >= 0 && sign != '-')
+	// 	collect(a, ft_strjoin("+", ft_itoa(l)), i + 1);
+	// else
+	// 	collect(a, ft_itoa(l), i + (l < 0 ? 1 : 0));
 }
 
 static int		len(int n)
@@ -198,6 +231,12 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 		free(str);
 		str = post_dot(f_2, tmp, l);
 	}
+	else if (a->sharp)
+	{
+		tmp = ft_strjoin(str, ".");
+		free(str);
+		str = tmp;
+	}
 	return (str);
 }
 
@@ -207,8 +246,8 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%.16f\n",  0.999999999999999900);
-// 	ft_printf("%.16f",  0.999999999999999900);
+// 	printf("%#.0f\n", -7.4);
+// 	ft_printf("%#.0f", -7.4);
 	
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);
