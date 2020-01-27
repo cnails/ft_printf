@@ -12,15 +12,6 @@
 
 #include "ft_printf.h"
 
-void	col_f(t_printf *a, long double ld)
-{
-	char	*str;
-
-	str = ft_dtoa(ld, a->nbr + 7);
-	collect(a, str, ft_strlen(str));
-	a->nbr = -1;
-}
-
 void	dot_space(t_printf *a)
 {
 	char	*str;
@@ -70,7 +61,7 @@ void	col_par(t_printf *a)
 	else if (*a->str == '%')
 		col_c(a, '%');
 	else if (*a->str == 'f')
-		col_f(a, va_arg(a->va, double));
+		col_f(a, va_arg(a->va, void *));
 	else if (*a->str == 'x' || *a->str == 'X')
 		col_x(a, va_arg(a->va, void *), *a->str);
 	else if (*a->str == 'p')

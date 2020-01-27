@@ -62,7 +62,6 @@ void		collect(t_printf *a, char *str, size_t len)
 void		a_init(const char *str, t_printf *a)
 {
 	a->fd = 1;
-	a->nbr = -1;
 	a->space = 0;
 	a->str = (char *)str;
 }
@@ -95,13 +94,115 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-// int 		main()
-// {
-// 	char str[] = "0";
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	ft_printf("this %8.42o number", 17);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+/////////////////////////////////
+
+static double rounding(double nb, int l)
+{
+	int i;
+	double tmp;
+
+	tmp = nb - (unsigned long int)nb;
+	i = -1;
+	while(++i != l)
+		tmp *= 10;
+	tmp += 0.5;
+	while (--l >= 0)
+		tmp /= 10;
+	return ((unsigned long int)nb + tmp);
+}
+
+void	col_f(t_printf *a, void *d)
+{
+	char	*str;
+	char	*tmp;
+	long double b;
+
+	b = (int)d;
+	printf("d = %Lf\n", b);
+	if (d < 0)
+		tmp = ft_strdup("-");
+	else
+		tmp = ft_strdup("");
+	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
+	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + (d < 0 ? 1 : 0));
+}
+
+static int		len(int n)
+{
+	int i;
+
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
+
+static char		*ft_qitoa(unsigned long int n, int l)
+{
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * (l + 1))))
+		return (NULL);
+	str[l--] = '\0';
+	while (l != -1)
+	{
+		str[l--] = n % 10 + '0';
+		n /= 10;
+	}
+
+	return (str);
+}
+
+static char		*post_dot(long double f, char *str, int l)
+{
+	char *tmp;
+
+	tmp = ft_qitoa((unsigned long int)f, l);
+	str = ft_strjoin(str, tmp);
+	free(tmp);
+	return (str);
+}
+
+static char			*ft_ftoa(t_printf *a, long double f, int n)
+{
+	char	*str;
+	char	*tmp;
+	int		l;
+	int 	sign;
+	double	f_2;
+
+	
+	l = n;
+	// f_2 = (f - (int)f);
+	f_2 = f;
+	f = rounding(f, l);
+	str = ft_itoa((int)(f));
+
+	f_2 = rounding(f_2, l);
+
+	while (n-- > 0)
+		f_2 *= 10;
+	if (n && (a->space_2 || !a->dot))
+	{
+		tmp = ft_strjoin(str, ".");
+		free(str);
+		str = post_dot(f_2, tmp, l);
+	}
+	return (str);
+}
+
+/////////////////////////////////
+
+int 		main()
+{
+	char str[] = "0";
+	// printf("%d\n", ft_strcmp(str, "a"));
+	printf("%.18f\n",  0.125978542436587568);
+	ft_printf("%.18f",  0.125978542436587568);
+	
+//	ft_printf("%f", 1.0);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}
