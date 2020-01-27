@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:45:05 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 18:14:38 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/23 19:48:42 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		why(t_printf *a, long long *l)
 	collect(a, ft_strjoin("+", norme), l[1] + 1);
 	free(norme);
 }
+
 
 void		last(t_printf *a, long long *l)
 {

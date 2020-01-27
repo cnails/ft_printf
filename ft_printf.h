@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 18:14:31 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/27 18:57:43 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef	struct		s_printf
 	int				s;
 	int				h;
 	int				l;
+	int				big_l;
 	int				sharp;
 	int				one_s;
 	va_list			va;
@@ -41,7 +42,8 @@ void				col_u(t_printf *a, void *nb, char c);
 void				col_s(t_printf *a, char *str);
 void				col_c(t_printf *a, char c);
 void				col_o(t_printf *a, long long int c);
-void				col_f(t_printf *a, void *d);
+void				col_f(t_printf *a, double d);
+void				col_lf(t_printf *a, long double d);
 void				col_p(t_printf *a, void *str, char c);
 void				col_x(t_printf *a, void *str, char c);
 void				dot_space(t_printf *a);

@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:59:28 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/27 18:58:08 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ void	col_par_second(t_printf *a)
 		dot_space(a);
 	if (*a->str == 'h' || *a->str == 'l')
 		col_hl(a);
+	if (*a->str == 'L')
+	{
+		a->big_l = 1;
+		a->str++;
+	}
 }
 
 void	col_par(t_printf *a)
@@ -61,7 +66,7 @@ void	col_par(t_printf *a)
 	else if (*a->str == '%')
 		col_c(a, '%');
 	else if (*a->str == 'f')
-		col_f(a, va_arg(a->va, void *));
+		a->big_l ? col_f(a, va_arg(a->va, double)) : col_lf(a, va_arg(a->va, long double));
 	else if (*a->str == 'x' || *a->str == 'X')
 		col_x(a, va_arg(a->va, void *), *a->str);
 	else if (*a->str == 'p')
