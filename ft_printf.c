@@ -116,13 +116,16 @@ void	col_f(t_printf *a, double d)
 	char	*str;
 	char	*tmp;
 
+<<<<<<< HEAD
 	printf("d = %Lf\n", d);
+=======
+>>>>>>> 901488e3d545d005b24ef1a89ad1451a934623dc
 	if (d < 0)
 		tmp = ft_strdup("-");
 	else
-		tmp = ft_strdup("");
+		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
 	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
-	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + (d < 0 ? 1 : 0));
+	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
 
 static int		len(int n)
@@ -165,7 +168,7 @@ static char		*ft_qitoa(unsigned long int n, int l)
 	return (str);
 }
 
-static char		*post_dot(long double f, char *str, int l)
+static char		*post_dot(double f, char *str, int l)
 {
 	char *tmp;
 
@@ -175,7 +178,7 @@ static char		*post_dot(long double f, char *str, int l)
 	return (str);
 }
 
-static char			*ft_ftoa(t_printf *a, long double f, int n)
+static char			*ft_ftoa(t_printf *a, double f, int n)
 {
 	char	*str;
 	char	*tmp;
@@ -185,8 +188,7 @@ static char			*ft_ftoa(t_printf *a, long double f, int n)
 
 	
 	l = n;
-	// f_2 = (f - (int)f);
-	f_2 = f;
+	f_2 = (f - (int)f);
 	f = rounding(f, l);
 	str = ft_itoa((int)(f));
 
@@ -205,16 +207,16 @@ static char			*ft_ftoa(t_printf *a, long double f, int n)
 
 /////////////////////////////////
 
-int 		main()
-{
-	char str[] = "0";
-	// printf("%d\n", ft_strcmp(str, "a"));
-	printf("%.18f\n",  0.125978542436587568);
-	ft_printf("%.18f",  0.125978542436587568);
+// int 		main()
+// {
+// 	char str[] = "0";
+// 	// printf("%d\n", ft_strcmp(str, "a"));
+// 	printf("%.16f\n",  0.999999999999999900);
+// 	ft_printf("%.16f",  0.999999999999999900);
 	
-//	ft_printf("%f", 1.0);
-//	printf("\nthis %u number", -267);
-	// printf("%d\n", -267);
-	// printf("%ld\n", "s");
-	// printf("{%+7u}\n", 0);
-}
+// //	ft_printf("%f", 1.0);
+// //	printf("\nthis %u number", -267);
+// 	// printf("%d\n", -267);
+// 	// printf("%ld\n", "s");
+// 	// printf("{%+7u}\n", 0);
+// }
