@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/27 19:05:31 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/27 19:42:54 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,20 @@ int			ft_printf(const char *str, ...)
 static double rounding(double nb, int l)
 {
 	int i;
-	double tmp;
+	long double tmp;
 
-	tmp = nb - (unsigned long int)nb;
+	tmp = nb - (unsigned long long int)nb;
+	printf("%f\n", tmp);
 	i = -1;
 	while(++i != l)
 		tmp *= 10;
+	// printf("tnb = %Lf\n", nb);
 	tmp += 0.5;
+	printf("\n%.16f\n\n", tmp);
 	while (--l >= 0)
 		tmp /= 10;
-	return ((unsigned long int)nb + tmp);
+	printf("res = %.18f\n", (unsigned long long int)nb + tmp);
+	return ((unsigned long long int)nb + tmp);
 }
 
 void	col_f(t_printf *a, double d)
@@ -124,15 +128,15 @@ void	col_f(t_printf *a, double d)
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
 
-static int		len(int n)
-{
-	int i;
+// static int		len(int n)
+// {
+// 	int i;
 
-	i = 1;
-	while (n /= 10)
-		i++;
-	return (i);
-}
+// 	i = 1;
+// 	while (n /= 10)
+// 		i++;
+// 	return (i);
+// }
 
 void	col_lf(t_printf *a, long double d)
 {
@@ -184,7 +188,9 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 
 	
 	l = n;
+	printf("%.20f\n", f);
 	f_2 = (f - (int)f);
+	// printf("f_s = %.20f\n", f_2);
 	f = rounding(f, l);
 	str = ft_itoa((int)(f));
 
@@ -203,16 +209,17 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 
 /////////////////////////////////
 
-// int 		main()
-// {
-// 	char str[] = "0";
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%.16f\n",  0.999999999999999900);
-// 	ft_printf("%.16f",  0.999999999999999900);
+int 		main()
+{
+	char str[] = "0";
+	char *test;
+	// printf("%d\n", ft_strcmp(str, "a"));
+	printf("%.16f\n",  0.999999999999999900);
+	ft_printf("%.16f",  0.999999999999999900);
 	
-// //	ft_printf("%f", 1.0);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+//	ft_printf("%f", 1.0);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}
