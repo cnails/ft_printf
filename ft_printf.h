@@ -35,13 +35,13 @@ typedef	struct		s_printf
 	va_list			va;
 }					t_printf;
 
-static char			*ft_ftoa(t_printf *a, long double f, int n);
+static char			*ft_ftoa(t_printf *a, double f, int n);
 void				col_d(t_printf *a, void *nb);
 void				col_u(t_printf *a, void *nb, char c);
 void				col_s(t_printf *a, char *str);
 void				col_c(t_printf *a, char c);
 void				col_o(t_printf *a, long long int c);
-void				col_f(t_printf *a, void *d);
+void				col_f(t_printf *a, double d);
 void				col_p(t_printf *a, void *str, char c);
 void				col_x(t_printf *a, void *str, char c);
 void				dot_space(t_printf *a);

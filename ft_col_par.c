@@ -61,7 +61,7 @@ void	col_par(t_printf *a)
 	else if (*a->str == '%')
 		col_c(a, '%');
 	else if (*a->str == 'f')
-		col_f(a, va_arg(a->va, void *));
+		col_f(a, va_arg(a->va, double));
 	else if (*a->str == 'x' || *a->str == 'X')
 		col_x(a, va_arg(a->va, void *), *a->str);
 	else if (*a->str == 'p')
