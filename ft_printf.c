@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/27 18:54:03 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/27 19:03:45 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,6 @@ void	col_f(t_printf *a, double d)
 	char	*str;
 	char	*tmp;
 
-<<<<<<< HEAD
-	printf("d = %Lf\n", d);
-=======
->>>>>>> 901488e3d545d005b24ef1a89ad1451a934623dc
 	if (d < 0)
 		tmp = ft_strdup("-");
 	else
