@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/27 20:32:15 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 14:05:19 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,37 +113,41 @@ static double rounding(double nb, int l)
 	return ((unsigned long int)nb + tmp);
 }
 
-void	col_f_with_zero(t_printf *a, char *str, size_t len)
-{
+// void	col_f_with_zero(t_printf *a, char *str, size_t len)
+// {
 	// printf("space = %d\n", a->space);
 	// printf("space_2 = %d\n", a->space_2);
 	// a->space = a->space_2;
 	// a->space_2 = a->space;
-	if (a->space_2 != 0)
-		a->dot = 2;
-}
+	// if (a->space_2 != 0)
+		// a->dot = 2;
+// }
 
 void	col_f(t_printf *a, double d)
 {
 	char	*str;
-	char	*tmp;
+	// char	*tmp;
 
 	// if (a->space)
 	// {
 	// }
-	if (d < 0)
-		tmp = ft_strdup("-");
-	else
-		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
+	// if (d < 0)
+		// tmp = ft_strdup("-");
+	// else
+		// tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
 	// tmp = ft_strdup("");
 	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
-	if (a->space && a->dot)
-		col_f_with_zero(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
-	if (d < 0) // need good uslovie
+	// if (a->space && a->dot)
+		// col_f_with_zero(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
+	if ((d < 0 || a->sign) && a->dot == 1) // need good uslovie
 	{
+		char *tmp;
+		a->dot = 2;
+		tmp = ft_strjoin()
+		collect(a, )
 		printf("here\n");
 	}
-	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
+	collect(a, str, ft_strlen(str));
 }
 
 static int		len(int n)
@@ -234,9 +238,10 @@ int 		main()
 {
 	char str[] = "0";
 	// printf("%d\n", ft_strcmp(str, "a"));
-	printf("% 05.0f\n", -7.3);
-	ft_printf("% 05.0f\n", -7.3);
-	ft_printf("%05.3f\n", -7.3);
+	ft_printf("%+05.0f\n", 7.3);
+	printf("%+05.0f\n", 7.3);
+	// ft_printf("% 05.0f\n", -7.3);
+	// ft_printf("%05.3f\n", -7.3);
 	// ft_printf("", )
 //	ft_printf("%f", 1.0);
 //	printf("\nthis %u number", -267);
