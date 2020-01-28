@@ -103,16 +103,17 @@ static int	len(int n)
 	return (i);
 }
 
-// int			main()
-// {
-// 	char	str[] = "0";
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("Coucou les %D!\n", 42);
-// 	ft_printf("Coucou les %D!", 42);
-// 	// ft_printf("", )
-// //	ft_printf("%f", 1.0);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+int			main()
+{
+	char	str[] = "0";
+	// printf("%d\n", ft_strcmp(str, "a"));
+//	printf("null %c and text\n", 0);
+	printf("%lu\n", -42);
+	ft_printf("%lu\n", -42);
+	// ft_printf("", )
+//	ft_printf("%f", 1.0);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}

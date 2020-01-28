@@ -49,6 +49,11 @@ void	col_c(t_printf *a, char c)
 		a->space++;
 		collect(a, "", 0);
 	}
+	// else if (c == '\x00')
+	// {
+	// 	write(1, "", 0);
+	// 	a->len++;
+	// }
 	else
 		collect(a, &c, 1);
 }
