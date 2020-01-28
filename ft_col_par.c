@@ -37,6 +37,8 @@ void	col_par_second(t_printf *a)
 		a->one_s = 1;
 	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		col_plus_min_sl(a);
+	if (*a->str == ' ')
+		a->str++;
 	if (*a->str == '.' || *a->str == '0' || *a->str == '#')
 		col_dot(a);
 	if (*a->str >= '0' && *a->str <= '9')
