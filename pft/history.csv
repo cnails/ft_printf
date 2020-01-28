@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-167,d_basic_pos,0,0
-168,d_basic_neg,0,0
-169,d_basic_zero,0,0
-=======
 0,nospec_no_specifier_test,0,0
 1,nospec_empty_string,0,0
 2,nospec_some_escaped_chars,0,0
@@ -453,7 +448,6 @@
 485,i_prec0val0_was_impl,0,0
 486,i_prec0val0_waslj,0,0
 487,i_prec0val0_waslj_impl,0,0
->>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
 492,d_basic_i_pos,0,0
 493,d_basic_i_neg,0,0
 494,d_basic_i_zero,0,0
@@ -778,8 +772,6 @@
 813,d_prec0val0_was_impl,0,0
 814,d_prec0val0_waslj,0,0
 815,d_prec0val0_waslj_impl,0,0
-<<<<<<< HEAD
-=======
 816,mix_hhi_str_lli_str,0,0
 817,mix_str_hi_str_li,0,0
 818,mix_str_hi_str_li_emptystr,0,0
@@ -851,7 +843,6 @@
 884,u_prec0val0_wlj_impl,0,0
 885,mix_hhu_str_llu_str,0,0
 886,mix_str_hu_str_lu,0,0
-887,mixed_test_0001,0,0
 888,x_basic_pos,0,0
 889,x_basic_zero,0,0
 890,x_basic_onlypos,0,0
@@ -1868,7 +1859,6 @@
 2045,mix_test_26,0,0
 2046,mix_test_27,0,0
 2047,mix_test_28,0,0
-2048,mix_test_29,0,0
 2049,mix_test_30,0,0
 2050,mix_test_31,0,0
 2051,mix_test_32,0,0
@@ -2288,7 +2278,6 @@
 2486,nocrash_mandatory_f_size_Ll,0,0
 2487,nocrash_mandatory_f_size_lL,0,0
 2488,nocrash_mandatory_f_lj_nowidth,0,0
->>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
 2489,moul_s_1,0,0
 2490,moul_s_2,0,0
 2491,moul_s_3,0,0
