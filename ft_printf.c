@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 19:41:31 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 20:54:06 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int			main()
 {
 	char	str[] = "0";
 	// printf("%d\n", ft_strcmp(str, "a"));
-	printf("@moulitest: %.d %.0d\n", 42, 43);
-	ft_printf("@moulitest: %.d %.0d\n", 42, 43);
+	printf("%+u\n", 4294967295);
+	ft_printf("%+u\n", 4294967295);
 	// ft_printf("", )
 //	ft_printf("%f", 1.0);
 //	printf("\nthis %u number", -267);

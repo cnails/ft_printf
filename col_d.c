@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:45:05 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 19:48:42 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 20:52:59 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		col_d_after_init(t_printf *a, long long *l)
 	if (a->one_s == 1 && !a->sign && l[0] >= 0 &&\
 		(a->space <= l[1] || a->dot == 2 || a->space_2 >= a->space))
 		collect_space(a);
-	if (a->dot == 1 && !a->space_2 && !a->space)
+	if (a->dot == 1 && !a->space_2 && !a->space && l[0] == 0)
 		a->sign ? collect(a, "+", 1) : collect(a, "", 0);
 	else if (a->dot && l[0] < 0 && a->space_2 >= l[1])
 		col_with_sign(a, l, "-");
