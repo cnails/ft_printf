@@ -1,0 +1,1220 @@
+Test 1507 (f_stress_prec16_limits_big) : FAILED.
+    First line of code: {return test("%.16f",  0.999999999999999900);}
+      expected output : "0.9999999999999999"
+      your output     : "0.9999999999999998"
+      expected (nonprintable as hex) : "0.9999999999999999"
+      actual   (nonprintable as hex) : "0.9999999999999998"
+
+Test 1512 (f_stress_prec18_rndu) : FAILED.
+    First line of code: {return test("%.18f",        0.125978542436587568);}
+      expected output : "0.125978542436587571"
+      your output     : "0.125978542436587616"
+      expected (nonprintable as hex) : "0.125978542436587571"
+      actual   (nonprintable as hex) : "0.125978542436587616"
+
+Test 1513 (f_stress_prec18_rndd) : FAILED.
+    First line of code: {return test("%.18f",        0.125978548534310421);}
+      expected output : "0.125978548534310425"
+      your output     : "0.125978548534310432"
+      expected (nonprintable as hex) : "0.125978548534310425"
+      actual   (nonprintable as hex) : "0.125978548534310432"
+
+Test 1523 (f_wprec1p) : FAILED.
+    First line of code: {return test("%5.1f", 7.3);}
+      expected output : "  7.3"
+      your output     : "007.3"
+      expected (nonprintable as hex) : "  7.3"
+      actual   (nonprintable as hex) : "007.3"
+
+Test 1527 (f_wprec1n) : FAILED.
+    First line of code: {return test("%5.1f", -7.3);}
+      expected output : " -7.3"
+      your output     : "0-7.3"
+      expected (nonprintable as hex) : " -7.3"
+      actual   (nonprintable as hex) : "0-7.3"
+
+Test 1530 (f_wzp_prec0p) : FAILED.
+    First line of code: {return test("%05.0f", 7.3);}
+      expected output : "00007"
+      your output     : "    7"
+      expected (nonprintable as hex) : "00007"
+      actual   (nonprintable as hex) : "    7"
+
+Test 1534 (f_wzp_prec0n) : FAILED.
+    First line of code: {return test("%05.0f", -7.3);}
+      expected output : "-0007"
+      your output     : "   -7"
+      expected (nonprintable as hex) : "-0007"
+      actual   (nonprintable as hex) : "   -7"
+
+Test 1535 (f_wzp_prec1n) : FAILED.
+    First line of code: {return test("%05.1f", -7.3);}
+      expected output : "-07.3"
+      your output     : "0-7.3"
+      expected (nonprintable as hex) : "-07.3"
+      actual   (nonprintable as hex) : "0-7.3"
+
+Test 1571 (f_was_prec1p) : FAILED.
+    First line of code: {return test("%+5.1f", 7.3);}
+      expected output : " +7.3"
+      your output     : "0+7.3"
+      expected (nonprintable as hex) : " +7.3"
+      actual   (nonprintable as hex) : "0+7.3"
+
+Test 1575 (f_was_prec1n) : FAILED.
+    First line of code: {return test("%+5.1f", -7.3);}
+      expected output : " -7.3"
+      your output     : "0-7.3"
+      expected (nonprintable as hex) : " -7.3"
+      actual   (nonprintable as hex) : "0-7.3"
+
+Test 1578 (f_wzpas_prec0p) : FAILED.
+    First line of code: {return test("%+05.0f", 7.3);}
+      expected output : "+0007"
+      your output     : "   +7"
+      expected (nonprintable as hex) : "+0007"
+      actual   (nonprintable as hex) : "   +7"
+
+Test 1579 (f_wzpas_prec1p) : FAILED.
+    First line of code: {return test("%+05.1f", 7.3);}
+      expected output : "+07.3"
+      your output     : "0+7.3"
+      expected (nonprintable as hex) : "+07.3"
+      actual   (nonprintable as hex) : "0+7.3"
+
+Test 1582 (f_wzpas_prec0n) : FAILED.
+    First line of code: {return test("%+05.0f", -7.3);}
+      expected output : "-0007"
+      your output     : "   -7"
+      expected (nonprintable as hex) : "-0007"
+      actual   (nonprintable as hex) : "   -7"
+
+Test 1583 (f_wzpas_prec1n) : FAILED.
+    First line of code: {return test("%+05.1f", -7.3);}
+      expected output : "-07.3"
+      your output     : "0-7.3"
+      expected (nonprintable as hex) : "-07.3"
+      actual   (nonprintable as hex) : "0-7.3"
+
+Test 1618 (f_wsp_prec0p) : FAILED.
+    First line of code: {return test("% 5.0f", 7.3);}
+      expected output : "    7"
+      your output     : "     7"
+      expected (nonprintable as hex) : "    7"
+      actual   (nonprintable as hex) : "     7"
+
+Test 1619 (f_wsp_prec1p) : FAILED.
+    First line of code: {return test("% 5.1f", 7.3);}
+      expected output : "  7.3"
+      your output     : " 007.3"
+      expected (nonprintable as hex) : "  7.3"
+      actual   (nonprintable as hex) : " 007.3"
+
+Test 1623 (f_wsp_prec1n) : FAILED.
+    First line of code: {return test("% 5.1f", -7.3);}
+      expected output : " -7.3"
+      your output     : "0-7.3"
+      expected (nonprintable as hex) : " -7.3"
+      actual   (nonprintable as hex) : "0-7.3"
+
+Test 1626 (f_wzpsp_prec0p) : FAILED.
+    First line of code: {return test("% 05.0f", 7.3);}
+      expected output : " 0007"
+      your output     : "     7"
+      expected (nonprintable as hex) : " 0007"
+      actual   (nonprintable as hex) : "     7"
+
+Test 1627 (f_wzpsp_prec1p) : FAILED.
+    First line of code: {return test("% 05.1f", 7.3);}
+      expected output : " 07.3"
+      your output     : " 007.3"
+      expected (nonprintable as hex) : " 07.3"
+      actual   (nonprintable as hex) : " 007.3"
+
+Test 1630 (f_wzpsp_prec0n) : FAILED.
+    First line of code: {return test("% 05.0f", -7.3);}
+      expected output : "-0007"
+      your output     : "   -7"
+      expected (nonprintable as hex) : "-0007"
+      actual   (nonprintable as hex) : "   -7"
+
+Test 1631 (f_wzpsp_prec1n) : FAILED.
+    First line of code: {return test("% 05.1f", -7.3);}
+      expected output : "-07.3"
+      your output     : "0-7.3"
+      expected (nonprintable as hex) : "-07.3"
+      actual   (nonprintable as hex) : "0-7.3"
+
+Test 1650 (f_wzpljrsp_prec0p) : FAILED.
+    First line of code: {return test("%- 5.0f", 7.3);}
+      expected output : " 7   "
+      your output     : "7    "
+      expected (nonprintable as hex) : " 7   "
+      actual   (nonprintable as hex) : "7    "
+
+Test 1651 (f_wzpljrsp_prec1p) : FAILED.
+    First line of code: {return test("%- 5.1f", 7.3);}
+      expected output : " 7.3 "
+      your output     : "7.3  "
+      expected (nonprintable as hex) : " 7.3 "
+      actual   (nonprintable as hex) : "7.3  "
+
+Test 1652 (f_wzpljrsp_prec3p) : FAILED.
+    First line of code: {return test("%- 5.3f", 7.3);}
+      expected output : " 7.300"
+      your output     : "7.300"
+      expected (nonprintable as hex) : " 7.300"
+      actual   (nonprintable as hex) : "7.300"
+
+Test 1653 (f_wzpljrsp_prec6p) : FAILED.
+    First line of code: {return test("%- 5.6f", 7.3);}
+      expected output : " 7.300000"
+      your output     : "7.300000"
+      expected (nonprintable as hex) : " 7.300000"
+      actual   (nonprintable as hex) : "7.300000"
+
+Test 1658 (f_wzpljafsp_prec0p) : FAILED.
+    First line of code: {return test("% #-5.0f", 7.3);}
+      expected output : " 7.  "
+      your output     : " 7   "
+      expected (nonprintable as hex) : " 7.  "
+      actual   (nonprintable as hex) : " 7   "
+
+Test 1758 (f_L_basic_1) : FAILED.
+    First line of code: {return test("this %Lf float", 1.5l);}
+    SEGFAULT
+
+Test 1759 (f_L_basic_fltonly) : FAILED.
+    First line of code: {return test("%Lf", 7.5l);}
+    SEGFAULT
+
+Test 1760 (f_L_basic_whole) : FAILED.
+    First line of code: {return test("%Lf", 1.0l);}
+    SEGFAULT
+
+Test 1761 (f_L_basic_negative) : FAILED.
+    First line of code: {return test("%Lf", -3.85l);}
+    SEGFAULT
+
+Test 1762 (f_L_basic_positive_3_3) : FAILED.
+    First line of code: {return test("%Lf", 573.924l);}
+    SEGFAULT
+
+Test 1763 (f_L_basic_negative_3_3) : FAILED.
+    First line of code: {return test("%Lf", -958.125l);}
+    SEGFAULT
+
+Test 1764 (f_L_basic_positive_smallfpart) : FAILED.
+    First line of code: {return test("%Lf", 23.00041l);}
+    SEGFAULT
+
+Test 1765 (f_L_basic_positive_allsmall) : FAILED.
+    First line of code: {return test("%Lf", 0.000039l);}
+    SEGFAULT
+
+Test 1766 (f_L_basic_negative_smallfpart) : FAILED.
+    First line of code: {return test("%Lf", -7.00036l);}
+    SEGFAULT
+
+Test 1767 (f_L_basic_negative_allsmall) : FAILED.
+    First line of code: {return test("%Lf", -0.00032l);}
+    SEGFAULT
+
+Test 1768 (f_L_basic_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%Lf", 0.000001l);}
+    SEGFAULT
+
+Test 1769 (f_L_basic_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%Lf", -0.000001l);}
+    SEGFAULT
+
+Test 1770 (f_L_basic_limits_smallfpart_pos) : FAILED.
+    First line of code: {return test("%Lf", 9873.000001l);}
+    SEGFAULT
+
+Test 1771 (f_L_basic_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%Lf", -875.000001l);}
+    SEGFAULT
+
+Test 1772 (f_L_basic_limits_allbig_pos) : FAILED.
+    First line of code: {return test("%Lf", 999.999999l);}
+    SEGFAULT
+
+Test 1773 (f_L_basic_limits_allbig_neg) : FAILED.
+    First line of code: {return test("%Lf", -99.999999l);}
+    SEGFAULT
+
+Test 1774 (f_L_basic_limits_bigfpart_pos) : FAILED.
+    First line of code: {return test("%Lf", 0.999999l);}
+    SEGFAULT
+
+Test 1775 (f_L_basic_limits_bigfpart_neg) : FAILED.
+    First line of code: {return test("%Lf", -0.999999l);}
+    SEGFAULT
+
+Test 1776 (f_L_rndd_pos) : FAILED.
+    First line of code: {return test("%Lf", 23.375094499l);}
+    SEGFAULT
+
+Test 1777 (f_L_rndd_neg) : FAILED.
+    First line of code: {return test("%Lf", -985.765426499l);}
+    SEGFAULT
+
+Test 1778 (f_L_rndu_pos) : FAILED.
+    First line of code: {return test("%Lf", 0.08942555l);}
+    SEGFAULT
+
+Test 1779 (f_L_rndu_neg) : FAILED.
+    First line of code: {return test("%Lf", -56.2012685l);}
+    SEGFAULT
+
+Test 1780 (f_L_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%Lf", 43.4399999l);}
+    SEGFAULT
+
+Test 1781 (f_L_rndu_multidigit_neg) : FAILED.
+    First line of code: {return test("%Lf", -5.0299999l);}
+    SEGFAULT
+
+Test 1782 (f_L_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%Lf", 43.43999949l);}
+    SEGFAULT
+
+Test 1783 (f_L_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%Lf", -5.02999949l);}
+    SEGFAULT
+
+Test 1784 (f_L_rndd_wholnobump_pos) : FAILED.
+    First line of code: {return test("%Lf", 1.99999949l);}
+    SEGFAULT
+
+Test 1785 (f_L_rndd_wholnobump_neg) : FAILED.
+    First line of code: {return test("%Lf", -0.99999949l);}
+    SEGFAULT
+
+Test 1786 (f_L_rndu_bumpwhole_pos) : FAILED.
+    First line of code: {return test("%Lf", 3.9999999l);}
+    SEGFAULT
+
+Test 1787 (f_L_rndu_bumpwhole_neg) : FAILED.
+    First line of code: {return test("%Lf", -5.9999999l);}
+    SEGFAULT
+
+Test 1788 (f_L_prec7_1) : FAILED.
+    First line of code: {return test("this %.7Lf float", 1.5l);}
+      expected output : "this 1.5000000 float"
+      your output     : "this  float"
+      expected (nonprintable as hex) : "this 1.5000000 float"
+      actual   (nonprintable as hex) : "this \x05 float"
+
+Test 1789 (f_L_prec7_fltonly) : FAILED.
+    First line of code: {return test("%.7Lf", 7.5l);}
+      expected output : "7.5000000"
+      your output     : ""
+      expected (nonprintable as hex) : "7.5000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1790 (f_L_prec7_whole) : FAILED.
+    First line of code: {return test("%.7Lf", 1.0l);}
+      expected output : "1.0000000"
+      your output     : ""
+      expected (nonprintable as hex) : "1.0000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1791 (f_L_prec7_negative) : FAILED.
+    First line of code: {return test("%.7Lf", -3.85l);}
+      expected output : "-3.8500000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-3.8500000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1792 (f_L_prec7_positive_3_3) : FAILED.
+    First line of code: {return test("%.7Lf", 573.924l);}
+      expected output : "573.9240000"
+      your output     : ""
+      expected (nonprintable as hex) : "573.9240000"
+      actual   (nonprintable as hex) : ""
+
+Test 1793 (f_L_prec7_negative_3_3) : FAILED.
+    First line of code: {return test("%.7Lf", -958.125l);}
+      expected output : "-958.1250000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-958.1250000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1794 (f_L_prec7_positive_smallfpart) : FAILED.
+    First line of code: {return test("%.7Lf", 23.00041l);}
+      expected output : "23.0004100"
+      your output     : ""
+      expected (nonprintable as hex) : "23.0004100"
+      actual   (nonprintable as hex) : ""
+
+Test 1795 (f_L_prec7_positive_allsmall) : FAILED.
+    First line of code: {return test("%.7Lf", 0.0000039l);}
+      expected output : "0.0000039"
+      your output     : ""
+      expected (nonprintable as hex) : "0.0000039"
+      actual   (nonprintable as hex) : ""
+
+Test 1796 (f_L_prec7_negative_smallfpart) : FAILED.
+    First line of code: {return test("%.7Lf", -7.00036l);}
+      expected output : "-7.0003600"
+      your output     : "-"
+      expected (nonprintable as hex) : "-7.0003600"
+      actual   (nonprintable as hex) : "-"
+
+Test 1797 (f_L_prec7_negative_allsmall) : FAILED.
+    First line of code: {return test("%.7Lf", -0.000032l);}
+      expected output : "-0.0000320"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.0000320"
+      actual   (nonprintable as hex) : "-"
+
+Test 1798 (f_L_prec7_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 0.0000001l);}
+      expected output : "0.0000001"
+      your output     : ""
+      expected (nonprintable as hex) : "0.0000001"
+      actual   (nonprintable as hex) : ""
+
+Test 1799 (f_L_prec7_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -0.0000001l);}
+      expected output : "-0.0000001"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.0000001"
+      actual   (nonprintable as hex) : "-"
+
+Test 1800 (f_L_prec7_limits_smallfpart_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 9873.000001l);}
+      expected output : "9873.0000010"
+      your output     : ""
+      expected (nonprintable as hex) : "9873.0000010"
+      actual   (nonprintable as hex) : ""
+
+Test 1801 (f_L_prec7_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -875.000001l);}
+      expected output : "-875.0000010"
+      your output     : "-"
+      expected (nonprintable as hex) : "-875.0000010"
+      actual   (nonprintable as hex) : "-"
+
+Test 1802 (f_L_prec7_limits_allbig_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 999.9999999l);}
+      expected output : "999.9999999"
+      your output     : ""
+      expected (nonprintable as hex) : "999.9999999"
+      actual   (nonprintable as hex) : ""
+
+Test 1803 (f_L_prec7_limits_allbig_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -99.9999999l);}
+      expected output : "-99.9999999"
+      your output     : "-"
+      expected (nonprintable as hex) : "-99.9999999"
+      actual   (nonprintable as hex) : "-"
+
+Test 1804 (f_L_prec7_limits_bigfpart_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 0.999999l);}
+      expected output : "0.9999990"
+      your output     : ""
+      expected (nonprintable as hex) : "0.9999990"
+      actual   (nonprintable as hex) : ""
+
+Test 1805 (f_L_prec7_limits_bigfpart_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -0.999999l);}
+      expected output : "-0.9999990"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.9999990"
+      actual   (nonprintable as hex) : "-"
+
+Test 1806 (f_L_rnd_prec7_rndd_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 23.375094499l);}
+      expected output : "23.3750945"
+      your output     : ""
+      expected (nonprintable as hex) : "23.3750945"
+      actual   (nonprintable as hex) : ""
+
+Test 1807 (f_L_rnd_prec7_rndd_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -985.765426499l);}
+      expected output : "-985.7654265"
+      your output     : "-"
+      expected (nonprintable as hex) : "-985.7654265"
+      actual   (nonprintable as hex) : "-"
+
+Test 1808 (f_L_rnd_prec7_rndu_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 0.0894255l);}
+      expected output : "0.0894255"
+      your output     : ""
+      expected (nonprintable as hex) : "0.0894255"
+      actual   (nonprintable as hex) : ""
+
+Test 1809 (f_L_rnd_prec7_rndu_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -56.2012685l);}
+      expected output : "-56.2012685"
+      your output     : "-"
+      expected (nonprintable as hex) : "-56.2012685"
+      actual   (nonprintable as hex) : "-"
+
+Test 1810 (f_L_rnd_prec7_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 43.4399999l);}
+      expected output : "43.4399999"
+      your output     : ""
+      expected (nonprintable as hex) : "43.4399999"
+      actual   (nonprintable as hex) : ""
+
+Test 1811 (f_L_rnd_prec7_rndu_multidigit_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -5.0299999l);}
+      expected output : "-5.0299999"
+      your output     : "-"
+      expected (nonprintable as hex) : "-5.0299999"
+      actual   (nonprintable as hex) : "-"
+
+Test 1812 (f_L_rnd_prec7_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 43.43999949l);}
+      expected output : "43.4399995"
+      your output     : ""
+      expected (nonprintable as hex) : "43.4399995"
+      actual   (nonprintable as hex) : ""
+
+Test 1813 (f_L_rnd_prec7_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -5.02999949l);}
+      expected output : "-5.0299995"
+      your output     : "-"
+      expected (nonprintable as hex) : "-5.0299995"
+      actual   (nonprintable as hex) : "-"
+
+Test 1814 (f_L_rnd_prec7_rndd_wholnobump_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 1.99999949l);}
+      expected output : "1.9999995"
+      your output     : ""
+      expected (nonprintable as hex) : "1.9999995"
+      actual   (nonprintable as hex) : ""
+
+Test 1815 (f_L_rnd_prec7_rndd_wholnobump_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -0.99999949l);}
+      expected output : "-0.9999995"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.9999995"
+      actual   (nonprintable as hex) : "-"
+
+Test 1816 (f_L_rnd_prec7_rndu_bumpwhole_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 3.9999999l);}
+      expected output : "3.9999999"
+      your output     : ""
+      expected (nonprintable as hex) : "3.9999999"
+      actual   (nonprintable as hex) : ""
+
+Test 1817 (f_L_prec8_1) : FAILED.
+    First line of code: {return test("this %.8Lf float", 1.5l);}
+      expected output : "this 1.50000000 float"
+      your output     : "this  float"
+      expected (nonprintable as hex) : "this 1.50000000 float"
+      actual   (nonprintable as hex) : "this \x05 float"
+
+Test 1818 (f_L_prec8_fltonly) : FAILED.
+    First line of code: {return test("%.8Lf", 7.5l);}
+      expected output : "7.50000000"
+      your output     : ""
+      expected (nonprintable as hex) : "7.50000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1819 (f_L_prec8_whole) : FAILED.
+    First line of code: {return test("%.8Lf", 1.0l);}
+      expected output : "1.00000000"
+      your output     : ""
+      expected (nonprintable as hex) : "1.00000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1820 (f_L_prec8_negative) : FAILED.
+    First line of code: {return test("%.8Lf", -3.85l);}
+      expected output : "-3.85000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-3.85000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1821 (f_L_prec8_positive_3_3) : FAILED.
+    First line of code: {return test("%.8Lf", 573.924l);}
+      expected output : "573.92400000"
+      your output     : ""
+      expected (nonprintable as hex) : "573.92400000"
+      actual   (nonprintable as hex) : ""
+
+Test 1822 (f_L_prec8_negative_3_3) : FAILED.
+    First line of code: {return test("%.8Lf", -958.125l);}
+      expected output : "-958.12500000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-958.12500000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1823 (f_L_prec8_positive_smallfpart) : FAILED.
+    First line of code: {return test("%.8Lf", 23.00041l);}
+      expected output : "23.00041000"
+      your output     : ""
+      expected (nonprintable as hex) : "23.00041000"
+      actual   (nonprintable as hex) : ""
+
+Test 1824 (f_L_prec8_positive_allsmall) : FAILED.
+    First line of code: {return test("%.8Lf", 0.00000039l);}
+      expected output : "0.00000039"
+      your output     : ""
+      expected (nonprintable as hex) : "0.00000039"
+      actual   (nonprintable as hex) : ""
+
+Test 1825 (f_L_prec8_negative_smallfpart) : FAILED.
+    First line of code: {return test("%.8Lf", -7.00036l);}
+      expected output : "-7.00036000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-7.00036000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1826 (f_L_prec8_negative_allsmall) : FAILED.
+    First line of code: {return test("%.8Lf", -0.0000032l);}
+      expected output : "-0.00000320"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.00000320"
+      actual   (nonprintable as hex) : "-"
+
+Test 1827 (f_L_prec8_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 0.00000001l);}
+      expected output : "0.00000001"
+      your output     : ""
+      expected (nonprintable as hex) : "0.00000001"
+      actual   (nonprintable as hex) : ""
+
+Test 1828 (f_L_prec8_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -0.00000001l);}
+      expected output : "-0.00000001"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.00000001"
+      actual   (nonprintable as hex) : "-"
+
+Test 1829 (f_L_prec8_limits_smallfpart_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 9873.000001l);}
+      expected output : "9873.00000100"
+      your output     : ""
+      expected (nonprintable as hex) : "9873.00000100"
+      actual   (nonprintable as hex) : ""
+
+Test 1830 (f_L_prec8_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -875.000001l);}
+      expected output : "-875.00000100"
+      your output     : "-"
+      expected (nonprintable as hex) : "-875.00000100"
+      actual   (nonprintable as hex) : "-"
+
+Test 1831 (f_L_prec8_limits_allbig_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 999.9999999l);}
+      expected output : "999.99999990"
+      your output     : ""
+      expected (nonprintable as hex) : "999.99999990"
+      actual   (nonprintable as hex) : ""
+
+Test 1832 (f_L_prec8_limits_allbig_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -99.99999999l);}
+      expected output : "-99.99999999"
+      your output     : "-"
+      expected (nonprintable as hex) : "-99.99999999"
+      actual   (nonprintable as hex) : "-"
+
+Test 1833 (f_L_prec8_limits_bigfpart_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 0.999999l);}
+      expected output : "0.99999900"
+      your output     : ""
+      expected (nonprintable as hex) : "0.99999900"
+      actual   (nonprintable as hex) : ""
+
+Test 1834 (f_L_prec8_limits_bigfpart_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -0.999999l);}
+      expected output : "-0.99999900"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.99999900"
+      actual   (nonprintable as hex) : "-"
+
+Test 1835 (f_L_rnd_prec8_rndd_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 23.375094499l);}
+      expected output : "23.37509450"
+      your output     : ""
+      expected (nonprintable as hex) : "23.37509450"
+      actual   (nonprintable as hex) : ""
+
+Test 1836 (f_L_rnd_prec8_rndd_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -985.765426499l);}
+      expected output : "-985.76542650"
+      your output     : "-"
+      expected (nonprintable as hex) : "-985.76542650"
+      actual   (nonprintable as hex) : "-"
+
+Test 1837 (f_L_rnd_prec8_rndu_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 0.0894255l);}
+      expected output : "0.08942550"
+      your output     : ""
+      expected (nonprintable as hex) : "0.08942550"
+      actual   (nonprintable as hex) : ""
+
+Test 1838 (f_L_rnd_prec8_rndu_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -56.2012685l);}
+      expected output : "-56.20126850"
+      your output     : "-"
+      expected (nonprintable as hex) : "-56.20126850"
+      actual   (nonprintable as hex) : "-"
+
+Test 1839 (f_L_rnd_prec8_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 43.4399999l);}
+      expected output : "43.43999990"
+      your output     : ""
+      expected (nonprintable as hex) : "43.43999990"
+      actual   (nonprintable as hex) : ""
+
+Test 1840 (f_L_rnd_prec8_rndu_multidigit_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -5.0299999l);}
+      expected output : "-5.02999990"
+      your output     : "-"
+      expected (nonprintable as hex) : "-5.02999990"
+      actual   (nonprintable as hex) : "-"
+
+Test 1841 (f_L_rnd_prec8_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 43.43999949l);}
+      expected output : "43.43999949"
+      your output     : ""
+      expected (nonprintable as hex) : "43.43999949"
+      actual   (nonprintable as hex) : ""
+
+Test 1842 (f_L_rnd_prec8_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -5.02999949l);}
+      expected output : "-5.02999949"
+      your output     : "-"
+      expected (nonprintable as hex) : "-5.02999949"
+      actual   (nonprintable as hex) : "-"
+
+Test 1843 (f_L_rnd_prec8_rndd_wholnobump_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 1.99999949l);}
+      expected output : "1.99999949"
+      your output     : ""
+      expected (nonprintable as hex) : "1.99999949"
+      actual   (nonprintable as hex) : ""
+
+Test 1844 (f_L_rnd_prec8_rndd_wholnobump_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -0.99999949l);}
+      expected output : "-0.99999949"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.99999949"
+      actual   (nonprintable as hex) : "-"
+
+Test 1845 (f_L_rnd_prec8_rndu_bumpwhole_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 3.9999999l);}
+      expected output : "3.99999990"
+      your output     : ""
+      expected (nonprintable as hex) : "3.99999990"
+      actual   (nonprintable as hex) : ""
+
+Test 1846 (f_L_prec9_1) : FAILED.
+    First line of code: {return test("this %.9Lf float", 1.5l);}
+      expected output : "this 1.500000000 float"
+      your output     : "this  float"
+      expected (nonprintable as hex) : "this 1.500000000 float"
+      actual   (nonprintable as hex) : "this \x05 float"
+
+Test 1847 (f_L_prec9_fltonly) : FAILED.
+    First line of code: {return test("%.9Lf", 7.5l);}
+      expected output : "7.500000000"
+      your output     : ""
+      expected (nonprintable as hex) : "7.500000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1848 (f_L_prec9_whole) : FAILED.
+    First line of code: {return test("%.9Lf", 1.0l);}
+      expected output : "1.000000000"
+      your output     : ""
+      expected (nonprintable as hex) : "1.000000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1849 (f_L_prec9_negative) : FAILED.
+    First line of code: {return test("%.9Lf", -3.85l);}
+      expected output : "-3.850000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-3.850000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1850 (f_L_prec9_positive_3_3) : FAILED.
+    First line of code: {return test("%.9Lf", 573.924l);}
+      expected output : "573.924000000"
+      your output     : ""
+      expected (nonprintable as hex) : "573.924000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1851 (f_L_prec9_negative_3_3) : FAILED.
+    First line of code: {return test("%.9Lf", -958.125l);}
+      expected output : "-958.125000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-958.125000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1852 (f_L_prec9_positive_smallfpart) : FAILED.
+    First line of code: {return test("%.9Lf", 23.00041l);}
+      expected output : "23.000410000"
+      your output     : ""
+      expected (nonprintable as hex) : "23.000410000"
+      actual   (nonprintable as hex) : ""
+
+Test 1853 (f_L_prec9_positive_allsmall) : FAILED.
+    First line of code: {return test("%.9Lf", 0.00000039l);}
+      expected output : "0.000000390"
+      your output     : ""
+      expected (nonprintable as hex) : "0.000000390"
+      actual   (nonprintable as hex) : ""
+
+Test 1854 (f_L_prec9_negative_smallfpart) : FAILED.
+    First line of code: {return test("%.9Lf", -7.00036l);}
+      expected output : "-7.000360000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-7.000360000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1855 (f_L_prec9_negative_allsmall) : FAILED.
+    First line of code: {return test("%.9Lf", -0.0000032l);}
+      expected output : "-0.000003200"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.000003200"
+      actual   (nonprintable as hex) : "-"
+
+Test 1856 (f_L_prec9_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 0.00000001l);}
+      expected output : "0.000000010"
+      your output     : ""
+      expected (nonprintable as hex) : "0.000000010"
+      actual   (nonprintable as hex) : ""
+
+Test 1857 (f_L_prec9_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -0.00000001l);}
+      expected output : "-0.000000010"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.000000010"
+      actual   (nonprintable as hex) : "-"
+
+Test 1858 (f_L_prec9_limits_smallfpart_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 9873.000001l);}
+      expected output : "9873.000001000"
+      your output     : ""
+      expected (nonprintable as hex) : "9873.000001000"
+      actual   (nonprintable as hex) : ""
+
+Test 1859 (f_L_prec9_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -875.000001l);}
+      expected output : "-875.000001000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-875.000001000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1860 (f_L_prec9_limits_allbig_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 999.99999999l);}
+      expected output : "999.999999990"
+      your output     : ""
+      expected (nonprintable as hex) : "999.999999990"
+      actual   (nonprintable as hex) : ""
+
+Test 1861 (f_L_prec9_limits_allbig_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -99.99999999l);}
+      expected output : "-99.999999990"
+      your output     : "-"
+      expected (nonprintable as hex) : "-99.999999990"
+      actual   (nonprintable as hex) : "-"
+
+Test 1862 (f_L_prec9_limits_bigfpart_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 0.999999l);}
+      expected output : "0.999999000"
+      your output     : ""
+      expected (nonprintable as hex) : "0.999999000"
+      actual   (nonprintable as hex) : ""
+
+Test 1863 (f_L_prec9_limits_bigfpart_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -0.999999l);}
+      expected output : "-0.999999000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.999999000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1864 (f_L_rnd_prec9_rndd_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 23.375094499l);}
+      expected output : "23.375094499"
+      your output     : ""
+      expected (nonprintable as hex) : "23.375094499"
+      actual   (nonprintable as hex) : ""
+
+Test 1865 (f_L_rnd_prec9_rndd_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -985.765426499l);}
+      expected output : "-985.765426499"
+      your output     : "-"
+      expected (nonprintable as hex) : "-985.765426499"
+      actual   (nonprintable as hex) : "-"
+
+Test 1866 (f_L_rnd_prec9_rndu_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 0.0894255l);}
+      expected output : "0.089425500"
+      your output     : ""
+      expected (nonprintable as hex) : "0.089425500"
+      actual   (nonprintable as hex) : ""
+
+Test 1867 (f_L_rnd_prec9_rndu_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -56.2012685l);}
+      expected output : "-56.201268500"
+      your output     : "-"
+      expected (nonprintable as hex) : "-56.201268500"
+      actual   (nonprintable as hex) : "-"
+
+Test 1868 (f_L_rnd_prec9_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 43.4399999l);}
+      expected output : "43.439999900"
+      your output     : ""
+      expected (nonprintable as hex) : "43.439999900"
+      actual   (nonprintable as hex) : ""
+
+Test 1869 (f_L_rnd_prec9_rndu_multidigit_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -5.0299999l);}
+      expected output : "-5.029999900"
+      your output     : "-"
+      expected (nonprintable as hex) : "-5.029999900"
+      actual   (nonprintable as hex) : "-"
+
+Test 1870 (f_L_rnd_prec9_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 43.43999949l);}
+      expected output : "43.439999490"
+      your output     : ""
+      expected (nonprintable as hex) : "43.439999490"
+      actual   (nonprintable as hex) : ""
+
+Test 1871 (f_L_rnd_prec9_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -5.02999949l);}
+      expected output : "-5.029999490"
+      your output     : "-"
+      expected (nonprintable as hex) : "-5.029999490"
+      actual   (nonprintable as hex) : "-"
+
+Test 1872 (f_L_rnd_prec9_rndd_wholnobump_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 1.99999949l);}
+      expected output : "1.999999490"
+      your output     : ""
+      expected (nonprintable as hex) : "1.999999490"
+      actual   (nonprintable as hex) : ""
+
+Test 1873 (f_L_rnd_prec9_rndd_wholnobump_neg) : FAILED.
+    First line of code: {return test("%.9Lf", -0.99999949l);}
+      expected output : "-0.999999490"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.999999490"
+      actual   (nonprintable as hex) : "-"
+
+Test 1874 (f_L_rnd_prec9_rndu_bumpwhole_pos) : FAILED.
+    First line of code: {return test("%.9Lf", 3.9999999l);}
+      expected output : "3.999999900"
+      your output     : ""
+      expected (nonprintable as hex) : "3.999999900"
+      actual   (nonprintable as hex) : ""
+
+Test 1875 (f_L_stress_prec10_1) : FAILED.
+    First line of code: {return test("this %.10Lf float", 1.5l);}
+      expected output : "this 1.5000000000 float"
+      your output     : "this  float"
+      expected (nonprintable as hex) : "this 1.5000000000 float"
+      actual   (nonprintable as hex) : "this \x05 float"
+
+Test 1876 (f_L_stress_prec10_fltonly) : FAILED.
+    First line of code: {return test("%.10Lf", 7.5l);}
+      expected output : "7.5000000000"
+      your output     : ""
+      expected (nonprintable as hex) : "7.5000000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1877 (f_L_stress_prec10_whole) : FAILED.
+    First line of code: {return test("%.10Lf", 1.0l);}
+      expected output : "1.0000000000"
+      your output     : ""
+      expected (nonprintable as hex) : "1.0000000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1878 (f_L_stress_prec10_negative) : FAILED.
+    First line of code: {return test("%.10Lf", -3.85l);}
+      expected output : "-3.8500000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-3.8500000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1879 (f_L_stress_prec10_positive_3_10) : FAILED.
+    First line of code: {return test("%.10Lf", 573.924l);}
+      expected output : "573.9240000000"
+      your output     : ""
+      expected (nonprintable as hex) : "573.9240000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1880 (f_L_stress_prec10_negative_3_10) : FAILED.
+    First line of code: {return test("%.10Lf", -958.125l);}
+      expected output : "-958.1250000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-958.1250000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1881 (f_L_stress_prec10_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 23.8341375094l);}
+      expected output : "23.8341375094"
+      your output     : ""
+      expected (nonprintable as hex) : "23.8341375094"
+      actual   (nonprintable as hex) : ""
+
+Test 1882 (f_L_stress_prec10_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -985.2459765426l);}
+      expected output : "-985.2459765426"
+      your output     : "-"
+      expected (nonprintable as hex) : "-985.2459765426"
+      actual   (nonprintable as hex) : "-"
+
+Test 1883 (f_L_stress_prec10_rndd_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 23.8341375094499l);}
+      expected output : "23.8341375094"
+      your output     : ""
+      expected (nonprintable as hex) : "23.8341375094"
+      actual   (nonprintable as hex) : ""
+
+Test 1884 (f_L_stress_prec10_rndd_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -985.2459765426499l);}
+      expected output : "-985.2459765426"
+      your output     : "-"
+      expected (nonprintable as hex) : "-985.2459765426"
+      actual   (nonprintable as hex) : "-"
+
+Test 1885 (f_L_stress_prec10_rndu_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 0.87650894255l);}
+      expected output : "0.8765089426"
+      your output     : ""
+      expected (nonprintable as hex) : "0.8765089426"
+      actual   (nonprintable as hex) : ""
+
+Test 1886 (f_L_stress_prec10_rndu_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -56.47852012685l);}
+      expected output : "-56.4785201269"
+      your output     : "-"
+      expected (nonprintable as hex) : "-56.4785201269"
+      actual   (nonprintable as hex) : "-"
+
+Test 1887 (f_L_stress_prec10_positive_smallfpart) : FAILED.
+    First line of code: {return test("%.10Lf", 23.000000041l);}
+      expected output : "23.0000000410"
+      your output     : ""
+      expected (nonprintable as hex) : "23.0000000410"
+      actual   (nonprintable as hex) : ""
+
+Test 1888 (f_L_stress_prec10_positive_allsmall) : FAILED.
+    First line of code: {return test("%.10Lf", 0.0000000039l);}
+      expected output : "0.0000000039"
+      your output     : ""
+      expected (nonprintable as hex) : "0.0000000039"
+      actual   (nonprintable as hex) : ""
+
+Test 1889 (f_L_stress_prec10_negative_smallfpart) : FAILED.
+    First line of code: {return test("%.10Lf", -7.000000036l);}
+      expected output : "-7.0000000360"
+      your output     : "-"
+      expected (nonprintable as hex) : "-7.0000000360"
+      actual   (nonprintable as hex) : "-"
+
+Test 1890 (f_L_stress_prec10_negative_allsmall) : FAILED.
+    First line of code: {return test("%.10Lf", -0.000000032l);}
+      expected output : "-0.0000000320"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.0000000320"
+      actual   (nonprintable as hex) : "-"
+
+Test 1891 (f_L_stress_prec10_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 0.0000000001l);}
+      expected output : "0.0000000001"
+      your output     : ""
+      expected (nonprintable as hex) : "0.0000000001"
+      actual   (nonprintable as hex) : ""
+
+Test 1892 (f_L_stress_prec10_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -0.0000000001l);}
+      expected output : "-0.0000000001"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.0000000001"
+      actual   (nonprintable as hex) : "-"
+
+Test 1893 (f_L_stress_prec10_limits_smallfpart_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 9873.0000000001l);}
+      expected output : "9873.0000000001"
+      your output     : ""
+      expected (nonprintable as hex) : "9873.0000000001"
+      actual   (nonprintable as hex) : ""
+
+Test 1894 (f_L_stress_prec10_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -875.0000000001l);}
+      expected output : "-875.0000000001"
+      your output     : "-"
+      expected (nonprintable as hex) : "-875.0000000001"
+      actual   (nonprintable as hex) : "-"
+
+Test 1895 (f_L_stress_prec10_limits_allbig_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 999.9999999999l);}
+      expected output : "999.9999999999"
+      your output     : ""
+      expected (nonprintable as hex) : "999.9999999999"
+      actual   (nonprintable as hex) : ""
+
+Test 1896 (f_L_stress_prec10_limits_allbig_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -99.9999999999l);}
+      expected output : "-99.9999999999"
+      your output     : "-"
+      expected (nonprintable as hex) : "-99.9999999999"
+      actual   (nonprintable as hex) : "-"
+
+Test 1897 (f_L_stress_prec10_limits_bigfpart_pos) : FAILED.
+    First line of code: {return test("%.10Lf", 0.9999999999l);}
+      expected output : "0.9999999999"
+      your output     : ""
+      expected (nonprintable as hex) : "0.9999999999"
+      actual   (nonprintable as hex) : ""
+
+Test 1898 (f_L_stress_prec10_limits_bigfpart_neg) : FAILED.
+    First line of code: {return test("%.10Lf", -0.9999999999l);}
+      expected output : "-0.9999999999"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.9999999999"
+      actual   (nonprintable as hex) : "-"
+
+Test 1910 (f_L_stress_prec16_limits_big) : FAILED.
+    First line of code: {return test("%.16f",  0.999999999999999900000);}
+      expected output : "0.9999999999999999"
+      your output     : "0.9999999999999998"
+      expected (nonprintable as hex) : "0.9999999999999999"
+      actual   (nonprintable as hex) : "0.9999999999999998"
+
+Test 1915 (f_L_stress_prec18_rndu) : FAILED.
+    First line of code: {return test("%.18f",        1.025978542436587568678);}
+      expected output : "1.025978542436587482"
+      your output     : "1.025978542436587480"
+      expected (nonprintable as hex) : "1.025978542436587482"
+      actual   (nonprintable as hex) : "1.025978542436587480"
+
+Test 1916 (f_L_stress_prec18_rndd) : FAILED.
+    First line of code: {return test("%.18f",        1.025978548534310421834);}
+      expected output : "1.025978548534310475"
+      your output     : "1.025978548534310460"
+      expected (nonprintable as hex) : "1.025978548534310475"
+      actual   (nonprintable as hex) : "1.025978548534310460"
+
+Test 1919 (f_L_stress_prec19_rndu) : FAILED.
+    First line of code: {return test("%.19f",        1.025978542436587568678);}
+      expected output : "1.0259785424365874817"
+      your output     : "1.0259785424365874816"
+      expected (nonprintable as hex) : "1.0259785424365874817"
+      actual   (nonprintable as hex) : "1.0259785424365874816"
+
+Test 1920 (f_L_stress_prec19_rndd) : FAILED.
+    First line of code: {return test("%.19f",        1.025978548534310421934);}
+      expected output : "1.0259785485343104749"
+      your output     : "1.0259785485343104608"
+      expected (nonprintable as hex) : "1.0259785485343104749"
+      actual   (nonprintable as hex) : "1.0259785485343104608"
+
+Test 1923 (f_L_stress_prec20_rndu) : FAILED.
+    First line of code: {return test("%.20f",        1.025978542436587568678);}
+      expected output : "1.02597854243658748175"
+      your output     : "1.02597854243658747904"
+      expected (nonprintable as hex) : "1.02597854243658748175"
+      actual   (nonprintable as hex) : "1.02597854243658747904"
+
+Test 1924 (f_L_stress_prec20_rndd) : FAILED.
+    First line of code: {return test("%.20f",        1.025978548534310422034);}
+      expected output : "1.02597854853431047495"
+      your output     : "1.02597854853431046144"
+      expected (nonprintable as hex) : "1.02597854853431047495"
+      actual   (nonprintable as hex) : "1.02597854853431046144"
+
+Test 1989 (f_L_limits_dblmin_prec0) : FAILED.
+    First line of code: {return test("%.0Lf", LDBL_MIN);}
+      expected output : "0"
+      your output     : ""
+      expected (nonprintable as hex) : "0"
+      actual   (nonprintable as hex) : ""
+
+Test 1990 (f_L_limits_dblmin_prec3) : FAILED.
+    First line of code: {return test("%.3Lf", LDBL_MIN);}
+      expected output : "0.000"
+      your output     : ""
+      expected (nonprintable as hex) : "0.000"
+      actual   (nonprintable as hex) : ""
+
+Test 1991 (f_L_limits_dblmin_precd) : FAILED.
+    First line of code: {return test("%Lf", LDBL_MIN);}
+    SEGFAULT
+
+Test 1992 (f_L_limits_dblmin_prec8) : FAILED.
+    First line of code: {return test("%.8Lf", LDBL_MIN);}
+      expected output : "0.00000000"
+      your output     : ""
+      expected (nonprintable as hex) : "0.00000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1993 (f_L_stress_limits_dblmin_prec12) : FAILED.
+    First line of code: {return test("%.12Lf", LDBL_MIN);}
+      expected output : "0.000000000000"
+      your output     : ""
+      expected (nonprintable as hex) : "0.000000000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1994 (f_L_stress_limits_dblmin_prec16) : FAILED.
+    First line of code: {return test("%.16Lf", LDBL_MIN);}
+      expected output : "0.0000000000000000"
+      your output     : ""
+      expected (nonprintable as hex) : "0.0000000000000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1995 (f_L_stress_limits_dblmin_prec18) : FAILED.
+    First line of code: {return test("%.18Lf", LDBL_MIN);}
+      expected output : "0.000000000000000000"
+      your output     : ""
+      expected (nonprintable as hex) : "0.000000000000000000"
+      actual   (nonprintable as hex) : ""
+
+Test 1996 (f_L_limits_ndblmin_prec0) : FAILED.
+    First line of code: {return test("%.0Lf", -LDBL_MIN);}
+      expected output : "-0"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0"
+      actual   (nonprintable as hex) : "-"
+
+Test 1997 (f_L_limits_ndblmin_prec3) : FAILED.
+    First line of code: {return test("%.3Lf", -LDBL_MIN);}
+      expected output : "-0.000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.000"
+      actual   (nonprintable as hex) : "-"
+
+Test 1998 (f_L_limits_ndblmin_precd) : FAILED.
+    First line of code: {return test("%Lf", -LDBL_MIN);}
+    SEGFAULT
+
+Test 1999 (f_L_limits_ndblmin_prec8) : FAILED.
+    First line of code: {return test("%.8Lf", -LDBL_MIN);}
+      expected output : "-0.00000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.00000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 2000 (f_L_stress_limits_ndblmin_prec12) : FAILED.
+    First line of code: {return test("%.12Lf", -LDBL_MIN);}
+      expected output : "-0.000000000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.000000000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 2001 (f_L_stress_limits_ndblmin_prec16) : FAILED.
+    First line of code: {return test("%.16Lf", -LDBL_MIN);}
+      expected output : "-0.0000000000000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.0000000000000000"
+      actual   (nonprintable as hex) : "-"
+
+Test 2002 (f_L_stress_limits_ndblmin_prec18) : FAILED.
+    First line of code: {return test("%.18Lf", -LDBL_MIN);}
+      expected output : "-0.000000000000000000"
+      your output     : "-"
+      expected (nonprintable as hex) : "-0.000000000000000000"
+      actual   (nonprintable as hex) : "-"
+
