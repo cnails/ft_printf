@@ -159,3 +159,8 @@ Test 1924 (f_L_stress_prec20_rndd) : FAILED.
       expected (nonprintable as hex) : "1.02597854853431047495"
       actual   (nonprintable as hex) : "1.02597854853431046144"
 
+Test 2487 (nocrash_mandatory_f_size_lL) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%lLf", 42.5);}
+    SEGFAULT
+

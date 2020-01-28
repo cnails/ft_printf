@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/27 19:05:07 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 19:38:22 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	col_par_second(t_printf *a)
 		a->one_s = 1;
 	if (*a->str == '+' || *a->str == '-' || *a->str == '\'')
 		col_plus_min_sl(a);
-	if (*a->str == ' ')
+	while (*a->str == ' ')
 		a->str++;
 	if (*a->str == '.' || *a->str == '0' || *a->str == '#')
 		col_dot(a);
