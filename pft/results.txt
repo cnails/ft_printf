@@ -75,33 +75,47 @@ Test 1583 (f_wzpas_prec1n) : FAILED.
       expected (nonprintable as hex) : "-07.3"
       actual   (nonprintable as hex) : " -7.3"
 
-Test 1618 (f_wsp_prec0p) : FAILED.
-    First line of code: {return test("% 5.0f", 7.3);}
-      expected output : "    7"
-      your output     : "     7"
-      expected (nonprintable as hex) : "    7"
-      actual   (nonprintable as hex) : "     7"
+Test 1620 (f_wsp_prec3p) : FAILED.
+    First line of code: {return test("% 5.3f", 7.3);}
+      expected output : " 7.300"
+      your output     : "7.300"
+      expected (nonprintable as hex) : " 7.300"
+      actual   (nonprintable as hex) : "7.300"
 
-Test 1619 (f_wsp_prec1p) : FAILED.
-    First line of code: {return test("% 5.1f", 7.3);}
-      expected output : "  7.3"
-      your output     : "   7.3"
-      expected (nonprintable as hex) : "  7.3"
-      actual   (nonprintable as hex) : "   7.3"
+Test 1621 (f_wsp_prec6p) : FAILED.
+    First line of code: {return test("% 5.6f", 7.3);}
+      expected output : " 7.300000"
+      your output     : "7.300000"
+      expected (nonprintable as hex) : " 7.300000"
+      actual   (nonprintable as hex) : "7.300000"
 
 Test 1626 (f_wzpsp_prec0p) : FAILED.
     First line of code: {return test("% 05.0f", 7.3);}
       expected output : " 0007"
-      your output     : "     7"
+      your output     : "    7"
       expected (nonprintable as hex) : " 0007"
-      actual   (nonprintable as hex) : "     7"
+      actual   (nonprintable as hex) : "    7"
 
 Test 1627 (f_wzpsp_prec1p) : FAILED.
     First line of code: {return test("% 05.1f", 7.3);}
       expected output : " 07.3"
-      your output     : "   7.3"
+      your output     : "  7.3"
       expected (nonprintable as hex) : " 07.3"
-      actual   (nonprintable as hex) : "   7.3"
+      actual   (nonprintable as hex) : "  7.3"
+
+Test 1628 (f_wzpsp_prec3p) : FAILED.
+    First line of code: {return test("% 05.3f", 7.3);}
+      expected output : " 7.300"
+      your output     : "7.300"
+      expected (nonprintable as hex) : " 7.300"
+      actual   (nonprintable as hex) : "7.300"
+
+Test 1629 (f_wzpsp_prec6p) : FAILED.
+    First line of code: {return test("% 05.6f", 7.3);}
+      expected output : " 7.300000"
+      your output     : "7.300000"
+      expected (nonprintable as hex) : " 7.300000"
+      actual   (nonprintable as hex) : "7.300000"
 
 Test 1630 (f_wzpsp_prec0n) : FAILED.
     First line of code: {return test("% 05.0f", -7.3);}
@@ -120,30 +134,58 @@ Test 1631 (f_wzpsp_prec1n) : FAILED.
 Test 1634 (f_wljsp_prec0p) : FAILED.
     First line of code: {return test("% -5.0f", 7.3);}
       expected output : " 7   "
-      your output     : " 7    "
+      your output     : "7    "
       expected (nonprintable as hex) : " 7   "
-      actual   (nonprintable as hex) : " 7    "
+      actual   (nonprintable as hex) : "7    "
 
 Test 1635 (f_wljsp_prec1p) : FAILED.
     First line of code: {return test("% -5.1f", 7.3);}
       expected output : " 7.3 "
-      your output     : " 7.3  "
+      your output     : "7.3  "
       expected (nonprintable as hex) : " 7.3 "
-      actual   (nonprintable as hex) : " 7.3  "
+      actual   (nonprintable as hex) : "7.3  "
+
+Test 1636 (f_wljsp_prec3p) : FAILED.
+    First line of code: {return test("% -5.3f", 7.3);}
+      expected output : " 7.300"
+      your output     : "7.300"
+      expected (nonprintable as hex) : " 7.300"
+      actual   (nonprintable as hex) : "7.300"
+
+Test 1637 (f_wljsp_prec6p) : FAILED.
+    First line of code: {return test("% -5.6f", 7.3);}
+      expected output : " 7.300000"
+      your output     : "7.300000"
+      expected (nonprintable as hex) : " 7.300000"
+      actual   (nonprintable as hex) : "7.300000"
 
 Test 1642 (f_wzpljsp_prec0p_ignoreflag) : FAILED.
     First line of code: {return test("% -05.0f", 7.3);}
       expected output : " 7   "
-      your output     : " 7    "
+      your output     : "7    "
       expected (nonprintable as hex) : " 7   "
-      actual   (nonprintable as hex) : " 7    "
+      actual   (nonprintable as hex) : "7    "
 
 Test 1643 (f_wzpljsp_prec1p_ignoreflag) : FAILED.
     First line of code: {return test("% -05.1f", 7.3);}
       expected output : " 7.3 "
-      your output     : " 7.3  "
+      your output     : "7.3  "
       expected (nonprintable as hex) : " 7.3 "
-      actual   (nonprintable as hex) : " 7.3  "
+      actual   (nonprintable as hex) : "7.3  "
+
+Test 1644 (f_wzpljsp_prec3p_ignoreflag) : FAILED.
+    First line of code: {return test("% -05.3f", 7.3);}
+      expected output : " 7.300"
+      your output     : "7.300"
+      expected (nonprintable as hex) : " 7.300"
+      actual   (nonprintable as hex) : "7.300"
+
+Test 1645 (f_wzpljsp_prec6p_ignoreflag) : FAILED.
+    First line of code: {return test("% -05.6f", 7.3);}
+      expected output : " 7.300000"
+      your output     : "7.300000"
+      expected (nonprintable as hex) : " 7.300000"
+      actual   (nonprintable as hex) : "7.300000"
 
 Test 1650 (f_wzpljrsp_prec0p) : FAILED.
     First line of code: {return test("%- 5.0f", 7.3);}
@@ -176,16 +218,30 @@ Test 1653 (f_wzpljrsp_prec6p) : FAILED.
 Test 1658 (f_wzpljafsp_prec0p) : FAILED.
     First line of code: {return test("% #-5.0f", 7.3);}
       expected output : " 7.  "
-      your output     : " 7.   "
+      your output     : "7.   "
       expected (nonprintable as hex) : " 7.  "
-      actual   (nonprintable as hex) : " 7.   "
+      actual   (nonprintable as hex) : "7.   "
 
 Test 1659 (f_wzpljafsp_prec1p) : FAILED.
     First line of code: {return test("% #-5.1f", 7.3);}
       expected output : " 7.3 "
-      your output     : " 7.3  "
+      your output     : "7.3  "
       expected (nonprintable as hex) : " 7.3 "
-      actual   (nonprintable as hex) : " 7.3  "
+      actual   (nonprintable as hex) : "7.3  "
+
+Test 1660 (f_wzpljafsp_prec3p) : FAILED.
+    First line of code: {return test("% #-5.3f", 7.3);}
+      expected output : " 7.300"
+      your output     : "7.300"
+      expected (nonprintable as hex) : " 7.300"
+      actual   (nonprintable as hex) : "7.300"
+
+Test 1661 (f_wzpljafsp_prec6p) : FAILED.
+    First line of code: {return test("% #-5.6f", 7.3);}
+      expected output : " 7.300000"
+      your output     : "7.300000"
+      expected (nonprintable as hex) : " 7.300000"
+      actual   (nonprintable as hex) : "7.300000"
 
 Test 1910 (f_L_stress_prec16_limits_big) : FAILED.
     First line of code: {return test("%.16f",  0.999999999999999900000);}
