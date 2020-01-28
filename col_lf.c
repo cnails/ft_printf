@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 18:32:55 by dmetallo          #+#    #+#             */
-/*   Updated: 2020/01/28 18:36:44 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 21:12:46 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char			*ft_lftoa(t_printf *a, long double f, int n)
 	l = n;
 	f_2 = (f - (long long)f);
 	f = lrounding(f, l);
+	if (f != f)
+		return ("nan");
 	str = ft_itoa((long long)(f));
 	f_2 = lrounding(f_2, l);
 	while (n-- > 0)
