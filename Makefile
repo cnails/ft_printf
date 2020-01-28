@@ -50,7 +50,8 @@ norme:
 	norminette ./$(DIR_S)/
 
 clean:
-	@rm -f $(OBJS)
+
+	@rm -rf *.o
 	@rm -rf $(DIR_O)
 	@make clean -C $(LIBFT)
 

@@ -61,5 +61,9 @@ void				ft_printbits(unsigned long int octet);
 void				col_ld(t_printf *a, long int nb, char c);
 void				col_with_sign(t_printf *a, long long *l, char *sign);
 void				one_more_costil(t_printf *a, long long *l);
+char				*post_dot(double f, char *str, int l);
+long double			lrounding(long double nb, int l);
+double				rounding(double nb, int l);
+char				*ft_qitoa(unsigned long int n, int l);
 
 #endif
