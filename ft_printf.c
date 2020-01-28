@@ -128,7 +128,7 @@ void	col_f(t_printf *a, double d)
 	char	*str;
 	char	*tmp;
 
-	if (a->one_s && a->space_2 && d >= 0)
+	if (a->one_s && a->dot && d >= 0 && !a->sign)
 		collect_space(a);
 	if (d < 0)
 		tmp = ft_strdup("-");
@@ -233,8 +233,8 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%- 5d\n", -7);
-// 	ft_printf("%- 5d", -7);
+// 	printf("% -5.6f\n", 7.3);
+// 	ft_printf("% -5.6f", 7.3);
 // 	// ft_printf("", )
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);
