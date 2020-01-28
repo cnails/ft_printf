@@ -220,7 +220,7 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 	l = n;
 	f_2 = (f - (int)f);
 	f = rounding(f, l);
-	str = ft_itoa((int)(f));
+	str = ft_itoa((long long)(f));
 
 	f_2 = rounding(f_2, l);
 
@@ -247,8 +247,8 @@ int 		main()
 {
 	char str[] = "0";
 	// printf("%d\n", ft_strcmp(str, "a"));
-	printf("%05.1f\n", 7.3);
-	ft_printf("%05.1f", 7.3);
+	printf("%% 4.5d 42 == |% 4.5d|\n", 42);
+	ft_printf("%% 4.5d 42 == |% 4.5d|", 42);
 	// ft_printf("", )
 //	ft_printf("%f", 1.0);
 //	printf("\nthis %u number", -267);
