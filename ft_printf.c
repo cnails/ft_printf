@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/27 20:32:15 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 15:31:10 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,12 @@ void	col_f(t_printf *a, double d)
 	char	*str;
 	char	*tmp;
 
+	// printf("dot = %d\n", a->dot);
 	if (a->one_s && a->dot && d >= 0 && !a->sign)
 	{
 		a->buf = a->buf ? a->buf : ft_strset(' ', 0);
+		if (a->space)
+			a->space = a->space + (a->align ? 1 : -1);
 		tmp = ft_strjoin(a->buf, " ");
 		a->len++;
 		free(a->buf);
@@ -140,7 +143,6 @@ void	col_f(t_printf *a, double d)
 		tmp = ft_strdup("-");
 	else
 		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
-	// tmp = ft_strdup("");
 	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
 	// if (a->space && a->dot)
 	// 	col_f_with_zero(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
@@ -239,8 +241,8 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("% #-5.0f\n", 7.3);
-// 	ft_printf("% #-5.0f", 7.3);
+// 	printf("% 05.0f\n", 7.3);
+// 	ft_printf("% 05.0f", 7.3);
 // 	// ft_printf("", )
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);
