@@ -172,13 +172,12 @@ void	col_lf(t_printf *a, long double d)
 	char	*str;
 	char	*tmp;
 	
-	// printf("d = %Lf\n", d);
 	if (d < 0)
 		tmp = ft_strdup("-");
 	else
-		tmp = ft_strdup("");
+		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
 	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
-	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + (d < 0 ? 1 : 0));
+	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
 
 static char		*ft_qitoa(unsigned long int n, int l)
