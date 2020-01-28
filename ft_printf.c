@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 18:36:27 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 19:25:52 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void	col_f(t_printf *a, double d)
 	// 	printf("here\n");
 	// }
 	// a->space_2 = a->space;
-	a->dot = 2;
+	// a->dot = 2;
 	// a->space = 0;
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
@@ -317,8 +317,10 @@ static char			*ft_lftoa(t_printf *a, long double f, int n)
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%lLf", 42.5L);
-// //	ft_printf("%lLf", 42.5);
+// 	// printf("%x\n", -42);
+// 	// ft_printf("%x\n", -42);
+// 	printf("%x\n", 4294967296);
+// 	ft_printf("%x\n", 4294967296);
 // 	// ft_printf("", )
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);

@@ -6,23 +6,39 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 17:53:53 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 19:24:27 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ret_s(t_printf *a, void *str, char c)
+char    *ret_s(t_printf *a, void *str, char c)
 {
-	if (a->h == 1)
-		return (ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a'));
-	else if (a->h == 2)
-		return (ft_itoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a'));
-	else if (a->l == 2)
-		return (ft_itoa_base((unsigned long long)str, 16,\
-			c == 'X' ? 'A' : 'a'));
-	else
-		return (ft_itoa_base((long int)str, 16, c == 'X' ? 'A' : 'a'));
+    if (a->h == 1)
+        return (ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a'));
+    else if (a->h == 2)
+        return (ft_itoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a'));
+    else if (a->l == 2)
+        return (ft_itoa_base((unsigned long long)str, 16,\
+            c == 'X' ? 'A' : 'a'));
+    else
+        return (ft_itoa_base((long int)str, 16, c == 'X' ? 'A' : 'a'));
+}
+
+char    *ret_us(t_printf *a, void *str, char c)
+{
+    if (a->h == 1)
+        return (ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a'));
+    else if (a->h == 2)
+        return (ft_itoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a'));
+    else if (a->l == 2)
+        return (ft_itoa_base((unsigned long long)str, 16,\
+            c == 'X' ? 'A' : 'a'));
+	else if (a->l == 1)
+		return (ft_itoa_base((long int)str, 16,\
+            c == 'X' ? 'A' : 'a'));
+    else
+        return (ft_itoa_base((unsigned int)str, 16, c == 'X' ? 'A' : 'a'));
 }
 
 void	col_x_dop(t_printf *a, char *s, char c)
@@ -79,7 +95,7 @@ void	col_x(t_printf *a, void *str, char c)
 	char	*s;
 	int		u;
 
-	s = ret_s(a, str, c);
+	s = ret_us(a, str, c);
 	if (a->sharp == 1 && str != 0)
 	{
 		col_x_dop(a, s, c);
