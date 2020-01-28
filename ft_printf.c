@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/27 19:05:31 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/27 20:32:15 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,19 @@ static double rounding(double nb, int l)
 	tmp += 0.5;
 	while (--l >= 0)
 		tmp /= 10;
+	// printf("%.18f\n", tmp);
+	// printf("%.18f\n", (unsigned long int)nb + tmp);
 	return ((unsigned long int)nb + tmp);
+}
+
+void	col_f_with_zero(t_printf *a, char *str, size_t len)
+{
+	// printf("space = %d\n", a->space);
+	// printf("space_2 = %d\n", a->space_2);
+	// a->space = a->space_2;
+	// a->space_2 = a->space;
+	if (a->space_2 != 0)
+		a->dot = 2;
 }
 
 void	col_f(t_printf *a, double d)
@@ -116,45 +128,21 @@ void	col_f(t_printf *a, double d)
 	char	*str;
 	char	*tmp;
 
+	if (a->one_s && a->space_2 && d >= 0)
+		collect_space(a);
 	if (d < 0)
 		tmp = ft_strdup("-");
 	else
 		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
+	// tmp = ft_strdup("");
 	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
+	if (a->space && a->dot)
+		col_f_with_zero(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
+	// if (d < 0) // need good uslovie
+	// {
+	// 	printf("here\n");
+	// }
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
-
-	// int			i;
-	// int			f;
-	// long long	l;
-	// long long	tmp;
-	// char		sign;
-
-	// tmp = ret_nb(a, nb);
-	// l = tmp;
-	// i = 1;
-	// sign = '-';
-	// while ((tmp /= 10))
-	// 	i++;
-	// if (a->space && !a->space_2 && a->dot == 1)
-	// 	i = 0;
-	// if (a->dot == 2 && !a->space_2 && a->space && (l < 0 || a->sign))
-	// 	a->space_2 = a->space - 1;
-	// if (a->sign)
-	// 	sign = l >= 0 ? '+' : '-';
-	// if (a->one_s == 1 && !a->sign && l >= 0 && (a->space <= i || a->dot == 2))
-	// 	collect_space(a);
-	// if (a->dot && !a->space_2 && !a->space)
-	// 	a->sign ? collect(a, "+", 1) : collect(a, "", 0);
-	// else if (a->dot && l < 0 && a->space_2 >= i)
-	// 	collect(a, ft_strjoin("-",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(-l))), a->space_2 + 1);
-	// else if (a->dot && a->space_2 >= i && sign == '+')
-	// 	collect(a, ft_strjoin("+",ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l))), a->space_2 + 1);
-	// else if (a->dot && a->space_2 > i)
-	// 	collect(a, ft_strjoin(ft_strset('0', a->space_2 - i), ft_itoa(l)), a->space_2);
-	// else if (a->sign && l >= 0 && sign != '-')
-	// 	collect(a, ft_strjoin("+", ft_itoa(l)), i + 1);
-	// else
-	// 	collect(a, ft_itoa(l), i + (l < 0 ? 1 : 0));
 }
 
 static int		len(int n)
@@ -245,8 +233,9 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%.16f\n",  0.999999999999999900);
-// 	ft_printf("%.16f",  0.999999999999999900);
+// 	printf("%- 5d\n", -7);
+// 	ft_printf("%- 5d", -7);
+// 	// ft_printf("", )
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);
 // 	// printf("%d\n", -267);
