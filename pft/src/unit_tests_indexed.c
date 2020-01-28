@@ -1076,7 +1076,7 @@ int		mix_hhu_str_llu_str(void){return ft_printf("%hhu%s%llu%s", uch_pos_1, str_3
 int		mix_str_hu_str_lu(void){return ft_printf("%s%hu%s%lu", str_1, ush_pos_1, str_3, ul_pos_1);}
 
 //Mixing everything from all the tests so far
-int		mixed_test_0001(void){return ft_printf(
+ int		mixed_test_0001(void){return ft_printf(
 		"%s%hihello%-17.14llu%lli%08hu%s%17ssomestuff%s%hi%i%.24lu%llu%u%.2s%li","abc",sh_neg_1,
 		ull_pos_1,ll_neg_1,ush_pos_1,"wassup","nope","",(short)32767,0,ul_pos_1,0ull,ui_pos_1,"notall",l_pos_1);}
 
@@ -2595,7 +2595,7 @@ int		mix_test_27(void){return ft_printf(
 int		mix_test_28(void){return ft_printf(
 			"  %f    %i    %p    %li    %o    %x  ",
 			mx_f, mx_i, &mx_i, mx_li, mx_u, mx_u);}
-int		mix_test_29(void){return ft_printf(
+ int		mix_test_29(void){return ft_printf(
 			"  %li    %lli    %f    %X    %o    %s  ",
 			mx_li, mx_lli, mx_f, mx_u, mx_u, mx_s);}
 int		mix_test_30(void){return ft_printf(
@@ -8283,7 +8283,7 @@ const t_test_entry g_unit_tests[] = {
 	{1, 884, "u_prec0val0_wlj_impl", u_prec0val0_wlj_impl, u_prec0val0_wlj_impl_bench, "{return test(\"%-5.u\", 0);}"},
 	{1, 885, "mix_hhu_str_llu_str", mix_hhu_str_llu_str, mix_hhu_str_llu_str_bench, "{return test(\"%hhu%s%llu%s\", uch_pos_1, str_3, ull_pos_1, str_2);}"},
 	{1, 886, "mix_str_hu_str_lu", mix_str_hu_str_lu, mix_str_hu_str_lu_bench, "{return test(\"%s%hu%s%lu\", str_1, ush_pos_1, str_3, ul_pos_1);}"},
-	{1, 887, "mixed_test_0001", mixed_test_0001, mixed_test_0001_bench, "{return test("},
+	{0, 887, "mixed_test_0001", mixed_test_0001, mixed_test_0001_bench, "{return test("},
 	{1, 888, "x_basic_pos", x_basic_pos, x_basic_pos_bench, "{return test(\"this %x number\", 17);}"},
 	{1, 889, "x_basic_zero", x_basic_zero, x_basic_zero_bench, "{return test(\"this %x number\", 0);}"},
 	{1, 890, "x_basic_onlypos", x_basic_onlypos, x_basic_onlypos_bench, "{return test(\"%x\", 3);}"},
@@ -9444,7 +9444,7 @@ const t_test_entry g_unit_tests[] = {
 	{1, 2045, "mix_test_26", mix_test_26, mix_test_26_bench, "{return test("},
 	{1, 2046, "mix_test_27", mix_test_27, mix_test_27_bench, "{return test("},
 	{1, 2047, "mix_test_28", mix_test_28, mix_test_28_bench, "{return test("},
-	{1, 2048, "mix_test_29", mix_test_29, mix_test_29_bench, "{return test("},
+	{0, 2048, "mix_test_29", mix_test_29, mix_test_29_bench, "{return test("},
 	{1, 2049, "mix_test_30", mix_test_30, mix_test_30_bench, "{return test("},
 	{1, 2050, "mix_test_31", mix_test_31, mix_test_31_bench, "{return test("},
 	{1, 2051, "mix_test_32", mix_test_32, mix_test_32_bench, "{return test("},

@@ -55,6 +55,7 @@ void		collect(t_printf *a, char *str, size_t len)
 	a->space = 0;
 	a->h = 0;
 	a->l = 0;
+	a->big_l = 0;
 	// a->space_2 = 0;
 	// free(str);
 }
@@ -94,6 +95,8 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
+
+
 /////////////////////////////////
 
 static double rounding(double nb, int l)
@@ -113,27 +116,30 @@ static double rounding(double nb, int l)
 	return ((unsigned long int)nb + tmp);
 }
 
-// void	col_f_with_zero(t_printf *a, char *str, size_t len)
-// {
-// 	// printf("space = %d\n", a->space);
-// 	// printf("space_2 = %d\n", a->space_2);
-// 	// a->space = a->space_2;
-// 	// a->space_2 = a->space;
-// 	if (a->spa)
-// 		a->dot = 2;
-// }
+static long double lrounding(long double nb, int l)
+{
+	int i;
+	long double tmp;
+
+	tmp = nb - (unsigned long int)nb;
+	i = -1;
+	while(++i != l)
+		tmp *= 10;
+	tmp += 0.5;
+	while (--l >= 0)
+		tmp /= 10;
+	// printf("%.18f\n", tmp);
+	// printf("%.18f\n", (unsigned long int)nb + tmp);
+	return ((unsigned long int)nb + tmp);
+}
 
 void	col_f(t_printf *a, double d)
 {
 	char	*str;
 	char	*tmp;
-<<<<<<< HEAD
-	int y;
-=======
 
 	// if (a->dot = 3)
 	// 	a->dot = 2;
->>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
 	// printf("dot = %d\n", a->dot);
 	a->space = a->one_s && a->space ? a->space-- : a->space++;
 	if (a->one_s && a->dot && d >= 0 && !a->sign)
@@ -157,14 +163,6 @@ void	col_f(t_printf *a, double d)
 	// {
 	// 	printf("here\n");
 	// }
-<<<<<<< HEAD
-	// if (a->dot == 3)
-	// {
-	// 	a->space_2 = a->space;
-	// 	a->space = 0;
-	// 	a->dot = 1; 
-	// }
-=======
 	// a->space_2 = a->space;
 	if (a->dot == 3)
 	{
@@ -172,7 +170,6 @@ void	col_f(t_printf *a, double d)
 		a->dot = 2;
 	}
 	// a->space = 0;
->>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
 
@@ -190,12 +187,39 @@ void	col_lf(t_printf *a, long double d)
 {
 	char	*str;
 	char	*tmp;
-	
+
+	// if (a->dot = 3)
+	// 	a->dot = 2;
+	// printf("dot = %d\n", a->dot);
+	a->space = a->one_s && a->space ? a->space-- : a->space++;
+	if (a->one_s && a->dot && d >= 0 && !a->sign)
+	{
+		a->buf = a->buf ? a->buf : ft_strset(' ', 0);
+		if (a->space)
+			a->space = a->space + (a->align ? 1 : -1);
+		tmp = ft_strjoin(a->buf, " ");
+		a->len++;
+		free(a->buf);
+		a->buf = tmp;
+	}
 	if (d < 0)
 		tmp = ft_strdup("-");
 	else
 		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
-	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
+	str = ft_lftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
+	// if (a->space && a->dot)
+	// 	col_f_with_zero(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
+	// if (d < 0) // need good uslovie
+	// {
+	// 	printf("here\n");
+	// }
+	// a->space_2 = a->space;
+	if (a->dot == 3)
+	{
+		// a->space = a->space - a->one_s
+		a->dot = 2;
+	}
+	// a->space = 0;
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
 
@@ -258,33 +282,47 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 	return (str);
 }
 
+static char			*ft_lftoa(t_printf *a, long double f, int n)
+{
+	char		*str;
+	char		*tmp;
+	int			l;
+	int 		sign;
+	long double	f_2;
+
+	
+	l = n;
+	f_2 = (f - (long long)f);
+	f = lrounding(f, l);
+	str = ft_itoa((long long)(f));
+
+	f_2 = lrounding(f_2, l);
+
+	while (n-- > 0)
+		f_2 *= 10;
+	if (n && (a->space_2 || !a->dot))
+	{
+		tmp = ft_strjoin(str, ".");
+		free(str);
+		str = post_dot(f_2, tmp, l);
+	}
+	else if (a->sharp)
+	{
+		tmp = ft_strjoin(str, ".");
+		free(str);
+		str = tmp;
+	}
+	return (str);
+}
+
 /////////////////////////////////
 
-<<<<<<< HEAD
-int 		main()
-{
-	char str[] = "0";
-	// printf("%d\n", ft_strcmp(str, "a"));
-	printf("%% 4.5d 42 == |% 4.5d|\n", 42);
-	ft_printf("%% 4.5d 42 == |% 4.5d|", 42);
-	// ft_printf("", )
-//	ft_printf("%f", 1.0);
-//	printf("\nthis %u number", -267);
-	// printf("%d\n", -267);
-	// printf("%ld\n", "s");
-	// printf("{%+7u}\n", 0);
-}
-=======
 // int 		main()
 // {
 // 	char str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("{% 05.0f}\n", 7.3);
-// 	ft_printf("{% 05.0f}\n", 7.3);
-// 	printf("{% 05.0f}\n", 7.3);
-// 	ft_printf("{% 05.0f}\n", 7.3);
-// 	printf("% 05.0f\n", 7.3);
-// 	ft_printf("% 05.0f", 7.3);
+// 	printf("%lLf", 42.5L);
+// //	ft_printf("%lLf", 42.5);
 // 	// ft_printf("", )
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);
@@ -292,4 +330,3 @@ int 		main()
 // 	// printf("%ld\n", "s");
 // 	// printf("{%+7u}\n", 0);
 // }
->>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1

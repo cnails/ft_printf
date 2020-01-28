@@ -37,6 +37,7 @@ typedef	struct		s_printf
 }					t_printf;
 
 static char			*ft_ftoa(t_printf *a, double f, int n);
+static char			*ft_lftoa(t_printf *a, long double f, int n);
 void				col_d(t_printf *a, void *nb);
 void				col_u(t_printf *a, void *nb, char c);
 void				col_s(t_printf *a, char *str);

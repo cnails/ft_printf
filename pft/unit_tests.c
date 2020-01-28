@@ -1076,7 +1076,7 @@ int		mix_hhu_str_llu_str(void){return test("%hhu%s%llu%s", uch_pos_1, str_3, ull
 int		mix_str_hu_str_lu(void){return test("%s%hu%s%lu", str_1, ush_pos_1, str_3, ul_pos_1);}
 
 //Mixing everything from all the tests so far
-int		mixed_test_0001(void){return test(
+ int		mixed_test_0001(void){return test(
 		"%s%hihello%-17.14llu%lli%08hu%s%17ssomestuff%s%hi%i%.24lu%llu%u%.2s%li","abc",sh_neg_1,
 		ull_pos_1,ll_neg_1,ush_pos_1,"wassup","nope","",(short)32767,0,ul_pos_1,0ull,ui_pos_1,"notall",l_pos_1);}
 
@@ -2595,7 +2595,7 @@ int		mix_test_27(void){return test(
 int		mix_test_28(void){return test(
 			"  %f    %i    %p    %li    %o    %x  ",
 			mx_f, mx_i, &mx_i, mx_li, mx_u, mx_u);}
-int		mix_test_29(void){return test(
+ int		mix_test_29(void){return test(
 			"  %li    %lli    %f    %X    %o    %s  ",
 			mx_li, mx_lli, mx_f, mx_u, mx_u, mx_s);}
 int		mix_test_30(void){return test(
