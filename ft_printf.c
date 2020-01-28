@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 15:31:10 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 16:00:33 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,15 @@ void	col_f(t_printf *a, double d)
 {
 	char	*str;
 	char	*tmp;
+<<<<<<< HEAD
 	int y;
+=======
+
+	// if (a->dot = 3)
+	// 	a->dot = 2;
+>>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
 	// printf("dot = %d\n", a->dot);
+	a->space = a->one_s && a->space ? a->space-- : a->space++;
 	if (a->one_s && a->dot && d >= 0 && !a->sign)
 	{
 		a->buf = a->buf ? a->buf : ft_strset(' ', 0);
@@ -150,12 +157,22 @@ void	col_f(t_printf *a, double d)
 	// {
 	// 	printf("here\n");
 	// }
+<<<<<<< HEAD
 	// if (a->dot == 3)
 	// {
 	// 	a->space_2 = a->space;
 	// 	a->space = 0;
 	// 	a->dot = 1; 
 	// }
+=======
+	// a->space_2 = a->space;
+	if (a->dot == 3)
+	{
+		// a->space = a->space - a->one_s
+		a->dot = 2;
+	}
+	// a->space = 0;
+>>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
 	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ? 1 : 0));
 }
 
@@ -243,6 +260,7 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 
 /////////////////////////////////
 
+<<<<<<< HEAD
 int 		main()
 {
 	char str[] = "0";
@@ -256,3 +274,22 @@ int 		main()
 	// printf("%ld\n", "s");
 	// printf("{%+7u}\n", 0);
 }
+=======
+// int 		main()
+// {
+// 	char str[] = "0";
+// 	// printf("%d\n", ft_strcmp(str, "a"));
+// 	printf("{% 05.0f}\n", 7.3);
+// 	ft_printf("{% 05.0f}\n", 7.3);
+// 	printf("{% 05.0f}\n", 7.3);
+// 	ft_printf("{% 05.0f}\n", 7.3);
+// 	printf("% 05.0f\n", 7.3);
+// 	ft_printf("% 05.0f", 7.3);
+// 	// ft_printf("", )
+// //	ft_printf("%f", 1.0);
+// //	printf("\nthis %u number", -267);
+// 	// printf("%d\n", -267);
+// 	// printf("%ld\n", "s");
+// 	// printf("{%+7u}\n", 0);
+// }
+>>>>>>> d0378fff148b0fe133acdc7fc3871dfc06d070c1
