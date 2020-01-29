@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 18:32:55 by dmetallo          #+#    #+#             */
-/*   Updated: 2020/01/29 16:35:52 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:37:22 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,22 @@ void			col_lf(t_printf *a, long double d)
 char			*ft_lftoa(t_printf *a, long double f, int n)
 {
 	char		*str[2];
-	int			l;
-	long double	f_2;
+	long double	l[2];
 
-	l = n;
-	f_2 = (f - (long long)f);
-	f = lrounding(f, l);
+	l[0] = n;
+	l[1] = (f - (long long)f);
+	f = lrounding(f, l[0]);
 	if (f != f)
 		return ("nan");
 	str[0] = ft_itoa((long long)(f));
-	f_2 = lrounding(f_2, l);
+	l[1] = lrounding(l[1], l[0]);
 	while (n-- > 0)
-		f_2 *= 10;
+		l[1] *= 10;
 	if (n && (a->space_2 || !a->dot))
 	{
 		str[1] = ft_strjoin(str[0], ".");
 		free(str[0]);
-		str[0] = post_dot(f_2, str[1], l);
+		str[0] = post_dot(l[1], str[1], l[0]);
 	}
 	else if (a->sharp)
 	{

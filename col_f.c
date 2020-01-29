@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:21:59 by dmetallo          #+#    #+#             */
-/*   Updated: 2020/01/29 14:52:26 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:48:53 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 	char	*str;
 	char	*tmp;
 	int		l;
-	int		sign;
 	double	f_2;
 
 	l = n;
