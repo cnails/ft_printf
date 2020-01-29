@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 19:52:25 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 20:49:52 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int	len(int n)
 		i++;
 	return (i);
 }
-
+#include <limits.h>
 int			main()
 {
 	// char	str[] = "0";
@@ -110,8 +110,8 @@ int			main()
 	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
 	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
 	// ft_printf("%\\n");
-	printf("%d\n", ft_printf("%.0p\n", 0));
-	printf("%d\n", printf("%.0p\n", 0));
+	printf("%d\n", ft_printf("{%9.2p}\n", 1234));
+	printf("%d\n", printf("{%9.2p}\n", 1234));
 	// ft_printf("", )
 //	ft_printf("%f", 1.0);
 //	printf("\nthis %u number", -267);

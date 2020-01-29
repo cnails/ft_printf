@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 19:07:20 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 20:28:59 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 char	*ret_s(t_printf *a, void *str, char c)
 {
-	if (a->h == 1)
+	if (a->dot && !a->space_2 && !((unsigned long long)str))
+	{
+		// a->space_2 - 2;
+		return (ft_strnew(1));
+	}
+	else if (a->h == 1)
 		return (ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a'));
 	else if (a->h == 2)
 		return (ft_itoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a'));
@@ -28,17 +33,17 @@ char	*ret_s(t_printf *a, void *str, char c)
 char	*ret_us(t_printf *a, void *str, char c)
 {
 	if (a->h == 1)
-		return (ft_itoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a'));
+		return (ft_uitoa_base((unsigned short)str, 16, c == 'X' ? 'A' : 'a'));
 	else if (a->h == 2)
-		return (ft_itoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a'));
+		return (ft_uitoa_base((unsigned char)str, 16, c == 'X' ? 'A' : 'a'));
 	else if (a->l == 2)
-		return (ft_itoa_base((unsigned long long)str, 16,\
+		return (ft_uitoa_base((unsigned long long)str, 16,\
 			c == 'X' ? 'A' : 'a'));
 	else if (a->l == 1)
-		return (ft_itoa_base((long int)str, 16,\
+		return (ft_uitoa_base((long int)str, 16,\
 			c == 'X' ? 'A' : 'a'));
 	else
-		return (ft_itoa_base((unsigned int)str, 16, c == 'X' ? 'A' : 'a'));
+		return (ft_uitoa_base((unsigned int)str, 16, c == 'X' ? 'A' : 'a'));
 }
 
 void	col_x_dop(t_printf *a, char *s, char c)

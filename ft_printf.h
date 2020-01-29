@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 19:02:08 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 20:18:55 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ char				*ft_ftoa(t_printf *a, double f, int n);
 char				*ft_lftoa(t_printf *a, long double f, int n);
 char				*ret_s(t_printf *a, void *str, char c);
 char				*ret_us(t_printf *a, void *str, char c);
+char				*ft_uitoa_base(unsigned long long int nbr, int base, char a);
 
 #endif

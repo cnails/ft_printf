@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 18:53:34 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 20:20:30 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,34 @@ long long	ret_onb(t_printf *a, void *nb)
 		return ((unsigned int)nb);
 }
 
+char		*ft_uitoa_base(unsigned long long int nbr, int base, char a)
+{
+	char					*str;
+	int						i;
+	unsigned long long int	n;
+
+	i = 0;
+	n =  nbr;
+	while ((n /= base) >= 1)
+		i++;
+	i += 1;
+	n = nbr;
+	if (!(str = (char *)ft_memalloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	while (i--)
+	{
+		str[i] = (n % base < 10) ? n % base + '0' : n % base + a - 10;
+		n /= base;
+	}
+	return (str);
+}
+
 void		col_o(t_printf *a, void *c)
 {
 	char		*tmp;
 	char		*tes;
 
-	tmp = ft_itoa_base(ret_onb(a, c), 8, 'a');
+	tmp = ft_uitoa_base(ret_onb(a, c), 8, 'a');
 	if (a->sharp && ft_strcmp(tmp, "0")\
 		&& (a->dot != 2 || a->space_2 < (int)ft_strlen(tmp)))
 	{
