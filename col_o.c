@@ -6,13 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 16:49:59 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 18:53:34 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	col_o_one_more(t_printf *a, char *str)
+void		col_o_one_more(t_printf *a, char *str)
 {
 	char *tmp;
 	char *tmp_join;
@@ -26,13 +26,13 @@ void	col_o_one_more(t_printf *a, char *str)
 	free(tmp_join);
 }
 
-void	col_o_norm(t_printf *a)
+void		col_o_norm(t_printf *a)
 {
 	a->dot = 1;
 	collect(a, "", 0);
 }
 
-void	col_o_dop(t_printf *a, char *tmp)
+void		col_o_dop(t_printf *a, char *tmp)
 {
 	if (a->space && a->space_2 && a->dot)
 	{
@@ -44,12 +44,26 @@ void	col_o_dop(t_printf *a, char *tmp)
 	collect(a, tmp, ft_strlen(tmp));
 }
 
-void	col_o(t_printf *a, long long int c)
+long long	ret_onb(t_printf *a, void *nb)
 {
-	char	*tmp;
-	char	*tes;
+	if (a->l == 1)
+		return ((unsigned long)nb);
+	else if (a->l == 2)
+		return ((unsigned long long)nb);
+	else if (a->h == 1)
+		return ((unsigned short)nb);
+	else if (a->h == 2)
+		return ((unsigned char)nb);
+	else
+		return ((unsigned int)nb);
+}
 
-	tmp = ft_itoa_base(c, 8, 'a');
+void		col_o(t_printf *a, void *c)
+{
+	char		*tmp;
+	char		*tes;
+
+	tmp = ft_itoa_base(ret_onb(a, c), 8, 'a');
 	if (a->sharp && ft_strcmp(tmp, "0")\
 		&& (a->dot != 2 || a->space_2 < (int)ft_strlen(tmp)))
 	{

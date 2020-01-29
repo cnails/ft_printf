@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:21:59 by dmetallo          #+#    #+#             */
-/*   Updated: 2020/01/29 16:48:53 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 18:55:44 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,44 +89,5 @@ char				*post_dot(double f, char *str, int l)
 	tmp = ft_qitoa((unsigned long int)f, l);
 	str = ft_strjoin(str, tmp);
 	free(tmp);
-	return (str);
-}
-
-char			*ft_ftoa(t_printf *a, double f, int n)
-{
-	char	*str;
-	char	*tmp;
-	int		l;
-	double	f_2;
-
-	l = n;
-	f_2 = (f - (int)f);
-	f = rounding(f, l);
-	str = ft_itoa((long long)(f));
-	f_2 = rounding(f_2, l);
-	while (n-- > 0)
-		f_2 *= 10;
-	tmp = ((n && (a->space_2 || !a->dot)) || a->sharp)\
-		? ft_strjoin(str, ".") : NULL;
-	((n && (a->space_2 || !a->dot)) || a->sharp) ? free(str) : 1;
-	if (n && (a->space_2 || !a->dot))
-		str = post_dot(f_2, tmp, l);
-	else if (a->sharp)
-		str = tmp;
-	return (str);
-}
-
-char				*ft_qitoa(unsigned long int n, int l)
-{
-	char	*str;
-
-	if (!(str = (char *)malloc(sizeof(char) * (l + 1))))
-		return (NULL);
-	str[l--] = '\0';
-	while (l != -1)
-	{
-		str[l--] = n % 10 + '0';
-		n /= 10;
-	}
 	return (str);
 }

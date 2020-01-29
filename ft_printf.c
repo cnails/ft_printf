@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 16:49:10 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 19:52:25 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,9 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-// static int	len(int n)
-// {
-// 	int i;
-
-// 	i = 1;
-// 	while (n /= 10)
-// 		i++;
-// 	return (i);
-// }
+static int	len(int n)
+{
+	int i;
 
 int			main()
 {

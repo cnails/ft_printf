@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:45:05 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 18:14:45 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 18:56:45 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,28 @@ void		col_with_sign(t_printf *a, long long *l, char *sign)
 	free(p);
 	free(b);
 	free(d);
+}
+
+char		*ft_ftoa(t_printf *a, double f, int n)
+{
+	char	*str;
+	char	*tmp;
+	int		l;
+	double	f_2;
+
+	l = n;
+	f_2 = (f - (int)f);
+	f = rounding(f, l);
+	str = ft_itoa((long long)(f));
+	f_2 = rounding(f_2, l);
+	while (n-- > 0)
+		f_2 *= 10;
+	tmp = ((n && (a->space_2 || !a->dot)) || a->sharp)\
+		? ft_strjoin(str, ".") : NULL;
+	((n && (a->space_2 || !a->dot)) || a->sharp) ? free(str) : 1;
+	if (n && (a->space_2 || !a->dot))
+		str = post_dot(f_2, tmp, l);
+	else if (a->sharp)
+		str = tmp;
+	return (str);
 }
