@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 11:04:45 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/14 16:01:17 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:22:17 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int		ft_numlen(long long nb)
 {
-	if (nb == -2147483648)
-		return (1 + ft_numlen(-147483648));
 	if (nb < 0)
 		return (1 + ft_numlen(nb * -1));
 	if (nb >= 10)

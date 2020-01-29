@@ -60,7 +60,7 @@ void	col_par(t_printf *a)
 	else if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));
 	else if (*a->str == 'u')
-		col_u(a, va_arg(a->va, void *), 'u');
+		col_u(a, va_arg(a->va, void *));
 	else if (*a->str == 'c' || *a->str == 'C')
 		col_c(a, va_arg(a->va, int));
 	else if (*a->str == 'o')

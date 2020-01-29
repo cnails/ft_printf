@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 18:00:12 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:49:59 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,11 @@ void	col_o_dop(t_printf *a, char *tmp)
 void	col_o(t_printf *a, long long int c)
 {
 	char	*tmp;
-	int		new;
 	char	*tes;
-	char	*p;
 
 	tmp = ft_itoa_base(c, 8, 'a');
 	if (a->sharp && ft_strcmp(tmp, "0")\
-		&& (a->dot != 2 || a->space_2 < ft_strlen(tmp)))
+		&& (a->dot != 2 || a->space_2 < (int)ft_strlen(tmp)))
 	{
 		tes = tmp;
 		tmp = ft_strjoin("0", tes);
@@ -64,7 +62,7 @@ void	col_o(t_printf *a, long long int c)
 	if (((a->dot == 2 && !a->space) || (!a->space_2 &&\
 		a->dot == 1)) && !a->space_2 && !a->sharp)
 		col_o_norm(a);
-	else if (a->space_2 > ft_strlen(tmp))
+	else if (a->space_2 > (int)ft_strlen(tmp))
 		col_o_one_more(a, tmp);
 	else
 		col_o_dop(a, tmp);

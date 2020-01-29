@@ -1850,7 +1850,7 @@ int f_stress_prec15_limits_big(void){return ft_printf("%.15f",  0.99999999999999
 int f_stress_prec16_rndu(void){return ft_printf("%.16f",        1.025978542436587568);}
 int f_stress_prec16_rndd(void){return ft_printf("%.16f",        1.025978548534310421);}
 int f_stress_prec16_limits_tiny(void){return ft_printf("%.16f", 0.000000000000000100);}
-int f_stress_prec16_limits_big(void){return ft_printf("%.16f",  0.999999999999999900);}
+ int f_stress_prec16_limits_big(void){return ft_printf("%.16f",  0.999999999999999900);}
 //Floats - Prec 17
 int f_stress_prec17_rndu(void){return ft_printf("%.17f",        1.025978542436587568);}
 int f_stress_prec17_rndd(void){return ft_printf("%.17f",        1.025978548534310421);}
@@ -2334,7 +2334,7 @@ int f_L_stress_prec14_limits_big(void){return ft_printf("%.14f",  0.999999999999
 int f_L_stress_prec16_rndu(void){return ft_printf("%.16f",        1.025978542436587568678);}
 int f_L_stress_prec16_rndd(void){return ft_printf("%.16f",        1.025978548534310421634);}
 int f_L_stress_prec16_limits_tiny(void){return ft_printf("%.16f", 0.000000000000000100000);}
-int f_L_stress_prec16_limits_big(void){return ft_printf("%.16f",  0.999999999999999900000);}
+ int f_L_stress_prec16_limits_big(void){return ft_printf("%.16f",  0.999999999999999900000);}
 //Long Doubles - Prec 17
 int f_L_stress_prec17_rndu(void){return ft_printf("%.17f",        1.025978542436587568678);}
 int f_L_stress_prec17_rndd(void){return ft_printf("%.17f",        1.025978548534310421734);}
@@ -8903,7 +8903,7 @@ const t_test_entry g_unit_tests[] = {
 	{1, 1504, "f_stress_prec16_rndu", f_stress_prec16_rndu, f_stress_prec16_rndu_bench, "{return test(\"%.16f\",        1.025978542436587568);}"},
 	{1, 1505, "f_stress_prec16_rndd", f_stress_prec16_rndd, f_stress_prec16_rndd_bench, "{return test(\"%.16f\",        1.025978548534310421);}"},
 	{1, 1506, "f_stress_prec16_limits_tiny", f_stress_prec16_limits_tiny, f_stress_prec16_limits_tiny_bench, "{return test(\"%.16f\", 0.000000000000000100);}"},
-	{1, 1507, "f_stress_prec16_limits_big", f_stress_prec16_limits_big, f_stress_prec16_limits_big_bench, "{return test(\"%.16f\",  0.999999999999999900);}"},
+	{0, 1507, "f_stress_prec16_limits_big", f_stress_prec16_limits_big, f_stress_prec16_limits_big_bench, "{return test(\"%.16f\",  0.999999999999999900);}"},
 	{1, 1508, "f_stress_prec17_rndu", f_stress_prec17_rndu, f_stress_prec17_rndu_bench, "{return test(\"%.17f\",        1.025978542436587568);}"},
 	{1, 1509, "f_stress_prec17_rndd", f_stress_prec17_rndd, f_stress_prec17_rndd_bench, "{return test(\"%.17f\",        1.025978548534310421);}"},
 	{1, 1510, "f_stress_prec17_limits_tiny", f_stress_prec17_limits_tiny, f_stress_prec17_limits_tiny_bench, "{return test(\"%.17f\", 0.000000000000000010);}"},
@@ -9306,7 +9306,7 @@ const t_test_entry g_unit_tests[] = {
 	{1, 1907, "f_L_stress_prec16_rndu", f_L_stress_prec16_rndu, f_L_stress_prec16_rndu_bench, "{return test(\"%.16f\",        1.025978542436587568678);}"},
 	{1, 1908, "f_L_stress_prec16_rndd", f_L_stress_prec16_rndd, f_L_stress_prec16_rndd_bench, "{return test(\"%.16f\",        1.025978548534310421634);}"},
 	{1, 1909, "f_L_stress_prec16_limits_tiny", f_L_stress_prec16_limits_tiny, f_L_stress_prec16_limits_tiny_bench, "{return test(\"%.16f\", 0.000000000000000100000);}"},
-	{1, 1910, "f_L_stress_prec16_limits_big", f_L_stress_prec16_limits_big, f_L_stress_prec16_limits_big_bench, "{return test(\"%.16f\",  0.999999999999999900000);}"},
+	{0, 1910, "f_L_stress_prec16_limits_big", f_L_stress_prec16_limits_big, f_L_stress_prec16_limits_big_bench, "{return test(\"%.16f\",  0.999999999999999900000);}"},
 	{1, 1911, "f_L_stress_prec17_rndu", f_L_stress_prec17_rndu, f_L_stress_prec17_rndu_bench, "{return test(\"%.17f\",        1.025978542436587568678);}"},
 	{1, 1912, "f_L_stress_prec17_rndd", f_L_stress_prec17_rndd, f_L_stress_prec17_rndd_bench, "{return test(\"%.17f\",        1.025978548534310421734);}"},
 	{1, 1913, "f_L_stress_prec17_limits_tiny", f_L_stress_prec17_limits_tiny, f_L_stress_prec17_limits_tiny_bench, "{return test(\"%.17f\", 0.000000000000000010000);}"},

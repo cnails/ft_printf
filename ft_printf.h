@@ -36,10 +36,8 @@ typedef	struct		s_printf
 	va_list			va;
 }					t_printf;
 
-static char			*ft_ftoa(t_printf *a, double f, int n);
-static char			*ft_lftoa(t_printf *a, long double f, int n);
 void				col_d(t_printf *a, void *nb);
-void				col_u(t_printf *a, void *nb, char c);
+void				col_u(t_printf *a, void *nb);
 void				col_s(t_printf *a, char *str);
 void				col_c(t_printf *a, char c);
 void				col_o(t_printf *a, long long int c);
@@ -53,7 +51,7 @@ void				col_hl(t_printf *a);
 void				col_par(t_printf *a);
 void				col_dot(t_printf *a);
 void				collect_space(t_printf *a);
-void				col_space(t_printf *a, char *str, size_t len);
+void				col_space(t_printf *a, size_t len);
 void				collect(t_printf *a, char *str, size_t len);
 void				dot_space(t_printf *a);
 long long			ret_nb(t_printf *a, void *nb);
@@ -65,5 +63,7 @@ char				*post_dot(double f, char *str, int l);
 long double			lrounding(long double nb, int l);
 double				rounding(double nb, int l);
 char				*ft_qitoa(unsigned long int n, int l);
+char				*ft_ftoa(t_printf *a, double f, int n);
+char				*ft_lftoa(t_printf *a, long double f, int n);
 
 #endif

@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   col_f.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmetallo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:21:59 by dmetallo          #+#    #+#             */
-/*   Updated: 2020/01/27 13:22:06 by dmetallo         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:48:53 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void				dop_f(t_printf *a, char *str, char *sign)
+{
+	int		space;
+
+	space = a->space;
+	a->space = 0;
+	collect(a, sign, 1);
+	a->space = space + (a->align ? 1 : -1);
+	a->dot = 2;
+	collect(a, str, ft_strlen(str));
+	free(str);
+	free(sign);
+}
+
+void				else_f(t_printf *a, char *str, char *sign, double d)
+{
+	char *tmp;
+
+	tmp = ft_strjoin(sign, str);
+	if (a->dot == 3)
+		a->dot = 2;
+	collect(a, tmp, ft_strlen(str) + ((d < 0 || a->sign) ?\
+		1 : 0));
+	free(tmp);
+	free(sign);
+	free(str);
+}
 
 void				col_f(t_printf *a, double d)
 {
@@ -28,15 +56,15 @@ void				col_f(t_printf *a, double d)
 		free(a->buf);
 		a->buf = tmp;
 	}
+	str = ft_ftoa(a, (d < 0 ? d * -1 : d), (!a->dot ? 6 : a->space_2));
 	if (d < 0)
 		tmp = ft_strdup("-");
 	else
 		tmp = (a->sign) ? ft_strdup("+") : ft_strdup("");
-	str = ft_ftoa(a, d < 0 ? d * -1 : d, (!a->dot ? 6 : a->space_2));
-	if (a->dot == 3)
-		a->dot = 2;
-	collect(a, ft_strjoin(tmp, str), ft_strlen(str) + ((d < 0 || a->sign) ?\
-		1 : 0));
+	if ((d < 0 || a->sign) && a->dot == 3)
+		dop_f(a, str, tmp);
+	else
+		else_f(a, str, tmp, d);
 }
 
 double				rounding(double nb, int l)
@@ -64,12 +92,11 @@ char				*post_dot(double f, char *str, int l)
 	return (str);
 }
 
-static char			*ft_ftoa(t_printf *a, double f, int n)
+char			*ft_ftoa(t_printf *a, double f, int n)
 {
 	char	*str;
 	char	*tmp;
 	int		l;
-	int		sign;
 	double	f_2;
 
 	l = n;
@@ -79,7 +106,8 @@ static char			*ft_ftoa(t_printf *a, double f, int n)
 	f_2 = rounding(f_2, l);
 	while (n-- > 0)
 		f_2 *= 10;
-	tmp = ((n && (a->space_2 || !a->dot)) || a->sharp) ? ft_strjoin(str, ".") : NULL;
+	tmp = ((n && (a->space_2 || !a->dot)) || a->sharp)\
+		? ft_strjoin(str, ".") : NULL;
 	((n && (a->space_2 || !a->dot)) || a->sharp) ? free(str) : 1;
 	if (n && (a->space_2 || !a->dot))
 		str = post_dot(f_2, tmp, l);

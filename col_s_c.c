@@ -32,7 +32,7 @@ void	col_s(t_printf *a, char *str)
 	}
 	if (str == NULL)
 		str = "(null)";
-	if (ft_strlen(str) > a->s && a->dot == 1)
+	if ((int)ft_strlen(str) > a->s && a->dot == 1)
 		u = a->s;
 	else
 		u = ft_strlen(str);
@@ -41,8 +41,6 @@ void	col_s(t_printf *a, char *str)
 
 void	col_c(t_printf *a, char c)
 {
-	int tmp;
-
 	if (c == '\x00' && a->align)
 	{
 		write(1, "\x00", 1);

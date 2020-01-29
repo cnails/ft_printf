@@ -6,13 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 19:41:31 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:49:10 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		col_space(t_printf *a, char *str, size_t len)
+void		col_space(t_printf *a, size_t len)
 {
 	char *tmp;
 	char *p;
@@ -39,8 +39,8 @@ void		collect(t_printf *a, char *str, size_t len)
 
 	if (!a->buf)
 		a->buf = ft_strnew(1);
-	if (a->space > len && (!a->align || a->dot) && a->space > 0)
-		col_space(a, str, len);
+	if (a->space > (int)len && (!a->align || a->dot) && a->space > 0)
+		col_space(a, len);
 	tmp = ft_strsub(str, 0, len);
 	new = ft_strjoin(a->buf, tmp);
 	free(tmp);
@@ -48,8 +48,8 @@ void		collect(t_printf *a, char *str, size_t len)
 	free(a->buf);
 	a->buf = tmp;
 	a->len += len;
-	if (a->space < 0 && -a->space > len)
-		col_space(a, str, len);
+	if (a->space < 0 && -a->space > (int)len)
+		col_space(a, len);
 	a->dot = (a->one_s ? a->dot : 0);
 	a->sharp = 0;
 	a->space = 0;
@@ -93,22 +93,23 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-static int	len(int n)
-{
-	int i;
+// static int	len(int n)
+// {
+// 	int i;
 
-	i = 1;
-	while (n /= 10)
-		i++;
-	return (i);
-}
+// 	i = 1;
+// 	while (n /= 10)
+// 		i++;
+// 	return (i);
+// }
 
 // int			main()
 // {
-// 	char	str[] = "0";
+// 	// char	str[] = "0";
 // 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%.d %.0d\n", 42, 43);
-// 	ft_printf("%.d %.0d", 42, 43);
+// 	printf("%lld\n", -9223372036854775808);
+// 	ft_printf("%lld\n", -9223372036854775808);
+
 // 	// ft_printf("", )
 // //	ft_printf("%f", 1.0);
 // //	printf("\nthis %u number", -267);

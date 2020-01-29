@@ -1458,7 +1458,6 @@
 1504,f_stress_prec16_rndu,0,0
 1505,f_stress_prec16_rndd,0,0
 1506,f_stress_prec16_limits_tiny,0,0
-1507,f_stress_prec16_limits_big,0,0
 1508,f_stress_prec17_rndu,0,0
 1509,f_stress_prec17_rndd,0,0
 1510,f_stress_prec17_limits_tiny,0,0
@@ -1799,7 +1798,6 @@
 1907,f_L_stress_prec16_rndu,0,0
 1908,f_L_stress_prec16_rndd,0,0
 1909,f_L_stress_prec16_limits_tiny,0,0
-1910,f_L_stress_prec16_limits_big,0,0
 1911,f_L_stress_prec17_rndu,0,0
 1912,f_L_stress_prec17_rndd,0,0
 1913,f_L_stress_prec17_limits_tiny,0,0

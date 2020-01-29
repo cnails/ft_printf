@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:45:05 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 15:29:01 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/28 20:56:32 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ long long	ret_unb(t_printf *a, void *nb)
 		return ((unsigned int)nb);
 }
 
-void		col_u(t_printf *a, void *nb, char c)
+void		col_u(t_printf *a, void *nb)
 {
 	unsigned long long	f[4];
 
-	f[3] = '-';
 	f[2] = ret_unb(a, nb);
 	f[1] = f[2];
 	f[0] = 1;
@@ -42,14 +41,11 @@ void		col_u(t_printf *a, void *nb, char c)
 		a->dot = 2;
 		a->space = a->space_2;
 	}
-	f[3] = (a->sign) ? '+' : '-';
 	if (a->dot == 2 && !a->space_2 && !a->space)
 		collect(a, "", 0);
-	else if (a->dot && a->space && a->space_2 > f[0])
+	else if (a->dot && a->space && a->space_2 > (int)f[0])
 		collect(a, ft_strjoin(ft_strset('0', a->space_2 - f[0]),\
 			ft_itoa(f[1])), a->space_2);
-	else if (f[3] == '+')
-		collect(a, ft_strjoin((const char *)&f[3], ft_itoa(f[1])), f[0] + 1);
 	else
 		collect(a, ft_itoa(f[1]), f[0]);
 }
