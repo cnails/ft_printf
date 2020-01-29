@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:45:05 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 20:52:59 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:25:22 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ void		why(t_printf *a, long long *l)
 	free(norme);
 }
 
-
 void		last(t_printf *a, long long *l)
 {
 	char *c;
 
-	c = ft_itoa(l[0]);
+	if (l[0] == -9223372036854775808)
+		c = ft_strdup("-9223372036854775808");
+	else
+		c = ft_itoa(l[0]);
 	collect(a, c, l[1] + (l[0] < 0 ? 1 : 0));
 	free(c);
 }

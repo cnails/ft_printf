@@ -1850,7 +1850,7 @@ int f_stress_prec15_limits_big(void){return test("%.15f",  0.999999999999999000)
 int f_stress_prec16_rndu(void){return test("%.16f",        1.025978542436587568);}
 int f_stress_prec16_rndd(void){return test("%.16f",        1.025978548534310421);}
 int f_stress_prec16_limits_tiny(void){return test("%.16f", 0.000000000000000100);}
-int f_stress_prec16_limits_big(void){return test("%.16f",  0.999999999999999900);}
+ int f_stress_prec16_limits_big(void){return test("%.16f",  0.999999999999999900);}
 //Floats - Prec 17
 int f_stress_prec17_rndu(void){return test("%.17f",        1.025978542436587568);}
 int f_stress_prec17_rndd(void){return test("%.17f",        1.025978548534310421);}
@@ -2334,7 +2334,7 @@ int f_L_stress_prec14_limits_big(void){return test("%.14f",  0.99999999999999000
 int f_L_stress_prec16_rndu(void){return test("%.16f",        1.025978542436587568678);}
 int f_L_stress_prec16_rndd(void){return test("%.16f",        1.025978548534310421634);}
 int f_L_stress_prec16_limits_tiny(void){return test("%.16f", 0.000000000000000100000);}
-int f_L_stress_prec16_limits_big(void){return test("%.16f",  0.999999999999999900000);}
+ int f_L_stress_prec16_limits_big(void){return test("%.16f",  0.999999999999999900000);}
 //Long Doubles - Prec 17
 int f_L_stress_prec17_rndu(void){return test("%.17f",        1.025978542436587568678);}
 int f_L_stress_prec17_rndd(void){return test("%.17f",        1.025978548534310421734);}

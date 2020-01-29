@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 19:37:59 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 14:07:46 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	col_plus_min_sl(t_printf *a)
 		a->align = 1;
 	if (*a->str == '+')
 		a->sign = 1;
+	if (*a->str == ' ')
+		a->one_s = 1;
 	a->str++;
-	if (*a->str == '-' || *a->str == '+' || *a->str == '\'')
+	if (*a->str == '-' || *a->str == '+' || *a->str == '\'' || *a->str == ' ')
 		col_plus_min_sl(a);
 }
 
