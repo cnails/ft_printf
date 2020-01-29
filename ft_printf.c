@@ -56,12 +56,15 @@ void		collect(t_printf *a, char *str, size_t len)
 	a->h = 0;
 	a->l = 0;
 	a->big_l = 0;
+	write(1, tmp, a->len);
+	write(1, "\n", 1);
 }
 
 void		a_init(const char *str, t_printf *a)
 {
 	a->fd = 1;
 	a->space = 0;
+	a->last_c = 0;
 	a->str = (char *)str;
 }
 
@@ -87,7 +90,7 @@ int			ft_printf(const char *str, ...)
 			collect(&a, a.str, 1);
 		a.str++;
 	}
-	write(1, a.buf, a.len);
+	write(1, a.buf, a.len);// + (a.last_c ? 1 : 0));
 	free(a.buf);
 	va_end(a.va);
 	return (a.len);
@@ -103,17 +106,19 @@ int			ft_printf(const char *str, ...)
 // 	return (i);
 // }
 
-// int			main()
-// {
-// 	// char	str[] = "0";
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%lld\n", -9223372036854775808);
-// 	ft_printf("%lld\n", -9223372036854775808);
+int			main()
+{
+	// char	str[] = "0";
+	// printf("%d\n", ft_strcmp(str, "a"));
+//	printf("{%*c}\n", 0, 0);
+	ft_printf("{%*c}", 0, 0);
+//	write(1,"\x00", 1);
 
-// 	// ft_printf("", )
-// //	ft_printf("%f", 1.0);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+	// ft_printf("", )
+//	ft_printf("%f", 1.0);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+	return (0);
+}
