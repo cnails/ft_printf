@@ -39,23 +39,8 @@ void	col_par_second(t_printf *a)
 		col_plus_min_sl(a);
 	while (*a->str == ' ')
 		a->str++;
-	if (*a->str == '*')
-	{
-		a->space = va_arg(a->va, int);
-		a->str++;
-	}
 	if (*a->str == '.' || *a->str == '0' || *a->str == '#')
 		col_dot(a);
-	if (*a->str == '*')
-	{
-		a->space_2 = va_arg(a->va, int);
-		if (a->space_2 < 0)
-		{
-			a->space_2 = a->space;
-			a->space = 0;
-		}
-		a->str++;
-	}
 	if (*a->str >= '0' && *a->str <= '9')
 		dot_space(a);
 	if (*a->str == 'h' || *a->str == 'l')

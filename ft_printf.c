@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 20:54:16 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 20:49:52 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,12 @@ void		collect(t_printf *a, char *str, size_t len)
 	a->h = 0;
 	a->l = 0;
 	a->big_l = 0;
-	// write(1, tmp, a->len);
-	// write(1, "\n", 1);
 }
 
 void		a_init(const char *str, t_printf *a)
 {
 	a->fd = 1;
 	a->space = 0;
-	a->last_c = 0;
 	a->str = (char *)str;
 }
 
@@ -90,26 +87,35 @@ int			ft_printf(const char *str, ...)
 			collect(&a, a.str, 1);
 		a.str++;
 	}
-	write(1, a.buf, a.len);// + (a.last_c ? 1 : 0));
+	write(1, a.buf, a.len);
 	free(a.buf);
 	va_end(a.va);
 	return (a.len);
 }
 
-// int			main()
-// {
-// 	// char	str[] = "0";
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
-// 	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
-// 	// ft_printf("%\\n");
-// 	printf("%d\n", ft_printf("{%9.2p}\n", 1234));
-// 	printf("%d\n", printf("{%9.2p}\n", 1234));
-// 	// ft_printf("", )
-// //	ft_printf("%f", 1.0);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// 	return (0);
-// }
+static int	len(int n)
+{
+	int i;
+
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
+#include <limits.h>
+int			main()
+{
+	// char	str[] = "0";
+	// printf("%d\n", ft_strcmp(str, "a"));
+	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
+	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
+	// ft_printf("%\\n");
+	printf("%d\n", ft_printf("{%9.2p}\n", 1234));
+	printf("%d\n", printf("{%9.2p}\n", 1234));
+	// ft_printf("", )
+//	ft_printf("%f", 1.0);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}

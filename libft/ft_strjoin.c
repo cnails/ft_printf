@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cnails <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 15:50:01 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 20:55:45 by cnails           ###   ########.fr       */
+/*   Updated: 2019/10/25 10:41:05 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			str[i++] = *s1++;
 		while (*s2)
 			str[i++] = *s2++;
-		// if (*s2 == '\x00')
-		// 	str[i++] = '\x00';
 		str[i++] = '\0';
 		return (str);
 	}
