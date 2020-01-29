@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   col_x_p.c                                          :+:      :+:    :+:   */
+/*   col_x.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 16:43:41 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 19:07:20 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ void	col_x_dop(t_printf *a, char *s, char c)
 		free(tmp_join);
 	}
 	else
-		collect(a, ft_strjoin(c == 'x' ? "0x" : "0X", s), ft_strlen(s) + 2);
+	{
+		tmp = ft_strjoin(c == 'x' ? "0x" : "0X", s);
+		collect(a, tmp, ft_strlen(s) + 2);
+		free(tmp);
+	}
 }
 
 void	cost(t_printf *a, char *s)
@@ -106,27 +110,4 @@ void	col_x(t_printf *a, void *str, char c)
 	free(s);
 	a->h = 0;
 	a->l = 0;
-}
-
-void	col_p(t_printf *a, void *str, char c)
-{
-	char	*s;
-	int		u;
-
-	u = 0;
-	s = ret_s(a, str, c);
-	if (a->dot)
-	{
-		if (a->space)
-		{
-			u = a->space;
-			a->space = 0;
-		}
-		collect(a, "0x", 2);
-		a->space = u - 2;
-		collect(a, s, ft_strlen(s));
-	}
-	else
-		collect(a, ft_strjoin("0x", s), ft_strlen(s) + 2);
-	free(s);
 }

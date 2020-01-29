@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 16:49:10 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 19:52:25 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,29 @@ int			ft_printf(const char *str, ...)
 	return (a.len);
 }
 
-// static int	len(int n)
-// {
-// 	int i;
+static int	len(int n)
+{
+	int i;
 
-// 	i = 1;
-// 	while (n /= 10)
-// 		i++;
-// 	return (i);
-// }
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
 
-// int			main()
-// {
-// 	// char	str[] = "0";
-// 	// printf("%d\n", ft_strcmp(str, "a"));
-// 	printf("%lld\n", -9223372036854775808);
-// 	ft_printf("%lld\n", -9223372036854775808);
-
-// 	// ft_printf("", )
-// //	ft_printf("%f", 1.0);
-// //	printf("\nthis %u number", -267);
-// 	// printf("%d\n", -267);
-// 	// printf("%ld\n", "s");
-// 	// printf("{%+7u}\n", 0);
-// }
+int			main()
+{
+	// char	str[] = "0";
+	// printf("%d\n", ft_strcmp(str, "a"));
+	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
+	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
+	// ft_printf("%\\n");
+	printf("%d\n", ft_printf("%.0p\n", 0));
+	printf("%d\n", printf("%.0p\n", 0));
+	// ft_printf("", )
+//	ft_printf("%f", 1.0);
+//	printf("\nthis %u number", -267);
+	// printf("%d\n", -267);
+	// printf("%ld\n", "s");
+	// printf("{%+7u}\n", 0);
+}

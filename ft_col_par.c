@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/28 19:38:22 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 18:51:50 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	col_par(t_printf *a)
 	else if (*a->str == 'c' || *a->str == 'C')
 		col_c(a, va_arg(a->va, int));
 	else if (*a->str == 'o')
-		col_o(a, va_arg(a->va, long long int));
+		col_o(a, va_arg(a->va, void *));
 	else if (*a->str == '%')
 		col_c(a, '%');
 	else if (*a->str == 'f')

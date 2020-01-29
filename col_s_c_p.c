@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   col_s_c.c                                          :+:      :+:    :+:   */
+/*   col_s_c_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/23 18:12:13 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 19:59:06 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,35 @@ void	col_c(t_printf *a, char c)
 		a->space++;
 		collect(a, "", 0);
 	}
-	// else if (c == '\x00')
-	// {
-	// 	write(1, "", 0);
-	// 	a->len++;
-	// }
 	else
 		collect(a, &c, 1);
+}
+
+void	col_p(t_printf *a, void *str, char c)
+{
+	char	*s;
+	char	*tmp;
+	int		u;
+
+	u = 0;
+	if (a->dot && !a->space_2 && !)
+	s = ret_s(a, str, c);
+	if (a->dot)
+	{
+		if (a->space)
+		{
+			u = a->space;
+			a->space = 0;
+		}
+		collect(a, "0x", 2);
+		a->space = u - 2;
+		collect(a, s, ft_strlen(s));
+	}
+	else
+	{
+		tmp = ft_strjoin("0x", s);
+		collect(a, tmp, ft_strlen(s) + 2);
+		free(tmp);
+	}
+	free(s);
 }

@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 14:07:46 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/29 18:56:37 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,19 @@ void	col_hl(t_printf *a)
 	a->str++;
 	if (*a->str == 'h' || *a->str == 'l')
 		col_hl(a);
+}
+
+char	*ft_qitoa(unsigned long int n, int l)
+{
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * (l + 1))))
+		return (NULL);
+	str[l--] = '\0';
+	while (l != -1)
+	{
+		str[l--] = n % 10 + '0';
+		n /= 10;
+	}
+	return (str);
 }
