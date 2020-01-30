@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/30 11:38:06 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 13:13:13 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,15 @@ void	col_par_second(t_printf *a)
 		a->big_l = 1;
 		a->str++;
 	}
-	if (*a->str == 'n')
-		a->fd = va_arg(a->va, int);
 }
 
 void	col_par(t_printf *a)
 {
 	col_par_second(a);
-	if (*a->str == 'd' || *a->str == 'i' || *a->str == 'D' || *a->str == 'I')
+	if (*a->str == 'n')
+		a->fd = va_arg(a->va, int);
+	else if (*a->str == 'd' || *a->str == 'i' ||\
+			*a->str == 'D' || *a->str == 'I')
 		col_d(a, va_arg(a->va, void *));
 	else if (*a->str == 's' || *a->str == 'S')
 		col_s(a, va_arg(a->va, char *));

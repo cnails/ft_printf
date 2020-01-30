@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/30 12:15:28 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 13:11:39 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int			ft_printf(const char *str, ...)
 			collect(&a, a.str, 1);
 		a.str++;
 	}
-	write(1, a.buf, a.len);
+	write(a.fd, a.buf, a.len);
 	free(a.buf);
 	va_end(a.va);
 	return (a.len + a.new_len);

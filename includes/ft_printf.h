@@ -6,13 +6,13 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/30 12:18:24 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:38:02 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdarg.h>
 
 typedef	struct		s_printf

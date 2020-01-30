@@ -1,63 +1,64 @@
-#NAME = printf
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cnails <cnails@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/30 12:33:56 by cnails            #+#    #+#              #
+#    Updated: 2020/01/30 12:38:35 by cnails           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-#all: $NAME
+NAME		= libftprintf.a
 
-#$NAME:
-#	gcc -g *.c -L libft -lft 
+INC_DIR		= ./includes 
+SRC_DIR		= ./src
 
-#clean:
-#	rm a.out
+HEADERS		= ft_printf.h
+SRC     	= \
+			  col_d.c \
+			  col_f.c \
+			  col_lf.c \
+			  col_o.c \
+			  col_s_c_p.c \
+			  col_u.c \
+			  col_x.c \
+			  \
+			  ft_col_par.c \
+			  ft_dop_dop_func.c	\
+			  ft_dop_func.c \
+			  ft_printf.c \
 
-C = clang
+OBJS = $(SRC:.c=.o)
 
-NAME = libftprintf.a
+LIBFT = ./libft
 
-FLAGS = -Wall -Wextra -Werror -O2
+WFL = -Wall -Wextra -Werror
 
-LIBFT = libft
+IFL = -I$(INC_DIR)
 
-DIR_S = sources
-
-DIR_O = temporary
-
-HEADER = include
-
-SOURCES = *.c
-
-
-SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
-
-# OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+SRCS = $(addprefix $(SRC_DIR))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C $(LIBFT)
-	@cp libft/libft.a ./$(NAME)
-	gcc -c *.c 
-	@ar rc $(NAME) *.o
-	@ranlib $(NAME)
+	$(MAKE) -C $(LIBFT)/
+	cp $(LIBFT)/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
-# $(DIR_O)/%.o: $(DIR_S)/%.c
-	# @mkdir -p temporary
-	# @$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
-
-norme:
-	norminette ./libft/
-	@echo
-	norminette ./$(HEADER)/
-	@echo
-	norminette ./$(DIR_S)/
+%.o: $(SRC_DIR)/%.c
+	gcc $(WFL) $(IFL) -c $< -o $@
 
 clean:
-
-	@rm -rf *.o
-	@rm -rf $(DIR_O)
-	@make clean -C $(LIBFT)
+	$(MAKE) -C $(LIBFT)/ clean
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf *.o
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT)
+	$(MAKE) -C $(LIBFT)/ fclean
+	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
