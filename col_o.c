@@ -6,25 +6,11 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 20:20:30 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 11:20:22 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void		col_o_one_more(t_printf *a, char *str)
-{
-	char *tmp;
-	char *tmp_join;
-
-	tmp = ft_strset('0', a->space_2 - ft_strlen(str));
-	tmp_join = ft_strjoin(tmp, str);
-	if (a->space && a->space_2)
-		a->dot = 1;
-	collect(a, tmp_join, a->space_2);
-	free(tmp);
-	free(tmp_join);
-}
 
 void		col_o_norm(t_printf *a)
 {
@@ -65,7 +51,7 @@ char		*ft_uitoa_base(unsigned long long int nbr, int base, char a)
 	unsigned long long int	n;
 
 	i = 0;
-	n =  nbr;
+	n = nbr;
 	while ((n /= base) >= 1)
 		i++;
 	i += 1;

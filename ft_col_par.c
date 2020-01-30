@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:27:35 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 18:51:50 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 11:38:06 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ void	dot_space(t_printf *a)
 		col_dot(a);
 }
 
+void	col_astr(t_printf *a, int nb)
+{
+	if (nb < 0 && a->space && a->dot)
+		a->dot = 2;
+	else if (a->dot == 1 || a->dot == 3)
+		a->space_2 = nb;
+	else
+		a->space = nb;
+	a->str++;
+}
+
 void	col_par_second(t_printf *a)
 {
 	if (*(a->str - 1) == ' ')
@@ -39,8 +50,12 @@ void	col_par_second(t_printf *a)
 		col_plus_min_sl(a);
 	while (*a->str == ' ')
 		a->str++;
+	if (*a->str == '*')
+		col_astr(a, va_arg(a->va, int));
 	if (*a->str == '.' || *a->str == '0' || *a->str == '#')
 		col_dot(a);
+	if (*a->str == '*')
+		col_astr(a, va_arg(a->va, int));
 	if (*a->str >= '0' && *a->str <= '9')
 		dot_space(a);
 	if (*a->str == 'h' || *a->str == 'l')
@@ -50,6 +65,8 @@ void	col_par_second(t_printf *a)
 		a->big_l = 1;
 		a->str++;
 	}
+	if (*a->str == 'n')
+		a->fd = va_arg(a->va, int);
 }
 
 void	col_par(t_printf *a)

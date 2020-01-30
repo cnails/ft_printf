@@ -6,11 +6,35 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:18:53 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 20:49:52 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:15:28 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void		dop_p(t_printf *a, char *s)
+{
+	char *new;
+	char *tmp;
+	char *join;
+
+	if (a->space_2 > a->space)
+	{
+		new = ft_strset('0', a->space_2 - ft_strlen(s));
+		tmp = ft_strjoin(new, s);
+		join = ft_strjoin("0x", tmp);
+		collect(a, join, ft_strlen(s) + 2 + ft_strlen(new));
+		free(new);
+		free(tmp);
+		free(join);
+	}
+	else
+	{
+		join = ft_strjoin("0x", s);
+		collect(a, join, ft_strlen(s) + 2);
+		free(join);
+	}
+}
 
 void		col_space(t_printf *a, size_t len)
 {
@@ -62,6 +86,7 @@ void		a_init(const char *str, t_printf *a)
 {
 	a->fd = 1;
 	a->space = 0;
+	a->new_len = 0;
 	a->str = (char *)str;
 }
 
@@ -90,32 +115,5 @@ int			ft_printf(const char *str, ...)
 	write(1, a.buf, a.len);
 	free(a.buf);
 	va_end(a.va);
-	return (a.len);
-}
-
-static int	len(int n)
-{
-	int i;
-
-	i = 1;
-	while (n /= 10)
-		i++;
-	return (i);
-}
-#include <limits.h>
-int			main()
-{
-	// char	str[] = "0";
-	// printf("%d\n", ft_strcmp(str, "a"));
-	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
-	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
-	// ft_printf("%\\n");
-	printf("%d\n", ft_printf("{%9.2p}\n", 1234));
-	printf("%d\n", printf("{%9.2p}\n", 1234));
-	// ft_printf("", )
-//	ft_printf("%f", 1.0);
-//	printf("\nthis %u number", -267);
-	// printf("%d\n", -267);
-	// printf("%ld\n", "s");
-	// printf("{%+7u}\n", 0);
+	return (a.len + a.new_len);
 }

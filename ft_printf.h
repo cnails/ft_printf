@@ -6,7 +6,7 @@
 /*   By: cnails <cnails@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:24:10 by cnails            #+#    #+#             */
-/*   Updated: 2020/01/29 20:18:55 by cnails           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:18:24 by cnails           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef	struct		s_printf
 	int				dot;
 	int				s;
 	int				h;
+	int				new_len;
 	int				l;
 	int				big_l;
 	int				sharp;
@@ -67,6 +68,11 @@ char				*ft_ftoa(t_printf *a, double f, int n);
 char				*ft_lftoa(t_printf *a, long double f, int n);
 char				*ret_s(t_printf *a, void *str, char c);
 char				*ret_us(t_printf *a, void *str, char c);
-char				*ft_uitoa_base(unsigned long long int nbr, int base, char a);
+char				*ft_uitoa_base(unsigned long long int nbr,\
+								int base, char a);
+void				dop_c(t_printf *a);
+void				col_o_one_more(t_printf *a, char *str);
+void				col_astr(t_printf *a, int nb);
+void				dop_p(t_printf *a, char *s);
 
 #endif
