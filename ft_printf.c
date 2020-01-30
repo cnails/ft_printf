@@ -102,20 +102,20 @@ static int	len(int n)
 		i++;
 	return (i);
 }
-#include <limits.h>
-int			main()
-{
-	// char	str[] = "0";
-	// printf("%d\n", ft_strcmp(str, "a"));
-	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
-	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
-	// ft_printf("%\\n");
-	printf("%d\n", ft_printf("{%9.2p}\n", 1234));
-	printf("%d\n", printf("{%9.2p}\n", 1234));
-	// ft_printf("", )
-//	ft_printf("%f", 1.0);
-//	printf("\nthis %u number", -267);
-	// printf("%d\n", -267);
-	// printf("%ld\n", "s");
-	// printf("{%+7u}\n", 0);
-}
+//#include <limits.h>
+// int			main()
+// {
+// 	// char	str[] = "0";
+// 	// printf("%d\n", ft_strcmp(str, "a"));
+// 	// printf("%o\n%ho\n%hho\n", -42, -42, -42);
+// 	// ft_printf("%o\n%ho\n%hho\n", -42, -42, -42);
+// 	// ft_printf("%\\n");
+// 	printf("%d\n", ft_printf("{%9.2p}\n", 1234));
+// 	printf("%d\n", printf("{%9.2p}\n", 1234));
+// 	// ft_printf("", )
+// //	ft_printf("%f", 1.0);
+// //	printf("\nthis %u number", -267);
+// 	// printf("%d\n", -267);
+// 	// printf("%ld\n", "s");
+// 	// printf("{%+7u}\n", 0);
+// }
